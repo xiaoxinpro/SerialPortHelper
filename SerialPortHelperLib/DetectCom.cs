@@ -13,11 +13,30 @@ namespace SerialPortHelperLib
     /// </summary>
     public class DetectCom
     {
+        //默认检测COM口时间间隔
+        private const double DETECT_COM_INTERVAL = 300;
+
         #region 字段
+
+        /// <summary>
+        /// 检测模式字段
+        /// </summary>
+        private DetectComModeEnum _detectComMode;
+
         /// <summary>
         /// 检测串口列表的线程
         /// </summary>
         private Thread _threadDetectSerialPortList;
+
+        /// <summary>
+        /// 检测串口列表的定时器
+        /// </summary>
+        private System.Timers.Timer _timerDetectSerialPortList;
+
+        /// <summary>
+        /// 检测COM口时间间隔
+        /// </summary>
+        private double _intDetectComInterval = DETECT_COM_INTERVAL;
 
         #endregion
 
@@ -27,11 +46,18 @@ namespace SerialPortHelperLib
         /// </summary>
         public DetectCom()
         {
-            
+            DetectComMode = DetectComModeEnum.None;
+            DetectComInterval = DETECT_COM_INTERVAL;
+            Control.CheckForIllegalCrossThreadCalls = false; //这个类中我们不检查跨线程的调用是否合法(因为.net 2.0以后加强了安全机制,，不允许在winform中直接跨线程访问控件的属性)
         }
 
-        public DetectCom(DelegateSerialPortListEvent e)
+        /// <summary>
+        /// 构造函数并绑定事件
+        /// </summary>
+        /// <param name="e">DelegateSerialPortListEvent事件函数</param>
+        public DetectCom(DelegateSerialPortListEvent e) : this()
         {
+            DetectComMode = DetectComModeEnum.Timer;
             this.EventSerialPortList += e;
         }
         #endregion
@@ -48,15 +74,71 @@ namespace SerialPortHelperLib
 
         #region 属性
         /// <summary>
+        /// 检测COM模式
+        /// </summary>
+        public DetectComModeEnum DetectComMode
+        {
+            get
+            {
+                return _detectComMode;
+            }
+            set
+            {
+                if(_detectComMode != value)
+                {
+                    _detectComMode = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 检测COM口时间间隔（毫秒）
+        /// 建议100-500，过短消耗资源，过长响应慢。
+        /// </summary>
+        public double DetectComInterval
+        {
+            get
+            {
+                return _intDetectComInterval;
+            }
+            set
+            {
+                _intDetectComInterval = value > 0 ? value : DETECT_COM_INTERVAL;
+            }
+        }
+
+        #endregion
+
+        #region 公共函数
+        /// <summary>
         /// 开启检测
         /// </summary>
         /// <returns>返回是否开启成功</returns>
         public bool Open()
         {
+            //判断事件是否为空
             if(this.EventSerialPortList != null)
             {
-                this.InitDetectThread();
-                return true;
+                bool ret = false;
+                //根据检测模式开启检测
+                switch (DetectComMode)
+                {
+                    case DetectComModeEnum.None:
+                        ret = false;
+                        break;
+                    case DetectComModeEnum.Thread:
+                        this.InitDetectThread();
+                        ret = true;
+                        break;
+                    case DetectComModeEnum.Timer:
+                        this.InitDetectTimer();
+                        ret = true;
+                        break;
+                    default:
+                        ret = false;
+                        break;
+                }
+                return ret;
             }
             else
             {
@@ -69,7 +151,52 @@ namespace SerialPortHelperLib
         /// </summary>
         public void Close()
         {
-            this.StopDetectThread();
+            switch (DetectComMode)
+            {
+                case DetectComModeEnum.None:
+                    break;
+                case DetectComModeEnum.Thread:
+                    this.StopDetectThread();
+                    break;
+                case DetectComModeEnum.Timer:
+                    this.StopDetctTimer();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 获取检测状态
+        /// </summary>
+        /// <returns></returns>
+        public bool GetDetectComStatus()
+        {
+            bool ret = false;
+            switch (DetectComMode)
+            {
+                case DetectComModeEnum.None:
+                    break;
+                case DetectComModeEnum.Thread:
+                    switch (this._threadDetectSerialPortList.ThreadState)
+                    {
+                        case ThreadState.Running:
+                        case ThreadState.Background:
+                        case ThreadState.WaitSleepJoin:
+                            ret = true;
+                            break;
+                        default:
+                            ret = false;
+                            break;
+                    }
+                    break;
+                case DetectComModeEnum.Timer:
+                    ret = this._timerDetectSerialPortList.Enabled;
+                    break;
+                default:
+                    break;
+            }
+            return ret;
         }
         #endregion
 
@@ -92,10 +219,19 @@ namespace SerialPortHelperLib
         /// </summary>
         private void InitDetectThread()
         {
-            Control.CheckForIllegalCrossThreadCalls = false; //这个类中我们不检查跨线程的调用是否合法(因为.net 2.0以后加强了安全机制,，不允许在winform中直接跨线程访问控件的属性)
             _threadDetectSerialPortList = new Thread(new ThreadStart(ThreadDetectSerialPortList));
             _threadDetectSerialPortList.IsBackground = true;
             _threadDetectSerialPortList.Start();
+        }
+
+        /// <summary>
+        /// 初始化检测线程并开启
+        /// </summary>
+        /// <param name="interval">检测间隔</param>
+        private void InitDetectThread(Int32 interval)
+        {
+            this.DetectComInterval = interval;
+            InitDetectThread();
         }
 
         /// <summary>
@@ -111,37 +247,13 @@ namespace SerialPortHelperLib
         /// </summary>
         private void ThreadDetectSerialPortList()
         {
-            //当前串口列表
-            List<string> nowSerialPortList = new List<string>();
-
-            //备份串口列表
-            List<string> bakSerialPortList = new List<string>();
-
             while (true)
             {
                 //线程休息300ms
-                System.Threading.Thread.Sleep(300);
+                System.Threading.Thread.Sleep(Convert.ToInt32(this.DetectComInterval));
 
-                //获取当前串口列表
-                nowSerialPortList.Clear();
-                foreach (string item in SerialPort.GetPortNames())
-                {
-                    nowSerialPortList.Add(item.ToString());
-                }
-
-                //串口列表比对
-                if(CompareArray(nowSerialPortList.ToArray(),bakSerialPortList.ToArray()) == false)
-                {
-                    //更新备份列表
-                    bakSerialPortList.Clear();
-                    foreach (string item in nowSerialPortList)
-                    {
-                        bakSerialPortList.Add(item);
-                    }
-
-                    //触发事件
-                    EventSerialPortList(bakSerialPortList);
-                }
+                //检测串口列表并处理
+                DetectSerialPortListProcess();
             }
         }
 
@@ -159,5 +271,110 @@ namespace SerialPortHelperLib
         }
         #endregion
 
+        #region 串口列表定时器
+        /// <summary>
+        /// 初始化定时器
+        /// </summary>
+        /// <param name="interval">时间间隔</param>
+        private void InitDetectTimer(double interval)
+        {
+            this.DetectComInterval = interval;
+            _timerDetectSerialPortList = new System.Timers.Timer(this.DetectComInterval);
+            _timerDetectSerialPortList.Elapsed += new System.Timers.ElapsedEventHandler(TimerDetectSerialPortList);
+            _timerDetectSerialPortList.AutoReset = true;
+            _timerDetectSerialPortList.Enabled = true;
+        }
+
+        /// <summary>
+        /// 初始化定时器
+        /// </summary>
+        private void InitDetectTimer()
+        {
+            InitDetectTimer(DETECT_COM_INTERVAL);
+        }
+
+        private void SetDetectTimerInterval(double interval)
+        {
+            if(_timerDetectSerialPortList != null)
+            {
+                _timerDetectSerialPortList.Interval = interval > 0 ? interval : DETECT_COM_INTERVAL;
+            }
+        }
+
+        /// <summary>
+        /// 停止定时器
+        /// </summary>
+        private void StopDetctTimer()
+        {
+            _timerDetectSerialPortList.Enabled = false;
+        }
+
+        /// <summary>
+        /// 定时器中断函数
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
+        private void TimerDetectSerialPortList(object source, System.Timers.ElapsedEventArgs e)
+        {
+            //检测串口列表并处理
+            DetectSerialPortListProcess();
+        }
+        #endregion
+
+        #region 动态检测串口列表
+
+        /// <summary>
+        /// 当前串口列表
+        /// </summary>
+        private List<string> nowSerialPortList = new List<string>();
+
+        /// <summary>
+        /// 备份串口列表
+        /// </summary>
+        private List<string> bakSerialPortList = new List<string>();
+
+        /// <summary>
+        /// 检测串口列表并处理
+        /// </summary>
+        private void DetectSerialPortListProcess()
+        {
+            //获取当前串口列表
+            nowSerialPortList.Clear();
+            foreach (string item in SerialPort.GetPortNames())
+            {
+                nowSerialPortList.Add(item.ToString());
+            }
+
+            //串口列表比对
+            if (CompareArray(nowSerialPortList.ToArray(), bakSerialPortList.ToArray()) == false)
+            {
+                //更新备份列表
+                bakSerialPortList.Clear();
+                foreach (string item in nowSerialPortList)
+                {
+                    bakSerialPortList.Add(item);
+                }
+
+                //触发事件
+                EventSerialPortList(bakSerialPortList);
+            }
+        }
+
+        #endregion
+
     }
+
+    #region 枚举类型
+    /// <summary>
+    /// 检测模式定义
+    /// </summary>
+    public enum DetectComModeEnum
+    {
+        None,       //手动检测
+        Thread,     //多线程检测（触发事件）
+        Timer       //定时器检测（触发事件）
+    }
+
+    #endregion
+
 }
