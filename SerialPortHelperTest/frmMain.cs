@@ -12,7 +12,11 @@ namespace SerialPortHelperTest
 {
     public partial class frmMain : Form
     {
+        //定义DetectCom类
         private DetectCom dc;
+
+        //定义ConfigCom类
+        private ConfigCom cc;
 
         public frmMain()
         {
@@ -28,9 +32,12 @@ namespace SerialPortHelperTest
         {
             //检测串口列表测试
             DetectComTest();
-            
+
+            //串口配置控件绑定
+            ConfigComTest();
         }
 
+        #region DetectCom函数
         private void DetectComTest()
         {
             //手动刷新(不推荐)
@@ -108,6 +115,18 @@ namespace SerialPortHelperTest
                 listSerialPort.Items.Add(item);
             }
         }
+        #endregion
+
+        #region ConfigCom函数
+        private void ConfigComTest()
+        {
+            cc = new ConfigCom(cbSerial);
+            cc.BindBaudRateObj(cbBaudRate);
+            cc.BindDataBitsObj(cbDataBits);
+            cc.BindStopBitsObj(cbStop);
+            cc.BindParityObj(cbParity);
+        }
+        #endregion
 
     }
 }
