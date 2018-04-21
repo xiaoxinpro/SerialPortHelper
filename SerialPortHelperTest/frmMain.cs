@@ -118,6 +118,9 @@ namespace SerialPortHelperTest
         #endregion
 
         #region ConfigCom函数
+        /// <summary>
+        /// ConfigCom测试函数
+        /// </summary>
         private void ConfigComTest()
         {
             cc = new ConfigCom(cbSerial);
@@ -125,6 +128,18 @@ namespace SerialPortHelperTest
             cc.BindDataBitsObj(cbDataBits);
             cc.BindStopBitsObj(cbStop);
             cc.BindParityObj(cbParity);
+        }
+
+        /// <summary>
+        /// 获取串口配信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnGetConfigComData_Click(object sender, EventArgs e)
+        {
+            ConfigComType configComType = cc.GetConfigComData();
+            string strMessage = string.Format("端口号：{0} \n\r波特率：{1} \n\r数据位：{2} \n\r停止位：{3} \n\r检验位：{4} ",configComType.PortName,configComType.BaudRate,configComType.DataBits,configComType.StopBits,configComType.Parity);
+            MessageBox.Show(strMessage,"串口配置 ConfigCom",MessageBoxButtons.OK);
         }
         #endregion
 
