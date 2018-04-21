@@ -37,7 +37,24 @@ namespace SerialPortHelperLib
         #endregion
 
         #region 属性
-        public string PortName { get => _PortName; set => _PortName = value; }
+        public string PortName
+        {
+            get
+            {
+                return _PortName;
+            }
+            set
+            {
+                if (cbPortName != null)
+                {
+                    int index = cbPortName.Items.IndexOf(value);
+                    if (index >= 0)
+                    {
+                        cbPortName.SelectedIndex = index;
+                    }
+                }
+            }
+        }
         public int BaudRate
         {
             get
@@ -49,6 +66,10 @@ namespace SerialPortHelperLib
                 if (Array.IndexOf(ARRAY_BAUD_RATE, value) >= 0)
                 {
                     _BaudRate = value;
+                    if (cbBaudRate != null)
+                    {
+                        cbBaudRate.SelectedIndex = cbBaudRate.Items.IndexOf(value);
+                    }
                 }
             }
         }
@@ -63,11 +84,43 @@ namespace SerialPortHelperLib
                 if(value >= 5 && value <= 8)
                 {
                     _DataBits = value;
+                    if (cbDataBits != null)
+                    {
+                        cbDataBits.SelectedIndex = cbDataBits.Items.IndexOf(value);
+                    }
                 }
             }
         }
-        public StopBits StopBits { get => _StopBits; set => _StopBits = value; }
-        public Parity Parity { get => _Parity; set => _Parity = value; }
+        public StopBits StopBits
+        {
+            get
+            {
+                return _StopBits;
+            }
+            set
+            {
+                _StopBits = value;
+                if (cbStopBits != null)
+                {
+                    cbStopBits.SelectedIndex = (int)value;
+                }
+            }
+        }
+        public Parity Parity
+        {
+            get
+            {
+                return _Parity;
+            }
+            set
+            {
+                _Parity = value;
+                if (cbParity != null)
+                {
+                    cbParity.SelectedIndex = (int)value;
+                }
+            }
+        }
         #endregion
 
         #region 构造函数
