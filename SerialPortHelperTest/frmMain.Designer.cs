@@ -44,12 +44,14 @@
             this.chkAutoReflash = new System.Windows.Forms.CheckBox();
             this.btnReflashList = new System.Windows.Forms.Button();
             this.listSerialPort = new System.Windows.Forms.ListBox();
+            this.btnSetConfigComData = new System.Windows.Forms.Button();
             this.gbConfigCom.SuspendLayout();
             this.gbDetectCom.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbConfigCom
             // 
+            this.gbConfigCom.Controls.Add(this.btnSetConfigComData);
             this.gbConfigCom.Controls.Add(this.btnGetConfigComData);
             this.gbConfigCom.Controls.Add(this.cbParity);
             this.gbConfigCom.Controls.Add(this.cbStop);
@@ -66,7 +68,7 @@
             this.gbConfigCom.Margin = new System.Windows.Forms.Padding(2);
             this.gbConfigCom.Name = "gbConfigCom";
             this.gbConfigCom.Padding = new System.Windows.Forms.Padding(2);
-            this.gbConfigCom.Size = new System.Drawing.Size(149, 270);
+            this.gbConfigCom.Size = new System.Drawing.Size(148, 429);
             this.gbConfigCom.TabIndex = 4;
             this.gbConfigCom.TabStop = false;
             this.gbConfigCom.Text = "串口配置";
@@ -75,7 +77,7 @@
             // 
             this.btnGetConfigComData.Location = new System.Drawing.Point(8, 219);
             this.btnGetConfigComData.Name = "btnGetConfigComData";
-            this.btnGetConfigComData.Size = new System.Drawing.Size(139, 38);
+            this.btnGetConfigComData.Size = new System.Drawing.Size(131, 38);
             this.btnGetConfigComData.TabIndex = 10;
             this.btnGetConfigComData.Text = "获取串口配置";
             this.btnGetConfigComData.UseVisualStyleBackColor = true;
@@ -253,6 +255,16 @@
             this.listSerialPort.Size = new System.Drawing.Size(97, 324);
             this.listSerialPort.TabIndex = 4;
             // 
+            // btnSetConfigComData
+            // 
+            this.btnSetConfigComData.Location = new System.Drawing.Point(8, 272);
+            this.btnSetConfigComData.Name = "btnSetConfigComData";
+            this.btnSetConfigComData.Size = new System.Drawing.Size(131, 38);
+            this.btnSetConfigComData.TabIndex = 11;
+            this.btnSetConfigComData.Text = "设置串口配置";
+            this.btnSetConfigComData.UseVisualStyleBackColor = true;
+            this.btnSetConfigComData.Click += new System.EventHandler(this.btnSetConfigComData_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -289,6 +301,7 @@
         private System.Windows.Forms.Button btnReflashList;
         private System.Windows.Forms.ListBox listSerialPort;
         private System.Windows.Forms.Button btnGetConfigComData;
+        private System.Windows.Forms.Button btnSetConfigComData;
     }
 }
 

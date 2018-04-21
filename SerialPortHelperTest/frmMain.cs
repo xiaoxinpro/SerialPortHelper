@@ -141,7 +141,25 @@ namespace SerialPortHelperTest
             string strMessage = string.Format("端口号：{0} \n\r波特率：{1} \n\r数据位：{2} \n\r停止位：{3} \n\r检验位：{4} ",configComType.PortName,configComType.BaudRate,configComType.DataBits,configComType.StopBits,configComType.Parity);
             MessageBox.Show(strMessage,"串口配置 ConfigCom",MessageBoxButtons.OK);
         }
+
+        /// <summary>
+        /// 设置串口配置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSetConfigComData_Click(object sender, EventArgs e)
+        {
+            if (listSerialPort.SelectedIndices.Count == 1)
+            {
+                cc.PortName = listSerialPort.SelectedItems[0].ToString();
+            }
+            cc.BaudRate = 14400;
+            cc.DataBits = 7;
+            cc.StopBits = StopBits.OnePointFive;
+            cc.Parity = Parity.Even;
+        }
         #endregion
+
 
     }
 }
