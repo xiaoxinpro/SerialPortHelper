@@ -4,10 +4,10 @@
 ## SerialPortHelperLib 项目
 串口助手类库项目，目前基于 .NET Framework 3.5 构建。
 
-### DetectCom类
+### 一、DetectCom类
 检测Com口的类，可以订阅事件进行自动检测，串口列表发生变化时触发事件。
 
-#### 简单实现自动刷新串口列表
+#### 1、简单实现自动刷新串口列表
 
 ```
 //实例化自动刷新（简单实例）
@@ -17,7 +17,7 @@ DetectCom dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoRefla
 dc.Open();
 ```
 
-#### 自定义使用线程刷新串口列表
+#### 2、自定义使用线程刷新串口列表
 
 使用`DetectComMode`属性来指定刷新串口的方式，包括`Timer 定时器`和`Thread 线程`两种方式。
 
@@ -34,7 +34,7 @@ dc.DetectComMode = DetectComModeEnum.Thread;
 dc.Open();
 ```
 
-#### 自定义串口刷新时间间隔
+#### 3、自定义串口刷新时间间隔
 
 使用`DetectComMode`属性来指定刷新串口的时间间隔（毫秒），该属性可跟项目要求自行设定。
 
