@@ -178,10 +178,15 @@ namespace SerialPortHelperLib
         #region 刷新串口列表
         private void ReflashSerialPortList(List<string> list)
         {
+            string bakPortName = cbPortName.Text;
             cbPortName.Items.Clear();
             foreach (string item in list)
             {
                 cbPortName.Items.Add(item);
+                if (item == bakPortName)
+                {
+                    cbPortName.SelectedIndex = cbPortName.Items.Count - 1;
+                }
             }
         }
         #endregion
