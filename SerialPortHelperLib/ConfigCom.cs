@@ -21,7 +21,11 @@ namespace SerialPortHelperLib
 
         #region 内部变量
         private DetectCom detectCom;
-        private ComboBox cbPortName;
+        private ComboBox cbPortName = null;
+        private ComboBox cbBaudRate = null;
+        private ComboBox cbDataBits = null;
+        private ComboBox cbStopBits = null;
+        private ComboBox cbParity = null;
         #endregion
 
         #region 字段
@@ -67,111 +71,199 @@ namespace SerialPortHelperLib
         #endregion
 
         #region 构造函数
+        /// <summary>
+        /// 构造函数并绑定ComboBox控件
+        /// </summary>
+        /// <param name="cbPortName">端口控件</param>
         public ConfigCom(ComboBox cbPortName)
         {
             BindPortNameObj(cbPortName);
             detectCom = new DetectCom(new DetectCom.DelegateSerialPortListEvent(ReflashSerialPortList));
             detectCom.Open();
+            Console.WriteLine("创建ConfigCom成功！");
+        }
+
+        /// <summary>
+        /// 构造函数并绑定ComboBox控件
+        /// </summary>
+        /// <param name="cbPortName">端口控件</param>
+        /// <param name="cbBaudRate">波特率控件</param>
+        public ConfigCom(ComboBox cbPortName, ComboBox cbBaudRate) : this(cbPortName)
+        {
+            BindBaudRateObj(cbBaudRate);
+        }
+
+        /// <summary>
+        /// 构造函数并绑定ComboBox控件
+        /// </summary>
+        /// <param name="cbPortName">端口控件</param>
+        /// <param name="cbBaudRate">波特率控件</param>
+        /// <param name="cbDataBits">数据位控件</param>
+        /// <param name="cbStopBits">停止位控件</param>
+        /// <param name="cbParity">校验位控件</param>
+        public ConfigCom(ComboBox cbPortName, ComboBox cbBaudRate, ComboBox cbDataBits, ComboBox cbStopBits, ComboBox cbParity) : this(cbPortName)
+        {
+            BindBaudRateObj(cbBaudRate);
+            BindDataBitsObj(cbDataBits);
+            BindStopBitsObj(cbStopBits);
+            BindParityObj(cbParity);
         }
         #endregion
 
-        #region 公共函数
+        #region 公共函数（绑定ComboBox控件）
+        /// <summary>
+        /// 绑定端口ComboBox
+        /// </summary>
+        /// <param name="cb">端口控件</param>
         public void BindPortNameObj(ComboBox cb)
         {
+            if (cbPortName == null)
+            {
+                throw new Exception("端口ComboBox控件不能为null，请绑定一个ComboBox控件。");
+            }
             cb.DropDownStyle = ComboBoxStyle.DropDownList;
             cb.Items.Clear();
             cbPortName = cb;
         }
 
+        /// <summary>
+        /// 绑定波特率ComboBox
+        /// </summary>
+        /// <param name="cb">波特率控件</param>
         public void BindBaudRateObj(ComboBox cb)
         {
-            cb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb.Items.Clear();
-            foreach (int item in ARRAY_BAUD_RATE)
+            if (cb != null)
             {
-                cb.Items.Add(item);
-                if (item == BAUD_RATE)
+                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                cb.Items.Clear();
+                foreach (int item in ARRAY_BAUD_RATE)
                 {
-                    cb.SelectedIndex = cb.Items.Count - 1;
+                    cb.Items.Add(item);
+                    if (item == BAUD_RATE)
+                    {
+                        cb.SelectedIndex = cb.Items.Count - 1;
+                    }
                 }
             }
+            cbBaudRate = cb;
         }
 
+        /// <summary>
+        /// 绑定数据位ComboBox
+        /// </summary>
+        /// <param name="cb">数据位控件</param>
         public void BindDataBitsObj(ComboBox cb)
         {
-            cb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb.Items.Clear();
-            foreach (int item in ARRAY_DATA_BITS)
+            if (cb != null)
             {
-                cb.Items.Add(item);
-                if (item == DATA_BITS)
+                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                cb.Items.Clear();
+                foreach (int item in ARRAY_DATA_BITS)
                 {
-                    cb.SelectedIndex = cb.Items.Count - 1;
+                    cb.Items.Add(item);
+                    if (item == DATA_BITS)
+                    {
+                        cb.SelectedIndex = cb.Items.Count - 1;
+                    }
                 }
             }
+            cbDataBits = cb;
         }
 
+        /// <summary>
+        /// 绑定停止位ComboBox
+        /// </summary>
+        /// <param name="cb">停止位控件</param>
         public void BindStopBitsObj(ComboBox cb)
         {
-            cb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb.Items.Clear();
-            foreach (int item in Enum.GetValues(typeof(StopBits)))
+            if (cb != null)
             {
-                switch ((StopBits)item)
+                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                cb.Items.Clear();
+                foreach (int item in Enum.GetValues(typeof(StopBits)))
                 {
-                    case StopBits.None:
-                        cb.Items.Add(0);
-                        break;
-                    case StopBits.One:
-                        cb.Items.Add(1);
-                        break;
-                    case StopBits.Two:
-                        cb.Items.Add(2);
-                        break;
-                    case StopBits.OnePointFive:
-                        cb.Items.Add(1.5);
-                        break;
-                    default:
-                        break;
-                }
-                if (STOP_BITS == (StopBits)item)
-                {
-                    cb.SelectedIndex = cb.Items.Count - 1;
+                    switch ((StopBits)item)
+                    {
+                        case StopBits.None:
+                            cb.Items.Add(0);
+                            break;
+                        case StopBits.One:
+                            cb.Items.Add(1);
+                            break;
+                        case StopBits.Two:
+                            cb.Items.Add(2);
+                            break;
+                        case StopBits.OnePointFive:
+                            cb.Items.Add(1.5);
+                            break;
+                        default:
+                            break;
+                    }
+                    if (STOP_BITS == (StopBits)item)
+                    {
+                        cb.SelectedIndex = cb.Items.Count - 1;
+                    }
                 }
             }
+            cbStopBits = cb;
         }
 
+        /// <summary>
+        /// 绑定校验位ComboBox
+        /// </summary>
+        /// <param name="cb">校验位控件</param>
         public void BindParityObj(ComboBox cb)
         {
-            cb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb.Items.Clear();
-            foreach (int item in Enum.GetValues(typeof(Parity)))
+            if (cb != null)
             {
-                switch ((Parity)item)
+                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                cb.Items.Clear();
+                foreach (int item in Enum.GetValues(typeof(Parity)))
                 {
-                    case Parity.None:
-                        cb.Items.Add("无校验");
-                        break;
-                    case Parity.Odd:
-                        cb.Items.Add("奇校验");
-                        break;
-                    case Parity.Even:
-                        cb.Items.Add("偶校验");
-                        break;
-                    case Parity.Mark:
-                        cb.Items.Add("强制为1");
-                        break;
-                    case Parity.Space:
-                        cb.Items.Add("强制为0");
-                        break;
-                    default:
-                        break;
-                }
-                if (PARITY == (Parity)item)
-                {
-                    cb.SelectedIndex = cb.Items.Count - 1;
+                    switch ((Parity)item)
+                    {
+                        case Parity.None:
+                            cb.Items.Add("无校验");
+                            break;
+                        case Parity.Odd:
+                            cb.Items.Add("奇校验");
+                            break;
+                        case Parity.Even:
+                            cb.Items.Add("偶校验");
+                            break;
+                        case Parity.Mark:
+                            cb.Items.Add("强制为1");
+                            break;
+                        case Parity.Space:
+                            cb.Items.Add("强制为0");
+                            break;
+                        default:
+                            break;
+                    }
+                    if (PARITY == (Parity)item)
+                    {
+                        cb.SelectedIndex = cb.Items.Count - 1;
+                    }
                 }
             }
+            cbParity = cb;
+        }
+        #endregion
+
+        #region 公共函数（获取信息）
+        /// <summary>
+        /// 获取串口配置
+        /// </summary>
+        /// <returns>返回串口配置结构体</returns>
+        public ConfigComType GetConfigComData()
+        {
+            ConfigComType ret;
+            ret.PortName = (cbPortName.Text.Length > 3) ? cbPortName.Text : null;
+            ret.BaudRate = (cbBaudRate != null) ? Convert.ToInt32(cbBaudRate.Text) : this.BaudRate;
+            ret.DataBits = (cbDataBits != null) ? Convert.ToInt32(cbDataBits.Text) : this.DataBits;
+            ret.StopBits = (cbStopBits != null) ? (StopBits)cbStopBits.SelectedIndex : this.StopBits;
+            ret.Parity = (cbParity != null) ? (Parity)cbParity.SelectedIndex : this.Parity;
+            return ret;
         }
         #endregion
 
@@ -191,6 +283,17 @@ namespace SerialPortHelperLib
         }
         #endregion
     }
+
+    #region 结构体
+    public struct ConfigComType
+    {
+        public string PortName;
+        public int BaudRate;
+        public int DataBits;
+        public StopBits StopBits;
+        public Parity Parity;
+    }
+    #endregion
 
     #region 枚举类型
     /// <summary>
