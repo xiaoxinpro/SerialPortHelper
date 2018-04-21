@@ -15,7 +15,7 @@ namespace SerialPortHelperLib
         private const StopBits STOP_BITS = StopBits.One;
         private const Parity PARITY = Parity.None;
 
-        private int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 115200, 128000 };
+        private int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 57600, 115200, 128000 };
         private int[] ARRAY_DATA_BITS = { 5, 6, 7, 8 };
         #endregion
 
@@ -117,7 +117,7 @@ namespace SerialPortHelperLib
         /// <param name="cb">端口控件</param>
         public void BindPortNameObj(ComboBox cb)
         {
-            if (cbPortName == null)
+            if (cb == null)
             {
                 throw new Exception("端口ComboBox控件不能为null，请绑定一个ComboBox控件。");
             }
@@ -272,12 +272,19 @@ namespace SerialPortHelperLib
         {
             string bakPortName = cbPortName.Text;
             cbPortName.Items.Clear();
-            foreach (string item in list)
+            if (list.Count > 0)
             {
-                cbPortName.Items.Add(item);
-                if (item == bakPortName)
+                foreach (string item in list)
                 {
-                    cbPortName.SelectedIndex = cbPortName.Items.Count - 1;
+                    cbPortName.Items.Add(item);
+                    if (item == bakPortName)
+                    {
+                        cbPortName.SelectedIndex = cbPortName.Items.Count - 1;
+                    }
+                }
+                if (cbPortName.Text == "")
+                {
+                    cbPortName.SelectedIndex = 0;
                 }
             }
         }
