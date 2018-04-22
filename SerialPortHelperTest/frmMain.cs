@@ -123,6 +123,13 @@ namespace SerialPortHelperTest
         /// </summary>
         private void ConfigComTest()
         {
+            //一次性绑定所有配置
+            cc = new ConfigCom(cbSerial, cbBaudRate, cbDataBits, cbStop, cbParity);
+
+            //常用绑定配置
+            cc = new ConfigCom(cbSerial, cbBaudRate);
+
+            //选择绑定配置
             cc = new ConfigCom(cbSerial);
             cc.BindBaudRateObj(cbBaudRate);
             cc.BindDataBitsObj(cbDataBits);
