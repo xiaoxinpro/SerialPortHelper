@@ -13,8 +13,10 @@ namespace SerialPortHelperLib
     /// </summary>
     public class DetectCom
     {
+        #region 常量
         //默认检测COM口时间间隔
         private const double DETECT_COM_INTERVAL = 300;
+        #endregion
 
         #region 字段
 
