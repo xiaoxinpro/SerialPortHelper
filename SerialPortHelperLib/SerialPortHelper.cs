@@ -131,6 +131,7 @@ namespace SerialPortHelperLib
         /// </summary>
         private void OpenThread()
         {
+            InitThread();
             threadSerialCacheReceived.Start();
             threadSerialDataReceived.Start();
             threadSerialDataWrite.Start();
