@@ -84,7 +84,7 @@ namespace SerialPortHelperLib
         public static bool IsCom(string strPotrName)
         {
             string[] arrPortNames = GetSerialProtNames;
-            if (Array.IndexOf(arrPortNames, strPotrName) > 0)
+            if (Array.IndexOf(arrPortNames, strPotrName) >= 0)
             {
                 return true;
             }
