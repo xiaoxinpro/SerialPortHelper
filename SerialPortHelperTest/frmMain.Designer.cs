@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbConfigCom = new System.Windows.Forms.GroupBox();
+            this.btnSetConfigComData = new System.Windows.Forms.Button();
             this.btnGetConfigComData = new System.Windows.Forms.Button();
             this.cbParity = new System.Windows.Forms.ComboBox();
             this.cbStop = new System.Windows.Forms.ComboBox();
@@ -44,9 +45,11 @@
             this.chkAutoReflash = new System.Windows.Forms.CheckBox();
             this.btnReflashList = new System.Windows.Forms.Button();
             this.listSerialPort = new System.Windows.Forms.ListBox();
-            this.btnSetConfigComData = new System.Windows.Forms.Button();
+            this.gbSerialPortSwitch = new System.Windows.Forms.GroupBox();
+            this.btnSerialPortSwitch = new System.Windows.Forms.Button();
             this.gbConfigCom.SuspendLayout();
             this.gbDetectCom.SuspendLayout();
+            this.gbSerialPortSwitch.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbConfigCom
@@ -65,13 +68,23 @@
             this.gbConfigCom.Controls.Add(this.label6);
             this.gbConfigCom.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.gbConfigCom.Location = new System.Drawing.Point(126, 9);
-            this.gbConfigCom.Margin = new System.Windows.Forms.Padding(2);
+            this.gbConfigCom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbConfigCom.Name = "gbConfigCom";
-            this.gbConfigCom.Padding = new System.Windows.Forms.Padding(2);
-            this.gbConfigCom.Size = new System.Drawing.Size(148, 429);
+            this.gbConfigCom.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbConfigCom.Size = new System.Drawing.Size(148, 320);
             this.gbConfigCom.TabIndex = 4;
             this.gbConfigCom.TabStop = false;
             this.gbConfigCom.Text = "串口配置";
+            // 
+            // btnSetConfigComData
+            // 
+            this.btnSetConfigComData.Location = new System.Drawing.Point(8, 272);
+            this.btnSetConfigComData.Name = "btnSetConfigComData";
+            this.btnSetConfigComData.Size = new System.Drawing.Size(131, 38);
+            this.btnSetConfigComData.TabIndex = 11;
+            this.btnSetConfigComData.Text = "设置串口配置";
+            this.btnSetConfigComData.UseVisualStyleBackColor = true;
+            this.btnSetConfigComData.Click += new System.EventHandler(this.btnSetConfigComData_Click);
             // 
             // btnGetConfigComData
             // 
@@ -93,7 +106,7 @@
             "奇校验",
             "偶校验"});
             this.cbParity.Location = new System.Drawing.Point(77, 174);
-            this.cbParity.Margin = new System.Windows.Forms.Padding(2);
+            this.cbParity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbParity.Name = "cbParity";
             this.cbParity.Size = new System.Drawing.Size(62, 25);
             this.cbParity.TabIndex = 9;
@@ -108,7 +121,7 @@
             "1.5",
             "2"});
             this.cbStop.Location = new System.Drawing.Point(77, 138);
-            this.cbStop.Margin = new System.Windows.Forms.Padding(2);
+            this.cbStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbStop.Name = "cbStop";
             this.cbStop.Size = new System.Drawing.Size(62, 25);
             this.cbStop.TabIndex = 8;
@@ -130,7 +143,7 @@
             "115200",
             "128000"});
             this.cbBaudRate.Location = new System.Drawing.Point(77, 66);
-            this.cbBaudRate.Margin = new System.Windows.Forms.Padding(2);
+            this.cbBaudRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(62, 25);
             this.cbBaudRate.TabIndex = 7;
@@ -146,7 +159,7 @@
             "7",
             "8"});
             this.cbDataBits.Location = new System.Drawing.Point(77, 102);
-            this.cbDataBits.Margin = new System.Windows.Forms.Padding(2);
+            this.cbDataBits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbDataBits.Name = "cbDataBits";
             this.cbDataBits.Size = new System.Drawing.Size(62, 25);
             this.cbDataBits.TabIndex = 6;
@@ -157,7 +170,7 @@
             this.cbSerial.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbSerial.FormattingEnabled = true;
             this.cbSerial.Location = new System.Drawing.Point(77, 30);
-            this.cbSerial.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSerial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSerial.Name = "cbSerial";
             this.cbSerial.Size = new System.Drawing.Size(62, 25);
             this.cbSerial.TabIndex = 5;
@@ -255,21 +268,33 @@
             this.listSerialPort.Size = new System.Drawing.Size(97, 324);
             this.listSerialPort.TabIndex = 4;
             // 
-            // btnSetConfigComData
+            // gbSerialPortSwitch
             // 
-            this.btnSetConfigComData.Location = new System.Drawing.Point(8, 272);
-            this.btnSetConfigComData.Name = "btnSetConfigComData";
-            this.btnSetConfigComData.Size = new System.Drawing.Size(131, 38);
-            this.btnSetConfigComData.TabIndex = 11;
-            this.btnSetConfigComData.Text = "设置串口配置";
-            this.btnSetConfigComData.UseVisualStyleBackColor = true;
-            this.btnSetConfigComData.Click += new System.EventHandler(this.btnSetConfigComData_Click);
+            this.gbSerialPortSwitch.Controls.Add(this.btnSerialPortSwitch);
+            this.gbSerialPortSwitch.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.gbSerialPortSwitch.Location = new System.Drawing.Point(128, 335);
+            this.gbSerialPortSwitch.Name = "gbSerialPortSwitch";
+            this.gbSerialPortSwitch.Size = new System.Drawing.Size(146, 103);
+            this.gbSerialPortSwitch.TabIndex = 6;
+            this.gbSerialPortSwitch.TabStop = false;
+            this.gbSerialPortSwitch.Text = "串口控制";
+            // 
+            // btnSerialPortSwitch
+            // 
+            this.btnSerialPortSwitch.Location = new System.Drawing.Point(7, 41);
+            this.btnSerialPortSwitch.Name = "btnSerialPortSwitch";
+            this.btnSerialPortSwitch.Size = new System.Drawing.Size(130, 39);
+            this.btnSerialPortSwitch.TabIndex = 0;
+            this.btnSerialPortSwitch.Text = "打开串口";
+            this.btnSerialPortSwitch.UseVisualStyleBackColor = true;
+            this.btnSerialPortSwitch.Click += new System.EventHandler(this.btnSerialPortSwitch_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 450);
+            this.Controls.Add(this.gbSerialPortSwitch);
             this.Controls.Add(this.gbDetectCom);
             this.Controls.Add(this.gbConfigCom);
             this.Name = "frmMain";
@@ -279,6 +304,7 @@
             this.gbConfigCom.PerformLayout();
             this.gbDetectCom.ResumeLayout(false);
             this.gbDetectCom.PerformLayout();
+            this.gbSerialPortSwitch.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -302,6 +328,8 @@
         private System.Windows.Forms.ListBox listSerialPort;
         private System.Windows.Forms.Button btnGetConfigComData;
         private System.Windows.Forms.Button btnSetConfigComData;
+        private System.Windows.Forms.GroupBox gbSerialPortSwitch;
+        private System.Windows.Forms.Button btnSerialPortSwitch;
     }
 }
 

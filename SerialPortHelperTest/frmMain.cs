@@ -18,6 +18,9 @@ namespace SerialPortHelperTest
         //定义ConfigCom类
         private ConfigCom cc;
 
+        //定义SerialPortHelper类
+        private SerialPortHelper spb;
+
         public frmMain()
         {
             InitializeComponent();
@@ -35,6 +38,9 @@ namespace SerialPortHelperTest
 
             //串口配置控件绑定
             ConfigComTest();
+
+            //初始化串口类
+            InitSerialPortHelper();
         }
 
         #region DetectCom函数
@@ -124,10 +130,10 @@ namespace SerialPortHelperTest
         private void ConfigComTest()
         {
             //一次性绑定所有配置
-            cc = new ConfigCom(cbSerial, cbBaudRate, cbDataBits, cbStop, cbParity);
+            //cc = new ConfigCom(cbSerial, cbBaudRate, cbDataBits, cbStop, cbParity);
 
             //常用绑定配置
-            cc = new ConfigCom(cbSerial, cbBaudRate);
+            //cc = new ConfigCom(cbSerial, cbBaudRate);
 
             //选择绑定配置
             cc = new ConfigCom(cbSerial);
@@ -165,8 +171,63 @@ namespace SerialPortHelperTest
             cc.StopBits = StopBits.OnePointFive;
             cc.Parity = Parity.Even;
         }
+
         #endregion
 
+        #region SerialPortHelper函数
+        /// <summary>
+        /// SerialPortHelper初始化
+        /// </summary>
+        private void InitSerialPortHelper()
+        {
+            spb = new SerialPortHelper();
+            spb.ConfigSerialPort = cc.GetConfigComData();
+            spb.BindSerialPortDataReceivedProcessEvent(new SerialPortHelper.DelegateSerialPortDataReceivedProcessEvent(SerialPortDataReceivedProcess));
+        }
 
+        /// <summary>
+        /// 串口接收数据处理
+        /// </summary>
+        /// <param name="arrData">接收数据数组</param>
+        private void SerialPortDataReceivedProcess(byte[] arrData)
+        {
+            Console.WriteLine(arrData);
+        }
+
+        /// <summary>
+        /// 串口开关控制
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSerialPortSwitch_Click(object sender, EventArgs e)
+        {
+            if (btnSerialPortSwitch.Text == "打开串口")
+            {
+                spb.OpenCom(cc.GetConfigComData(), out string strError);
+                if(strError != "null")
+                {
+                    MessageBox.Show(strError);
+                }
+                else
+                {
+                    Console.WriteLine("开启{0}端口成功。", cc.PortName);
+                    btnSerialPortSwitch.Text = "关闭串口";
+                }
+            }
+            else
+            {
+                spb.CloseCom(out string strError);
+                if (strError != "null")
+                {
+                    MessageBox.Show(strError);
+                }
+                else
+                {
+                    Console.WriteLine("关闭端口成功。");
+                    btnSerialPortSwitch.Text = "打开串口";
+                }
+            }
+        }
+        #endregion
     }
 }
