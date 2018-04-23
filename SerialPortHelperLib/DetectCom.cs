@@ -65,11 +65,32 @@ namespace SerialPortHelperLib
         #endregion
 
         #region 静态方法
+        /// <summary>
+        /// 获取串口列表
+        /// </summary>
         public static string[] GetSerialProtNames
         {
             get
             {
                 return SerialPort.GetPortNames();
+            }
+        }
+
+        /// <summary>
+        /// 判断端口号是否存在
+        /// </summary>
+        /// <param name="strPotrName">待检测的端口号</param>
+        /// <returns></returns>
+        public static bool IsCom(string strPotrName)
+        {
+            string[] arrPortNames = GetSerialProtNames;
+            if (Array.IndexOf(arrPortNames, strPotrName) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion
