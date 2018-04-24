@@ -42,6 +42,7 @@
     <Compile Include="ConfigCom.cs" />
     <Compile Include="DetectCom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialData.cs" />
     <Compile Include="SerialPortHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
