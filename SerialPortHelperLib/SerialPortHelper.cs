@@ -40,6 +40,7 @@ namespace SerialPortHelperLib
         public int SerialReceviedTimeInterval { get => _serialReceviedTimeInterval; set => _serialReceviedTimeInterval = value; }
         public int SerialReceviedLengthMax { get => _serialReceviedLengthMax; set => _serialReceviedLengthMax = value; }
         public int SerialWriteTimeInterval { get => _serialWriteTimeInterval; set => _serialWriteTimeInterval = value; }
+        public bool IsOpen { get => serialPort.IsOpen; }
         #endregion
 
         #region 构造函数
@@ -153,14 +154,14 @@ namespace SerialPortHelperLib
                         listData.Add((byte)queueSerialCacheReceived.Dequeue());
                         if (listData.Count >= SerialReceviedLengthMax)
                         {
-                            queueSerialDataReceived.Enqueue(listData); //转为帧队列
+                            queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
                             listData.Clear();
                         }
                     }
                 }
                 else if (listData.Count > 0)
                 {
-                    queueSerialDataReceived.Enqueue(listData); //转为帧队列
+                    queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
                     listData.Clear();
                 }
                 Thread.Sleep(SerialReceviedTimeInterval);
@@ -177,7 +178,7 @@ namespace SerialPortHelperLib
             {
                 if (queueSerialDataReceived.Count > 0)
                 {
-                    byte[] byteData = ((List<byte>)queueSerialDataReceived.Dequeue()).ToArray();
+                    byte[] byteData = (byte[])queueSerialDataReceived.Dequeue();
                     EventSerialPortDataReceivedProcess(byteData); //触发事件
                     //Thread.Sleep(1);
                 }
@@ -198,8 +199,16 @@ namespace SerialPortHelperLib
             {
                 if (queueSerialDataWrite.Count > 0)
                 {
-                    byte[] byteData = ((List<byte>)queueSerialDataWrite.Dequeue()).ToArray();
-                    serialPort.Write(byteData, 0, byteData.Length);
+                    byte[] byteData = (byte[])queueSerialDataWrite.Dequeue();
+                    try
+                    {
+                        serialPort.Write(byteData, 0, byteData.Length);
+                    }
+                    catch (Exception e)
+                    {
+                        return;
+                        throw;
+                    }
                 }
                 Thread.Sleep(SERIAL_WRITE_TIME_INTERVAL);
             }
@@ -225,9 +234,42 @@ namespace SerialPortHelperLib
         /// <param name="e">接收处理函数</param>
         public void BindSerialPortDataReceivedProcessEvent(DelegateSerialPortDataReceivedProcessEvent e)
         {
-            EventSerialPortDataReceivedProcess += e;
+            EventSerialPortDataReceivedProcess = e;
         }
 
+        #endregion
+
+        #region 串口异常事件
+        /// <summary>
+        /// 定义委托
+        /// </summary>
+        /// <param name="numError">错误代号</param>
+        /// <param name="strError">错误信息</param>
+        public delegate void DelegateSerialPortErrorEvent(int numError, string strError);
+
+        /// <summary>
+        /// 定义事件
+        /// </summary>
+        public DelegateSerialPortErrorEvent EventSerialPortError;
+
+        /// <summary>
+        /// 绑定串口错误事件
+        /// </summary>
+        /// <param name="e">事件处理函数</param>
+        public void BindSerialPortErrorEvent(DelegateSerialPortErrorEvent e)
+        {
+            EventSerialPortError = e;
+        }
+        #endregion
+
+        #region 数据发送处理
+        public void Write(byte[] arrData)
+        {
+            if (serialPort.IsOpen)
+            {
+                queueSerialDataWrite.Enqueue(arrData);
+            }
+        }
         #endregion
 
         #region 公共函数
