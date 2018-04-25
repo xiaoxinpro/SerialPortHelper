@@ -166,6 +166,7 @@ namespace SerialPortHelperLib
                 }
                 Thread.Sleep(SerialReceviedTimeInterval);
             }
+            EventSerialPortError(enumSerialError.LinkError, "端口连接断开或未开启端口！");
             queueSerialCacheReceived.Clear();
         }
 
@@ -210,7 +211,7 @@ namespace SerialPortHelperLib
                         throw;
                     }
                 }
-                Thread.Sleep(SERIAL_WRITE_TIME_INTERVAL);
+                Thread.Sleep(SerialWriteTimeInterval);
             }
             queueSerialDataWrite.Clear();
         }
@@ -226,7 +227,7 @@ namespace SerialPortHelperLib
         /// <summary>
         /// 定义事件
         /// </summary>
-        public DelegateSerialPortDataReceivedProcessEvent EventSerialPortDataReceivedProcess;
+        public event DelegateSerialPortDataReceivedProcessEvent EventSerialPortDataReceivedProcess;
 
         /// <summary>
         /// 绑定接收事件
@@ -245,12 +246,12 @@ namespace SerialPortHelperLib
         /// </summary>
         /// <param name="numError">错误代号</param>
         /// <param name="strError">错误信息</param>
-        public delegate void DelegateSerialPortErrorEvent(int numError, string strError);
+        public delegate void DelegateSerialPortErrorEvent(enumSerialError enumError, string strError);
 
         /// <summary>
         /// 定义事件
         /// </summary>
-        public DelegateSerialPortErrorEvent EventSerialPortError;
+        public event DelegateSerialPortErrorEvent EventSerialPortError;
 
         /// <summary>
         /// 绑定串口错误事件
@@ -263,12 +264,29 @@ namespace SerialPortHelperLib
         #endregion
 
         #region 数据发送处理
+        /// <summary>
+        /// 串口发送数据
+        /// </summary>
+        /// <param name="arrData">数据内容</param>
         public void Write(byte[] arrData)
         {
             if (serialPort.IsOpen)
             {
                 queueSerialDataWrite.Enqueue(arrData);
             }
+            else
+            {
+                EventSerialPortError(enumSerialError.LinkError, "端口未开启！");
+            }
+        }
+
+        /// <summary>
+        /// 串口发送数据
+        /// </summary>
+        /// <param name="strData">数据内容</param>
+        public void Write(string strData)
+        {
+            Write(SerialData.ToByteArray(strData));
         }
         #endregion
 
@@ -354,4 +372,16 @@ namespace SerialPortHelperLib
         #endregion
 
     }
+
+    #region 枚举
+    /// <summary>
+    /// 串口错误枚举
+    /// </summary>
+    public enum enumSerialError
+    {
+        LinkError,
+        WriteError,
+        ReceivedErrir
+    }
+    #endregion
 }
