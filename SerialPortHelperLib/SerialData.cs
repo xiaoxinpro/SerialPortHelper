@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SerialPortHelperLib
 {
@@ -76,13 +77,37 @@ namespace SerialPortHelperLib
         /// <returns></returns>
         public static byte[] ToHexByteArray(string hexString)
         {
+            hexString = CheakHexString(hexString);
             hexString = hexString.Replace(" ", "");
             if ((hexString.Length % 2) != 0)
-                hexString += " ";
+                hexString = "0" + hexString;
             byte[] returnBytes = new byte[hexString.Length / 2];
             for (int i = 0; i < returnBytes.Length; i++)
                 returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
             return returnBytes;
         }
+
+        /// <summary>
+        /// 校验16进制字符串
+        /// </summary>
+        /// <param name="strBuffHex"></param>
+        /// <returns></returns>
+        private static string CheakHexString(string strBuffHex)
+        {
+            strBuffHex = strBuffHex.Trim();     //去除前后空字符
+            strBuffHex = strBuffHex.Replace(',', ' ');  //去掉英文逗号
+            strBuffHex = strBuffHex.Replace('，', ' '); //去掉中文逗号
+            strBuffHex = strBuffHex.Replace("0x", "");  //去掉0x
+            strBuffHex = strBuffHex.Replace("0X", "");  //去掉0X
+            strBuffHex = Regex.Replace(Regex.Replace(strBuffHex, @"(?i)[^a-f\d\s]+", ""), "\\w{3,}", m => string.Join(" ", Regex.Split(m.Value, @"(?<=\G\w{2})(?!$)").Select(x => x.PadLeft(2, '0')).ToArray())).ToUpper();
+            return strBuffHex;
+        }
+    }
+
+    public enum SerialFormat
+    {
+        None,
+        Hex,
+        String
     }
 }
