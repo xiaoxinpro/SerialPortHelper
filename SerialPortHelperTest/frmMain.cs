@@ -183,6 +183,10 @@ namespace SerialPortHelperTest
             spb = new SerialPortHelper();
             spb.ConfigSerialPort = cc.GetConfigComData();
             spb.BindSerialPortDataReceivedProcessEvent(new SerialPortHelper.DelegateSerialPortDataReceivedProcessEvent(SerialPortDataReceivedProcess));
+            spb.BindSerialPortErrorEvent(new SerialPortHelper.DelegateSerialPortErrorEvent(SerialPortErrorProcess));
+            spb.SerialReceviedTimeInterval = 1;
+            spb.SerialWriteTimeInterval = 1;
+            spb.SerialReceviedLengthMax = 1024;
         }
 
         /// <summary>
@@ -191,7 +195,43 @@ namespace SerialPortHelperTest
         /// <param name="arrData">接收数据数组</param>
         private void SerialPortDataReceivedProcess(byte[] arrData)
         {
-            Console.WriteLine(arrData);
+            switch (GetWriteFormat())
+            {
+                case SerialFormat.Hex:
+                    Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\n");
+                    break;
+                case SerialFormat.String:
+                    Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
+                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\n");
+                    break;
+                case SerialFormat.None:
+                default:
+                    return;
+            }
+
+        }
+
+        /// <summary>
+        /// 串口错误事件
+        /// </summary>
+        /// <param name="enumError">错误枚举</param>
+        /// <param name="strError">错误内容</param>
+        private void SerialPortErrorProcess(enumSerialError enumError, string strError)
+        {
+            switch (enumError)
+            {
+                case enumSerialError.LinkError:
+                    spb.CloseCom(out string str);
+                    MessageBox.Show(strError, "串口错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case enumSerialError.WriteError:
+                    break;
+                case enumSerialError.ReceivedErrir:
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -229,5 +269,117 @@ namespace SerialPortHelperTest
             }
         }
         #endregion
+
+        #region 发送数据处理
+        /// <summary>
+        /// 添加发送数据
+        /// </summary>
+        private void AddSerialWrite()
+        {
+            if (txtSerialWrite.Text == "" || !spb.IsOpen)
+            {
+                return;
+            }
+            byte[] arrData;
+            switch (GetWriteFormat())
+            {
+                case SerialFormat.Hex:
+                    arrData = SerialData.ToHexByteArray(txtSerialWrite.Text);
+                    Console.WriteLine("发送数据：" + SerialData.ToHexString(arrData));
+                    break;
+                case SerialFormat.String:
+                    arrData = SerialData.ToByteArray(txtSerialWrite.Text);
+                    Console.WriteLine("发送数据：" + txtSerialWrite.Text);
+                    break;
+                case SerialFormat.None:
+                default:
+                    return;
+            }
+            spb.Write(arrData);
+        }
+
+        /// <summary>
+        /// 发送按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSerialWrite_Click(object sender, EventArgs e)
+        {
+            if (!spb.IsOpen)
+            {
+                MessageBox.Show("端口未开启。", "发送失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                AddSerialWrite();
+            }
+        }
+
+        /// <summary>
+        /// 发送定时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timSerialWrite_Tick(object sender, EventArgs e)
+        {
+            if (spb.IsOpen)
+            {
+                AddSerialWrite();
+            }
+        }
+
+        /// <summary>
+        /// 定时发送串口开关
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkSerialWriteLoop_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox that = (CheckBox)sender;
+            if (txtSerialWriteInterval.Text.Length <= 0)
+            {
+                txtSerialWriteInterval.Text = "100";
+            }
+            timSerialWrite.Interval = Convert.ToInt32(txtSerialWriteInterval.Text);
+            timSerialWrite.Enabled = that.Checked;
+            txtSerialWriteInterval.Enabled = !that.Checked;
+        }
+
+        /// <summary>
+        /// 定时输入框限制
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSerialWriteInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// 获取发送数据格式
+        /// </summary>
+        /// <returns></returns>
+        private SerialFormat GetWriteFormat()
+        {
+            if (rioHex.Checked)
+            {
+                return SerialFormat.Hex;
+            }
+            else if (rioString.Checked)
+            {
+                return SerialFormat.String;
+            }
+            else
+            {
+                return SerialFormat.None;
+            }
+        }
+        #endregion
+
     }
 }
