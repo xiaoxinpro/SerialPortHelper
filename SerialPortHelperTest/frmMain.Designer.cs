@@ -241,6 +241,8 @@
             // 
             // gbDetectCom
             // 
+            this.gbDetectCom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gbDetectCom.Controls.Add(this.chkAutoReflash);
             this.gbDetectCom.Controls.Add(this.btnReflashList);
             this.gbDetectCom.Controls.Add(this.listSerialPort);
@@ -266,6 +268,7 @@
             // 
             // btnReflashList
             // 
+            this.btnReflashList.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnReflashList.Location = new System.Drawing.Point(6, 386);
             this.btnReflashList.Name = "btnReflashList";
             this.btnReflashList.Size = new System.Drawing.Size(97, 35);
@@ -275,6 +278,7 @@
             // 
             // listSerialPort
             // 
+            this.listSerialPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.listSerialPort.FormattingEnabled = true;
             this.listSerialPort.ItemHeight = 20;
             this.listSerialPort.Location = new System.Drawing.Point(6, 56);
@@ -284,6 +288,8 @@
             // 
             // gbSerialPortSwitch
             // 
+            this.gbSerialPortSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gbSerialPortSwitch.Controls.Add(this.btnSerialPortSwitch);
             this.gbSerialPortSwitch.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.gbSerialPortSwitch.Location = new System.Drawing.Point(128, 335);
@@ -305,6 +311,9 @@
             // 
             // gbSerialReceived
             // 
+            this.gbSerialReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSerialReceived.Controls.Add(this.txtDataReceived);
             this.gbSerialReceived.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.gbSerialReceived.Location = new System.Drawing.Point(280, 9);
@@ -316,6 +325,9 @@
             // 
             // txtDataReceived
             // 
+            this.txtDataReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataReceived.Location = new System.Drawing.Point(7, 26);
             this.txtDataReceived.Multiline = true;
             this.txtDataReceived.Name = "txtDataReceived";
@@ -325,6 +337,8 @@
             // 
             // gbSerialWrite
             // 
+            this.gbSerialWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSerialWrite.Controls.Add(this.rioString);
             this.gbSerialWrite.Controls.Add(this.rioHex);
             this.gbSerialWrite.Controls.Add(this.chkSerialWriteLoop);
@@ -342,6 +356,7 @@
             // 
             // btnSerialWrite
             // 
+            this.btnSerialWrite.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSerialWrite.Location = new System.Drawing.Point(394, 27);
             this.btnSerialWrite.Name = "btnSerialWrite";
             this.btnSerialWrite.Size = new System.Drawing.Size(64, 27);
@@ -352,6 +367,7 @@
             // 
             // txtSerialWrite
             // 
+            this.txtSerialWrite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSerialWrite.Location = new System.Drawing.Point(7, 27);
             this.txtSerialWrite.Name = "txtSerialWrite";
             this.txtSerialWrite.Size = new System.Drawing.Size(381, 27);
@@ -387,6 +403,7 @@
             // 
             // rioHex
             // 
+            this.rioHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rioHex.AutoSize = true;
             this.rioHex.Checked = true;
             this.rioHex.Location = new System.Drawing.Point(293, 66);
@@ -399,6 +416,7 @@
             // 
             // rioString
             // 
+            this.rioString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rioString.AutoSize = true;
             this.rioString.Location = new System.Drawing.Point(386, 66);
             this.rioString.Name = "rioString";
@@ -421,6 +439,7 @@
             this.Controls.Add(this.gbSerialPortSwitch);
             this.Controls.Add(this.gbDetectCom);
             this.Controls.Add(this.gbConfigCom);
+            this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "frmMain";
             this.Text = "串口助手类库";
             this.Load += new System.EventHandler(this.frmMain_Load);
