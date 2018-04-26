@@ -199,11 +199,11 @@ namespace SerialPortHelperTest
             {
                 case SerialFormat.Hex:
                     Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\n");
+                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
                     break;
                 case SerialFormat.String:
                     Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\n");
+                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
                     break;
                 case SerialFormat.None:
                 default:
