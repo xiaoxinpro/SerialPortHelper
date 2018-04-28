@@ -270,14 +270,18 @@ namespace SerialPortHelperLib
         /// <param name="arrData">数据内容</param>
         public void Write(byte[] arrData)
         {
-            if (serialPort.IsOpen)
+            if (arrData.Length > 0)
             {
-                queueSerialDataWrite.Enqueue(arrData);
+                if (serialPort.IsOpen)
+                {
+                    queueSerialDataWrite.Enqueue(arrData);
+                }
+                else
+                {
+                    EventSerialPortError(enumSerialError.LinkError, "端口未开启！");
+                }
             }
-            else
-            {
-                EventSerialPortError(enumSerialError.LinkError, "端口未开启！");
-            }
+
         }
 
         /// <summary>
@@ -286,7 +290,10 @@ namespace SerialPortHelperLib
         /// <param name="strData">数据内容</param>
         public void Write(string strData)
         {
-            Write(SerialData.ToByteArray(strData));
+            if (strData.Length > 0)
+            {
+                Write(SerialData.ToByteArray(strData));
+            }
         }
         #endregion
 
