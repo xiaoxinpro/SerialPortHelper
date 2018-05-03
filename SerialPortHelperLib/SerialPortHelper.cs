@@ -116,13 +116,21 @@ namespace SerialPortHelperLib
         #region 串口接收事件函数
         private void SerialDataReceivedEventFunction(object sender, SerialDataReceivedEventArgs e)
         {
-            byte[] readBuffer = new byte[serialPort.BytesToRead];
-            int count = serialPort.Read(readBuffer, 0, readBuffer.Length);
-
-            for (int i = 0; i < count; i++)
+            try
             {
-                queueSerialCacheReceived.Enqueue(readBuffer[i]);
+                byte[] readBuffer = new byte[serialPort.BytesToRead];
+                int count = serialPort.Read(readBuffer, 0, readBuffer.Length);
+
+                for (int i = 0; i < count; i++)
+                {
+                    queueSerialCacheReceived.Enqueue(readBuffer[i]);
+                }
             }
+            catch (Exception error)
+            {
+                EventSerialPortError(enumSerialError.ReceivedError, error.Message);
+            }
+
         }
         #endregion
 
@@ -207,8 +215,8 @@ namespace SerialPortHelperLib
                     }
                     catch (Exception e)
                     {
+                        EventSerialPortError(enumSerialError.WriteError, e.Message);
                         return;
-                        throw;
                     }
                 }
                 Thread.Sleep(SerialWriteTimeInterval);
@@ -388,7 +396,7 @@ namespace SerialPortHelperLib
     {
         LinkError,
         WriteError,
-        ReceivedErrir
+        ReceivedError
     }
     #endregion
 }
