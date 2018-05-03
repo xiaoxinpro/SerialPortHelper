@@ -223,11 +223,14 @@ namespace SerialPortHelperTest
             {
                 case enumSerialError.LinkError:
                     spb.CloseCom(out string str);
-                    MessageBox.Show(strError, "串口错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("串口错误：" + strError);
+                    //MessageBox.Show(strError, "串口错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case enumSerialError.WriteError:
+                    Console.WriteLine("发送错误：" + strError);
                     break;
-                case enumSerialError.ReceivedErrir:
+                case enumSerialError.ReceivedError:
+                    Console.WriteLine("接收错误：" + strError);
                     break;
                 default:
                     break;
