@@ -303,6 +303,45 @@ namespace SerialPortHelperLib
                 Write(SerialData.ToByteArray(strData));
             }
         }
+
+        /// <summary>
+        /// 串口发送Byte数据
+        /// </summary>
+        /// <param name="arrData">Byte数组数据</param>
+        public void WriteByte(byte[] arrData)
+        {
+            Write(arrData);
+        }
+
+        /// <summary>
+        /// 串口发送Char数据
+        /// </summary>
+        /// <param name="arrData">字符数组数据</param>
+        public void WriteChar(char[] arrData)
+        {
+            Write(Encoding.Default.GetBytes(arrData));
+        }
+
+        /// <summary>
+        /// 串口发送字符串数据
+        /// </summary>
+        /// <param name="strData">字符串数据</param>
+        public void WriteString(string strData)
+        {
+            Write(strData);
+        }
+
+        /// <summary>
+        /// 串口发送16进制字符串数据
+        /// </summary>
+        /// <param name="hexData">16进制字符串数据</param>
+        public void WriteHexString(string hexData)
+        {
+            if (hexData.Length > 0)
+            {
+                Write(SerialData.ToHexByteArray(hexData));
+            }
+        }
         #endregion
 
         #region 公共函数
