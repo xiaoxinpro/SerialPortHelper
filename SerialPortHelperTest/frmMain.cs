@@ -184,7 +184,7 @@ namespace SerialPortHelperTest
             spb.ConfigSerialPort = cc.GetConfigComData();
             spb.BindSerialPortDataReceivedProcessEvent(new SerialPortHelper.DelegateSerialPortDataReceivedProcessEvent(SerialPortDataReceivedProcess));
             spb.BindSerialPortErrorEvent(new SerialPortHelper.DelegateSerialPortErrorEvent(SerialPortErrorProcess));
-            spb.SerialReceviedTimeInterval = 1;
+            spb.SerialReceviedTimeInterval = 40;
             spb.SerialWriteTimeInterval = 1;
             spb.SerialReceviedLengthMax = 1024;
         }
@@ -195,19 +195,30 @@ namespace SerialPortHelperTest
         /// <param name="arrData">接收数据数组</param>
         private void SerialPortDataReceivedProcess(byte[] arrData)
         {
-            switch (GetWriteFormat())
+            //switch (GetWriteFormat())
+            //{
+            //    case SerialFormat.Hex:
+            //        Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+            //        txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
+            //        break;
+            //    case SerialFormat.String:
+            //        Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
+            //        txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
+            //        break;
+            //    case SerialFormat.None:
+            //    default:
+            //        return;
+            //}
+            if (SerialData.IsBytesToString(arrData))
             {
-                case SerialFormat.Hex:
-                    Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
-                    break;
-                case SerialFormat.String:
-                    Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
-                    break;
-                case SerialFormat.None:
-                default:
-                    return;
+                Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+                Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
+                txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
+            }
+            else
+            {
+                Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+                txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
             }
 
         }
