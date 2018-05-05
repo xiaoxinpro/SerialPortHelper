@@ -100,6 +100,45 @@ namespace SerialPortHelperLib
             strBuffHex = Regex.Replace(Regex.Replace(strBuffHex, @"(?i)[^a-f\d\s]+", ""), "\\w{3,}", m => string.Join(" ", Regex.Split(m.Value, @"(?<=\G\w{2})(?!$)").Select(x => x.PadLeft(2, '0')).ToArray())).ToUpper();
             return strBuffHex;
         }
+
+        /// <summary>
+        /// 判断Byte数组是否可以转换成字符串
+        /// </summary>
+        /// <param name="bytes">Byte数组</param>
+        /// <returns>是否可以转为字符串</returns>
+        public static bool IsBytesToString(byte[] bytes)
+        {
+            bool isDoubleByte = false; //是否为多字符
+            byte bakByte = 0x00;
+            Int32 numByte = 0; 
+            foreach (byte item in bytes)
+            {
+                //判断是否为多字符
+                if (isDoubleByte)
+                {
+                    isDoubleByte = false;
+                    numByte = (bakByte << 8) | item;
+                    if (numByte < 0xA1A0 || numByte > 0xECF1)
+                    {
+                        return false;
+                    }
+                    continue;
+                }
+                //初步检测是否为高阶字符
+                else if (item > 0x7F)
+                {
+                    isDoubleByte = true;
+                    bakByte = item;
+                    continue;
+                }
+                //判断非打印ASDCII，除回车、换行、空格、制表符外。
+                else if ((item <= 0x1F) && (item != 0x09) && (item != 0x0A) && (item != 0x0D) || (item == 0x7F))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     public enum SerialFormat
