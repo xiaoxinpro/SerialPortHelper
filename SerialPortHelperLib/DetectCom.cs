@@ -227,7 +227,7 @@ namespace SerialPortHelperLib
         /// <summary>
         /// 定义委托
         /// </summary>
-        public delegate void DelegateSerialPortListEvent(List<string> list);
+        public delegate void DelegateSerialPortListEvent(string[] list);
 
         /// <summary>
         /// 定义事件
@@ -379,7 +379,7 @@ namespace SerialPortHelperLib
                 }
 
                 //触发事件
-                EventSerialPortList(bakSerialPortList);
+                EventSerialPortList(bakSerialPortList.ToArray());
             }
         }
 

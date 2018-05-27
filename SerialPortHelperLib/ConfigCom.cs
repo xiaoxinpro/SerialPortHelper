@@ -321,11 +321,11 @@ namespace SerialPortHelperLib
         #endregion
 
         #region 刷新串口列表
-        private void ReflashSerialPortList(List<string> list)
+        private void ReflashSerialPortList(string[] list)
         {
             string bakPortName = cbPortName.Text;
             cbPortName.Items.Clear();
-            if (list.Count > 0)
+            if (list.Length > 0)
             {
                 foreach (string item in list)
                 {

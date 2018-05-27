@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ConfigCom.cs" />
     <Compile Include="DetectCom.cs" />
+    <Compile Include="InvokeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialData.cs" />
     <Compile Include="SerialPortHelper.cs" />

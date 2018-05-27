@@ -113,7 +113,7 @@ namespace SerialPortHelperTest
         /// 自动刷新串口列表处理函数，串口发生变化时触发。
         /// </summary>
         /// <param name="list">串口列表</param>
-        private void AutoReflashSericalPortList(List<string> list)
+        private void AutoReflashSericalPortList(string[] list)
         {
             listSerialPort.Items.Clear();
             foreach (string item in list)
