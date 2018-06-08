@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -129,6 +130,16 @@ namespace SerialPortHelperLib
                 _intDetectComInterval = value > 0 ? value : DETECT_COM_INTERVAL;
             }
         }
+
+        /// <summary>
+        /// 串口信息（串口名，信息内容）
+        /// </summary>
+        public Dictionary<string, string> DicSerialPortInfo { get; set; } = new Dictionary<string, string>();
+
+        /// <summary>
+        /// 默认串口信息
+        /// </summary>
+        public string StrSerialPortDefaultInfo { get; set; } = "";
 
         #endregion
 
@@ -371,16 +382,52 @@ namespace SerialPortHelperLib
             //串口列表比对
             if (CompareArray(nowSerialPortList.ToArray(), bakSerialPortList.ToArray()) == false)
             {
+                //获取串口信息
+                GetSerialPortInfo(DicSerialPortInfo);
+
                 //更新备份列表
                 bakSerialPortList.Clear();
                 foreach (string item in nowSerialPortList)
                 {
-                    bakSerialPortList.Add(item);
+                    if (DicSerialPortInfo.ContainsKey(item) && DicSerialPortInfo[item] == StrSerialPortDefaultInfo)
+                    {
+                        bakSerialPortList.Insert(0, item);
+                    }
+                    else
+                    {
+                        bakSerialPortList.Add(item);
+                    }
                 }
 
                 //触发事件
                 EventSerialPortList(bakSerialPortList.ToArray());
             }
+        }
+
+        /// <summary>
+        /// 获取串口信息
+        /// </summary>
+        /// <param name="dicData">输出字典</param>
+        /// <returns>返回信息数组</returns>
+        private string[] GetSerialPortInfo(Dictionary<string,string> dicData = null)
+        {
+            string[] arrInfo = HardwareInfo.GetHardwareInfo(HardwareEnum.Win32_SerialPort, "Name");
+            if (dicData != null)
+            {
+                foreach (string item in arrInfo)
+                {
+                    MatchCollection matchCollection =  Regex.Matches(item, @"\(COM\d+\)");
+                    if (matchCollection.Count > 0)
+                    {
+                        string strSerialPortName = matchCollection[matchCollection.Count - 1].Value;
+                        string strSerialPortInfo = Regex.Replace(item, Regex.Escape(strSerialPortName) , "").Trim();
+                        strSerialPortName = Regex.Replace(strSerialPortName, @"[\(\)]", "").Trim();
+                        dicData[strSerialPortName] = strSerialPortInfo;
+                        Console.WriteLine("Name：" + strSerialPortName + "\tInfo：" + strSerialPortInfo);
+                    }
+                }
+            }
+            return arrInfo;
         }
 
         #endregion

@@ -318,6 +318,15 @@ namespace SerialPortHelperLib
             ret.Parity = (cbParity != null) ? (Parity)cbParity.SelectedIndex : this.Parity;
             return ret;
         }
+
+        /// <summary>
+        /// 设置串口默认信息
+        /// </summary>
+        /// <param name="strData">信息数据</param>
+        public void SetSerialPortDefaultInfo(string strData)
+        {
+            detectCom.StrSerialPortDefaultInfo = strData;
+        }
         #endregion
 
         #region 刷新串口列表

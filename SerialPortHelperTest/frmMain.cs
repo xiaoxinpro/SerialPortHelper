@@ -61,6 +61,9 @@ namespace SerialPortHelperTest
             dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
             dc.DetectComInterval = 100; //设置刷新间隔100ms
 
+            //设定默认串口设备名称
+            dc.StrSerialPortDefaultInfo = "TI CC2540 USB CDC Serial Port";
+
             //打开自动刷新
             dc.Open();
 
@@ -141,6 +144,9 @@ namespace SerialPortHelperTest
             cc.BindDataBitsObj(cbDataBits);
             cc.BindStopBitsObj(cbStop);
             cc.BindParityObj(cbParity);
+
+            //设置默认搜索串口信息
+            cc.SetSerialPortDefaultInfo("TI CC2540 USB CDC Serial Port");
         }
 
         /// <summary>
