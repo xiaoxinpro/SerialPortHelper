@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("SerialPortHelperTest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("串口助手测试")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Chishin")]
 [assembly: AssemblyProduct("SerialPortHelperTest")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Chishin 2018")]
+[assembly: AssemblyTrademark("SerialPortHelperTest for Chishin")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型
