@@ -320,12 +320,41 @@ namespace SerialPortHelperLib
         }
 
         /// <summary>
-        /// 设置串口默认信息
+        /// 添加串口默认信息
+        /// </summary>
+        /// <param name="strData">信息数据</param>
+        public void AddSerialPortDefaultInfo(string strData)
+        {
+            List<string> listData = detectCom.StrSerialPortDefaultInfo.ToList();
+            listData.Add(strData.Trim());
+            detectCom.StrSerialPortDefaultInfo = listData.ToArray();
+        }
+
+        /// <summary>
+        /// 设置串口默认信息(清空后添加)
         /// </summary>
         /// <param name="strData">信息数据</param>
         public void SetSerialPortDefaultInfo(string strData)
         {
-            detectCom.StrSerialPortDefaultInfo = strData;
+            ClearSerialPortDefaultInfo();
+            AddSerialPortDefaultInfo(strData);
+        }
+
+        /// <summary>
+        /// 设置串口默认信息
+        /// </summary>
+        /// <param name="arrData">信息数据数组</param>
+        public void SetSerialPortDefaultInfo(string[] arrData)
+        {
+            detectCom.StrSerialPortDefaultInfo = arrData;
+        }
+
+        /// <summary>
+        /// 清除串口默认信息
+        /// </summary>
+        public void ClearSerialPortDefaultInfo()
+        {
+            detectCom.StrSerialPortDefaultInfo = new string[] { };
         }
         #endregion
 

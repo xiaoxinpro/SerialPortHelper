@@ -139,7 +139,7 @@ namespace SerialPortHelperLib
         /// <summary>
         /// 默认串口信息
         /// </summary>
-        public string StrSerialPortDefaultInfo { get; set; } = "";
+        public string[] StrSerialPortDefaultInfo { get; set; } = new string[] { };
 
         #endregion
 
@@ -389,7 +389,8 @@ namespace SerialPortHelperLib
                 bakSerialPortList.Clear();
                 foreach (string item in nowSerialPortList)
                 {
-                    if (DicSerialPortInfo.ContainsKey(item) && DicSerialPortInfo[item] == StrSerialPortDefaultInfo)
+                    int index = StrSerialPortDefaultInfo.ToList().IndexOf(DicSerialPortInfo[item]);
+                    if (DicSerialPortInfo.ContainsKey(item) && (index >= 0))
                     {
                         bakSerialPortList.Insert(0, item);
                     }

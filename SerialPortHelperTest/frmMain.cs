@@ -53,16 +53,16 @@ namespace SerialPortHelperTest
             dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
 
             //可以强制使用线程或定时器刷新
-            dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
-            dc.DetectComMode = DetectComModeEnum.Thread;    //线程刷新
-            dc.DetectComMode = DetectComModeEnum.Timer;     //定时器刷新
+            //dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
+            //dc.DetectComMode = DetectComModeEnum.Thread;    //线程刷新
+            //dc.DetectComMode = DetectComModeEnum.Timer;     //定时器刷新
 
             //可以自定义刷新间隔事件
-            dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
+            //dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
             dc.DetectComInterval = 100; //设置刷新间隔100ms
 
             //设定默认串口设备名称
-            dc.StrSerialPortDefaultInfo = "TI CC2540 USB CDC Serial Port";
+            dc.StrSerialPortDefaultInfo = new string[] { "TI CC2540 USB CDC Serial Port" };
 
             //打开自动刷新
             dc.Open();
