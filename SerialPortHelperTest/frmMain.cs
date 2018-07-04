@@ -145,8 +145,11 @@ namespace SerialPortHelperTest
             cc.BindStopBitsObj(cbStop);
             cc.BindParityObj(cbParity);
 
-            //设置默认搜索串口信息
+            //设置默认搜索串口信息（覆盖已存在的）
             cc.SetSerialPortDefaultInfo("TI CC2540 USB CDC Serial Port");
+
+            //添加默认搜索串口信息（追加）
+            cc.AddSerialPortDefaultInfo("通用USB串口设备");
         }
 
         /// <summary>
