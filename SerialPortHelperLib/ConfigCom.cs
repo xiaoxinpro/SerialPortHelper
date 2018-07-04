@@ -361,23 +361,26 @@ namespace SerialPortHelperLib
         #region 刷新串口列表
         private void ReflashSerialPortList(string[] list)
         {
-            string bakPortName = cbPortName.Text;
-            cbPortName.Items.Clear();
-            if (list.Length > 0)
+            cbPortName.Invoke(new Action(() =>
             {
-                foreach (string item in list)
+                string bakPortName = cbPortName.Text;
+                cbPortName.Items.Clear();
+                if (list.Length > 0)
                 {
-                    cbPortName.Items.Add(item);
-                    if (item == bakPortName)
+                    foreach (string item in list)
                     {
-                        cbPortName.SelectedIndex = cbPortName.Items.Count - 1;
+                        cbPortName.Items.Add(item);
+                        if (item == bakPortName)
+                        {
+                            cbPortName.SelectedIndex = cbPortName.Items.Count - 1;
+                        }
+                    }
+                    if (cbPortName.Text == "")
+                    {
+                        cbPortName.SelectedIndex = 0;
                     }
                 }
-                if (cbPortName.Text == "")
-                {
-                    cbPortName.SelectedIndex = 0;
-                }
-            }
+            }));
         }
         #endregion
     }
