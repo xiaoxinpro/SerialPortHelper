@@ -207,32 +207,20 @@ namespace SerialPortHelperTest
         /// <param name="arrData">接收数据数组</param>
         private void SerialPortDataReceivedProcess(byte[] arrData)
         {
-            //switch (GetWriteFormat())
-            //{
-            //    case SerialFormat.Hex:
-            //        Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
-            //        txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
-            //        break;
-            //    case SerialFormat.String:
-            //        Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
-            //        txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
-            //        break;
-            //    case SerialFormat.None:
-            //    default:
-            //        return;
-            //}
-            if (SerialData.IsBytesToString(arrData))
+            this.Invoke(new Action(() =>
             {
-                Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
-                Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
-                txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
-            }
-            else
-            {
-                Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
-                txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
-            }
-
+                if (SerialData.IsBytesToString(arrData))
+                {
+                    Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+                    Console.WriteLine("接收数据：" + SerialData.ToString(arrData));
+                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
+                }
+                else
+                {
+                    Console.WriteLine("接收数据：" + SerialData.ToHexString(arrData));
+                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
+                }
+            }));
         }
 
         /// <summary>
@@ -242,22 +230,25 @@ namespace SerialPortHelperTest
         /// <param name="strError">错误内容</param>
         private void SerialPortErrorProcess(enumSerialError enumError, string strError)
         {
-            switch (enumError)
+            this.Invoke(new Action(() =>
             {
-                case enumSerialError.LinkError:
-                    spb.CloseCom(out string str);
-                    Console.WriteLine("串口错误：" + strError);
-                    //MessageBox.Show(strError, "串口错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case enumSerialError.WriteError:
-                    Console.WriteLine("发送错误：" + strError);
-                    break;
-                case enumSerialError.ReceivedError:
-                    Console.WriteLine("接收错误：" + strError);
-                    break;
-                default:
-                    break;
-            }
+                switch (enumError)
+                {
+                    case enumSerialError.LinkError:
+                        spb.CloseCom(out string str);
+                        Console.WriteLine("串口错误：" + strError);
+                        //MessageBox.Show(strError, "串口错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case enumSerialError.WriteError:
+                        Console.WriteLine("发送错误：" + strError);
+                        break;
+                    case enumSerialError.ReceivedError:
+                        Console.WriteLine("接收错误：" + strError);
+                        break;
+                    default:
+                        break;
+                }
+            }));
         }
 
         /// <summary>

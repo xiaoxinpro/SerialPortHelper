@@ -46,7 +46,7 @@ namespace SerialPortHelperLib
         #region 构造函数
         public SerialPortHelper()
         {
-            Control.CheckForIllegalCrossThreadCalls = false; //不检测跨线程访问
+            //Control.CheckForIllegalCrossThreadCalls = false; //不检测跨线程访问
             InitQueue();
             InitSerialPort();
             InitThread();
@@ -120,10 +120,12 @@ namespace SerialPortHelperLib
             {
                 byte[] readBuffer = new byte[serialPort.BytesToRead];
                 int count = serialPort.Read(readBuffer, 0, readBuffer.Length);
-
-                for (int i = 0; i < count; i++)
+                lock (queueSerialCacheReceived.SyncRoot)
                 {
-                    queueSerialCacheReceived.Enqueue(readBuffer[i]);
+                    for (int i = 0; i < count; i++)
+                    {
+                        queueSerialCacheReceived.Enqueue(readBuffer[i]);
+                    }
                 }
             }
             catch (Exception error)
@@ -151,31 +153,34 @@ namespace SerialPortHelperLib
         /// </summary>
         private void ThreadSerialCacheReceivedFunction()
         {
-            List<byte> listData = new List<byte>();
-            while (serialPort.IsOpen)
+            lock (queueSerialCacheReceived.SyncRoot)
             {
-                int cacheLength = queueSerialCacheReceived.Count;
-                if (cacheLength > 0)
+                List<byte> listData = new List<byte>();
+                while (serialPort.IsOpen)
                 {
-                    for (int i = 0; i < cacheLength; i++)
+                    int cacheLength = queueSerialCacheReceived.Count;
+                    if (cacheLength > 0)
                     {
-                        listData.Add((byte)queueSerialCacheReceived.Dequeue());
-                        if (listData.Count >= SerialReceviedLengthMax)
+                        for (int i = 0; i < cacheLength; i++)
                         {
-                            queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
-                            listData.Clear();
+                            listData.Add((byte)queueSerialCacheReceived.Dequeue());
+                            if (listData.Count >= SerialReceviedLengthMax)
+                            {
+                                queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
+                                listData.Clear();
+                            }
                         }
                     }
+                    else if (listData.Count > 0)
+                    {
+                        queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
+                        listData.Clear();
+                    }
+                    Thread.Sleep(SerialReceviedTimeInterval);
                 }
-                else if (listData.Count > 0)
-                {
-                    queueSerialDataReceived.Enqueue(listData.ToArray()); //转为帧队列
-                    listData.Clear();
-                }
-                Thread.Sleep(SerialReceviedTimeInterval);
+                EventSerialPortError(enumSerialError.LinkError, "端口连接断开或未开启端口！");
+                queueSerialCacheReceived.Clear();
             }
-            EventSerialPortError(enumSerialError.LinkError, "端口连接断开或未开启端口！");
-            queueSerialCacheReceived.Clear();
         }
 
         /// <summary>
@@ -183,20 +188,23 @@ namespace SerialPortHelperLib
         /// </summary>
         private void ThreadSerialDataReceivedFunction()
         {
-            while (serialPort.IsOpen)
+            lock (queueSerialDataReceived.SyncRoot)
             {
-                if (queueSerialDataReceived.Count > 0)
+                while (serialPort.IsOpen)
                 {
-                    byte[] byteData = (byte[])queueSerialDataReceived.Dequeue();
-                    EventSerialPortDataReceivedProcess(byteData); //触发事件
-                    //Thread.Sleep(1);
+                    if (queueSerialDataReceived.Count > 0)
+                    {
+                        byte[] byteData = (byte[])queueSerialDataReceived.Dequeue();
+                        EventSerialPortDataReceivedProcess(byteData); //触发事件
+                                                                      //Thread.Sleep(1);
+                    }
+                    else
+                    {
+                        Thread.Sleep(SerialReceviedTimeInterval);
+                    }
                 }
-                else
-                {
-                    Thread.Sleep(SerialReceviedTimeInterval);
-                }
+                queueSerialDataReceived.Clear();
             }
-            queueSerialDataReceived.Clear();
         }
 
         /// <summary>
@@ -204,24 +212,27 @@ namespace SerialPortHelperLib
         /// </summary>
         private void ThreadSerialDataWriteFunction()
         {
-            while (serialPort.IsOpen)
+            lock (queueSerialDataWrite.SyncRoot)
             {
-                if (queueSerialDataWrite.Count > 0)
+                while (serialPort.IsOpen)
                 {
-                    byte[] byteData = (byte[])queueSerialDataWrite.Dequeue();
-                    try
+                    if (queueSerialDataWrite.Count > 0)
                     {
-                        serialPort.Write(byteData, 0, byteData.Length);
+                        byte[] byteData = (byte[])queueSerialDataWrite.Dequeue();
+                        try
+                        {
+                            serialPort.Write(byteData, 0, byteData.Length);
+                        }
+                        catch (Exception e)
+                        {
+                            EventSerialPortError(enumSerialError.WriteError, e.Message);
+                            return;
+                        }
                     }
-                    catch (Exception e)
-                    {
-                        EventSerialPortError(enumSerialError.WriteError, e.Message);
-                        return;
-                    }
+                    Thread.Sleep(SerialWriteTimeInterval);
                 }
-                Thread.Sleep(SerialWriteTimeInterval);
+                queueSerialDataWrite.Clear();
             }
-            queueSerialDataWrite.Clear();
         }
         #endregion
 
