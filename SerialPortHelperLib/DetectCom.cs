@@ -16,7 +16,7 @@ namespace SerialPortHelperLib
     {
         #region 常量
         //默认检测COM口时间间隔
-        private const double DETECT_COM_INTERVAL = 300;
+        private const int DETECT_COM_INTERVAL = 300;
         #endregion
 
         #region 字段
@@ -34,7 +34,7 @@ namespace SerialPortHelperLib
         /// <summary>
         /// 检测串口列表的定时器
         /// </summary>
-        private System.Timers.Timer _timerDetectSerialPortList;
+        private System.Windows.Forms.Timer _timerDetectSerialPortList;
 
         /// <summary>
         /// 检测COM口时间间隔
@@ -51,7 +51,7 @@ namespace SerialPortHelperLib
         {
             DetectComMode = DetectComModeEnum.None;
             DetectComInterval = DETECT_COM_INTERVAL;
-            Control.CheckForIllegalCrossThreadCalls = false; //这个类中我们不检查跨线程的调用是否合法(因为.net 2.0以后加强了安全机制,，不允许在winform中直接跨线程访问控件的属性)
+            //Control.CheckForIllegalCrossThreadCalls = false; //这个类中我们不检查跨线程的调用是否合法(因为.net 2.0以后加强了安全机制,，不允许在winform中直接跨线程访问控件的属性)
         }
 
         /// <summary>
@@ -313,9 +313,9 @@ namespace SerialPortHelperLib
         private void InitDetectTimer(double interval)
         {
             this.DetectComInterval = interval;
-            _timerDetectSerialPortList = new System.Timers.Timer(this.DetectComInterval);
-            _timerDetectSerialPortList.Elapsed += new System.Timers.ElapsedEventHandler(TimerDetectSerialPortList);
-            _timerDetectSerialPortList.AutoReset = true;
+            _timerDetectSerialPortList = new System.Windows.Forms.Timer();  // new System.Timers.Timer(this.DetectComInterval);
+            _timerDetectSerialPortList.Tick += TimerDetectSerialPortList;
+            _timerDetectSerialPortList.Interval = Convert.ToInt32(interval);
             _timerDetectSerialPortList.Enabled = true;
         }
 
@@ -327,7 +327,7 @@ namespace SerialPortHelperLib
             InitDetectTimer(DETECT_COM_INTERVAL);
         }
 
-        private void SetDetectTimerInterval(double interval)
+        private void SetDetectTimerInterval(int interval)
         {
             if(_timerDetectSerialPortList != null)
             {
@@ -348,7 +348,7 @@ namespace SerialPortHelperLib
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        private void TimerDetectSerialPortList(object source, System.Timers.ElapsedEventArgs e)
+        private void TimerDetectSerialPortList(object sender, EventArgs e)
         {
             //检测串口列表并处理
             DetectSerialPortListProcess();

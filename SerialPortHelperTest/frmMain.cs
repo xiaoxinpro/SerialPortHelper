@@ -50,12 +50,12 @@ namespace SerialPortHelperTest
             ReflashSerialPortList();
 
             //实例化自动刷新（简单实例）
-            dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
+            //dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
 
             //可以强制使用线程或定时器刷新
-            //dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
-            //dc.DetectComMode = DetectComModeEnum.Thread;    //线程刷新
-            //dc.DetectComMode = DetectComModeEnum.Timer;     //定时器刷新
+            dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
+            dc.DetectComMode = DetectComModeEnum.Thread;    //线程刷新
+            dc.DetectComMode = DetectComModeEnum.Timer;     //定时器刷新
 
             //可以自定义刷新间隔事件
             //dc = new DetectCom(new DetectCom.DelegateSerialPortListEvent(AutoReflashSericalPortList));
@@ -118,11 +118,14 @@ namespace SerialPortHelperTest
         /// <param name="list">串口列表</param>
         private void AutoReflashSericalPortList(string[] list)
         {
-            listSerialPort.Items.Clear();
-            foreach (string item in list)
+            this.Invoke(new Action(() =>
             {
-                listSerialPort.Items.Add(item);
-            }
+                listSerialPort.Items.Clear();
+                foreach (string item in list)
+                {
+                    listSerialPort.Items.Add(item);
+                }
+            }));
         }
         #endregion
 
