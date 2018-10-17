@@ -412,7 +412,7 @@ namespace SerialPortHelperLib
         /// <returns>返回信息数组</returns>
         private string[] GetSerialPortInfo(Dictionary<string,string> dicData = null)
         {
-            string[] arrInfo = HardwareInfo.GetHardwareInfo(HardwareEnum.Win32_SerialPort, "Name");
+            string[] arrInfo = HardwareInfo.GetHardwareInfo(HardwareEnum.Win32_PnPEntity, "Name");
             if (dicData != null)
             {
                 foreach (string item in arrInfo)
