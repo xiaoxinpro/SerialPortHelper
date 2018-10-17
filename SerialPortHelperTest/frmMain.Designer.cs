@@ -51,13 +51,13 @@
             this.gbSerialReceived = new System.Windows.Forms.GroupBox();
             this.txtDataReceived = new System.Windows.Forms.TextBox();
             this.gbSerialWrite = new System.Windows.Forms.GroupBox();
+            this.rioString = new System.Windows.Forms.RadioButton();
+            this.rioHex = new System.Windows.Forms.RadioButton();
+            this.chkSerialWriteLoop = new System.Windows.Forms.CheckBox();
+            this.txtSerialWriteInterval = new System.Windows.Forms.TextBox();
             this.btnSerialWrite = new System.Windows.Forms.Button();
             this.txtSerialWrite = new System.Windows.Forms.TextBox();
-            this.txtSerialWriteInterval = new System.Windows.Forms.TextBox();
-            this.chkSerialWriteLoop = new System.Windows.Forms.CheckBox();
             this.labMs = new System.Windows.Forms.Label();
-            this.rioHex = new System.Windows.Forms.RadioButton();
-            this.rioString = new System.Windows.Forms.RadioButton();
             this.timSerialWrite = new System.Windows.Forms.Timer(this.components);
             this.gbConfigCom.SuspendLayout();
             this.gbDetectCom.SuspendLayout();
@@ -119,10 +119,10 @@
             "无",
             "奇校验",
             "偶校验"});
-            this.cbParity.Location = new System.Drawing.Point(77, 174);
+            this.cbParity.Location = new System.Drawing.Point(67, 174);
             this.cbParity.Margin = new System.Windows.Forms.Padding(2);
             this.cbParity.Name = "cbParity";
-            this.cbParity.Size = new System.Drawing.Size(62, 25);
+            this.cbParity.Size = new System.Drawing.Size(72, 25);
             this.cbParity.TabIndex = 9;
             // 
             // cbStop
@@ -134,10 +134,10 @@
             "1",
             "1.5",
             "2"});
-            this.cbStop.Location = new System.Drawing.Point(77, 138);
+            this.cbStop.Location = new System.Drawing.Point(67, 138);
             this.cbStop.Margin = new System.Windows.Forms.Padding(2);
             this.cbStop.Name = "cbStop";
-            this.cbStop.Size = new System.Drawing.Size(62, 25);
+            this.cbStop.Size = new System.Drawing.Size(72, 25);
             this.cbStop.TabIndex = 8;
             // 
             // cbBaudRate
@@ -156,10 +156,10 @@
             "38400",
             "115200",
             "128000"});
-            this.cbBaudRate.Location = new System.Drawing.Point(77, 66);
+            this.cbBaudRate.Location = new System.Drawing.Point(67, 66);
             this.cbBaudRate.Margin = new System.Windows.Forms.Padding(2);
             this.cbBaudRate.Name = "cbBaudRate";
-            this.cbBaudRate.Size = new System.Drawing.Size(62, 25);
+            this.cbBaudRate.Size = new System.Drawing.Size(72, 25);
             this.cbBaudRate.TabIndex = 7;
             // 
             // cbDataBits
@@ -172,10 +172,10 @@
             "6",
             "7",
             "8"});
-            this.cbDataBits.Location = new System.Drawing.Point(77, 102);
+            this.cbDataBits.Location = new System.Drawing.Point(67, 102);
             this.cbDataBits.Margin = new System.Windows.Forms.Padding(2);
             this.cbDataBits.Name = "cbDataBits";
-            this.cbDataBits.Size = new System.Drawing.Size(62, 25);
+            this.cbDataBits.Size = new System.Drawing.Size(72, 25);
             this.cbDataBits.TabIndex = 6;
             // 
             // cbSerial
@@ -183,10 +183,10 @@
             this.cbSerial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSerial.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbSerial.FormattingEnabled = true;
-            this.cbSerial.Location = new System.Drawing.Point(77, 30);
+            this.cbSerial.Location = new System.Drawing.Point(67, 30);
             this.cbSerial.Margin = new System.Windows.Forms.Padding(2);
             this.cbSerial.Name = "cbSerial";
-            this.cbSerial.Size = new System.Drawing.Size(62, 25);
+            this.cbSerial.Size = new System.Drawing.Size(72, 25);
             this.cbSerial.TabIndex = 5;
             // 
             // label5
@@ -354,6 +354,49 @@
             this.gbSerialWrite.TabStop = false;
             this.gbSerialWrite.Text = "发送数据";
             // 
+            // rioString
+            // 
+            this.rioString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rioString.AutoSize = true;
+            this.rioString.Location = new System.Drawing.Point(386, 66);
+            this.rioString.Name = "rioString";
+            this.rioString.Size = new System.Drawing.Size(72, 24);
+            this.rioString.TabIndex = 7;
+            this.rioString.Text = "字符串";
+            this.rioString.UseVisualStyleBackColor = true;
+            // 
+            // rioHex
+            // 
+            this.rioHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rioHex.AutoSize = true;
+            this.rioHex.Checked = true;
+            this.rioHex.Location = new System.Drawing.Point(293, 66);
+            this.rioHex.Name = "rioHex";
+            this.rioHex.Size = new System.Drawing.Size(87, 24);
+            this.rioHex.TabIndex = 6;
+            this.rioHex.TabStop = true;
+            this.rioHex.Text = "十六进制";
+            this.rioHex.UseVisualStyleBackColor = true;
+            // 
+            // chkSerialWriteLoop
+            // 
+            this.chkSerialWriteLoop.AutoSize = true;
+            this.chkSerialWriteLoop.Location = new System.Drawing.Point(7, 66);
+            this.chkSerialWriteLoop.Name = "chkSerialWriteLoop";
+            this.chkSerialWriteLoop.Size = new System.Drawing.Size(88, 24);
+            this.chkSerialWriteLoop.TabIndex = 4;
+            this.chkSerialWriteLoop.Text = "定时发送";
+            this.chkSerialWriteLoop.UseVisualStyleBackColor = true;
+            this.chkSerialWriteLoop.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
+            // 
+            // txtSerialWriteInterval
+            // 
+            this.txtSerialWriteInterval.Location = new System.Drawing.Point(101, 64);
+            this.txtSerialWriteInterval.Name = "txtSerialWriteInterval";
+            this.txtSerialWriteInterval.Size = new System.Drawing.Size(57, 27);
+            this.txtSerialWriteInterval.TabIndex = 3;
+            this.txtSerialWriteInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSerialWriteInterval_KeyPress);
+            // 
             // btnSerialWrite
             // 
             this.btnSerialWrite.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -373,25 +416,6 @@
             this.txtSerialWrite.Size = new System.Drawing.Size(381, 27);
             this.txtSerialWrite.TabIndex = 0;
             // 
-            // txtSerialWriteInterval
-            // 
-            this.txtSerialWriteInterval.Location = new System.Drawing.Point(101, 64);
-            this.txtSerialWriteInterval.Name = "txtSerialWriteInterval";
-            this.txtSerialWriteInterval.Size = new System.Drawing.Size(57, 27);
-            this.txtSerialWriteInterval.TabIndex = 3;
-            this.txtSerialWriteInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSerialWriteInterval_KeyPress);
-            // 
-            // chkSerialWriteLoop
-            // 
-            this.chkSerialWriteLoop.AutoSize = true;
-            this.chkSerialWriteLoop.Location = new System.Drawing.Point(7, 66);
-            this.chkSerialWriteLoop.Name = "chkSerialWriteLoop";
-            this.chkSerialWriteLoop.Size = new System.Drawing.Size(88, 24);
-            this.chkSerialWriteLoop.TabIndex = 4;
-            this.chkSerialWriteLoop.Text = "定时发送";
-            this.chkSerialWriteLoop.UseVisualStyleBackColor = true;
-            this.chkSerialWriteLoop.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
-            // 
             // labMs
             // 
             this.labMs.AutoSize = true;
@@ -400,30 +424,6 @@
             this.labMs.Size = new System.Drawing.Size(30, 20);
             this.labMs.TabIndex = 5;
             this.labMs.Text = "ms";
-            // 
-            // rioHex
-            // 
-            this.rioHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rioHex.AutoSize = true;
-            this.rioHex.Checked = true;
-            this.rioHex.Location = new System.Drawing.Point(293, 66);
-            this.rioHex.Name = "rioHex";
-            this.rioHex.Size = new System.Drawing.Size(87, 24);
-            this.rioHex.TabIndex = 6;
-            this.rioHex.TabStop = true;
-            this.rioHex.Text = "十六进制";
-            this.rioHex.UseVisualStyleBackColor = true;
-            // 
-            // rioString
-            // 
-            this.rioString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rioString.AutoSize = true;
-            this.rioString.Location = new System.Drawing.Point(386, 66);
-            this.rioString.Name = "rioString";
-            this.rioString.Size = new System.Drawing.Size(72, 24);
-            this.rioString.TabIndex = 7;
-            this.rioString.Text = "字符串";
-            this.rioString.UseVisualStyleBackColor = true;
             // 
             // timSerialWrite
             // 
