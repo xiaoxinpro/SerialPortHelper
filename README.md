@@ -77,3 +77,35 @@ SerialPortHelper是一款基于C#的串口助手类库。
 
     spb.Write(SerialData.ToByteArray(字符串));
 
+### 接收数据
+若要接收数据，需要在串口初始化时增加接收事件绑定：
+
+    //串口助手类初始化
+    //绑定接收数据函数SerialPortDataReceivedProcess
+    spb.BindSerialPortDataReceivedProcessEvent(new SerialPortHelper.DelegateSerialPortDataReceivedProcessEvent(SerialPortDataReceivedProcess));
+
+绑定的方法 ```SerialPortDataReceivedProcess``` 示例如下：
+
+    /// <summary>
+    /// 串口接收数据处理
+    /// </summary>
+    /// <param name="arrData">接收数据数组</param>
+    private void SerialPortDataReceivedProcess(byte[] arrData)
+    {
+        this.Invoke(new Action(() =>
+        {
+            //串口数据处理
+        }));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
