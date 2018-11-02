@@ -43,3 +43,23 @@ SerialPortHelper是一款基于C#的串口助手类库。
     spb.ConfigSerialPort = new ConfigCom(cbPortName).GetConfigComData();
     
 
+### 开启串口
+使用 ```OpenCom``` 开启串口，需要传入一个```out```字符串，用于返回错误信息。
+
+    spb.OpenCom(out string strError);
+    if(strError != "null")
+    {
+      //串口开启失败
+      MessageBox.Show(strError);
+    }
+
+### 关闭串口
+与开启串口类似，使用 ```CloseCom``` 方法关闭串口。
+
+    spb.CloseCom(out string strError);
+    if (strError != "null")
+    {
+      //关闭串口失败
+      MessageBox.Show(strError);
+    }
+
