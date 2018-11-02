@@ -20,14 +20,21 @@ SerialPortHelper是一款基于C#的串口助手类库。
 这里只列举部分功能，详细操作文档请参考[使用文档](https://github.com/xiaoxinpro/SerialPortHelper/wiki)
 
 ### 前期准备
-使用前需要引用 **SerialPortHelperLib**，可以直接将源码直接添加到解决方案中，也可以引用SerialPortHelperLib.dll文件；接下来在代码文件顶部添加 ：
+使用前需要引用 ```SerialPortHelperLib```，可以直接将源码直接添加到解决方案中，也可以引用```SerialPortHelperLib.dll```文件；接下来在代码文件顶部添加 ：
 
     using SerialPortHelperLib;
 
 即可开始使用串口助手类库。
 
 ### 初始化串口助手类
-添加一个 **ComboBox** 控件，命名 **cbPortName** 。
+首先需要定义一个全局类
+
+    //定义SerialPortHelper类
+    private SerialPortHelper spb;
+
+然后添加一个 ```ComboBox``` 控件，命名 ```cbPortName``` 。
+
+最后在窗体加载中加入初始化代码：
 
     //实例化串口助手
     spb = new SerialPortHelper();
@@ -35,6 +42,4 @@ SerialPortHelper是一款基于C#的串口助手类库。
     //设置串口号ComboBox，并写入默认配置
     spb.ConfigSerialPort = new ConfigCom(cbPortName).GetConfigComData();
     
-    //绑定接收数据函数
-    spb.BindSerialPortDataReceivedProcessEvent(new SerialPortHelper.DelegateSerialPortDataReceivedProcessEvent(SerialPortDataReceivedProcess));
 
