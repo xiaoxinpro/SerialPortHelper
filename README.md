@@ -63,3 +63,17 @@ SerialPortHelper是一款基于C#的串口助手类库。
       MessageBox.Show(strError);
     }
 
+### 发送数据
+
+发送Byte数组到串口：
+
+    spb.Write(Byte数组);
+
+发送十六进制到串口：
+
+    spb.Write(SerialData.ToHexByteArray(十六进制字符串));
+
+发送字符串到串口：
+
+    spb.Write(SerialData.ToByteArray(字符串));
+
