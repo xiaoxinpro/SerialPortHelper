@@ -98,14 +98,4 @@ SerialPortHelper是一款基于C#的串口助手类库。
         }));
     }
 
-
-
-
-
-
-
-
-
-
-
-
+> 关于接收数据转换可参考Wiki中的 [SerialData](https://github.com/xiaoxinpro/SerialPortHelper/wiki/SerialData) 部分。
