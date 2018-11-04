@@ -42,6 +42,20 @@ SerialPortHelper是一款基于C#的串口助手类库。
     //设置串口号ComboBox，并写入默认配置
     spb.ConfigSerialPort = new ConfigCom(cbPortName).GetConfigComData();
     
+若要自定义串口配置可以定义ConfigCom类：
+
+    //定义ConfigCom类
+    private ConfigCom cc;
+    
+    //修改配置
+    cc = new ConfigCom(cbSerial);
+    cc.BaudRate = 14400;
+    cc.DataBits = 7;
+    cc.StopBits = StopBits.OnePointFive;
+    cc.Parity = Parity.Even;
+
+    //写入串口配置
+    spb.ConfigSerialPort = cc.GetConfigComData();
 
 ### 开启串口
 使用 ```OpenCom``` 开启串口，需要传入一个```out```字符串，用于返回错误信息。
