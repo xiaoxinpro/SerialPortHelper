@@ -113,3 +113,12 @@ SerialPortHelper是一款基于C#的串口助手类库。
     }
 
 > 关于接收数据转换可参考Wiki中的 [SerialData](https://github.com/xiaoxinpro/SerialPortHelper/wiki/SerialData) 部分。
+
+
+## 开发计划
+计划在后续版本中加入的功能与优化，如果有其他功能建议欢迎在 [issues](https://github.com/xiaoxinpro/SerialPortHelper/issues) 中反馈。
+
+* 简化检测串口流程，删除多余的重复功能。
+* 增加接收数据同步获取，与现有的异步获取可同时使用。
+* 进一步完善Wiki文档。
+
