@@ -120,5 +120,5 @@ SerialPortHelper是一款基于C#的串口助手类库。
 
 * 简化检测串口流程，删除多余的重复功能。
 * 增加接收数据同步获取，与现有的异步获取可同时使用。
-* 进一步完善Wiki文档。
+* 进一步完善[Wiki](https://github.com/xiaoxinpro/SerialPortHelper/wiki)文档。
 
