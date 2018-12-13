@@ -226,6 +226,7 @@ namespace SerialPortHelperLib
                         try
                         {
                             serialPort.Write(byteData, 0, byteData.Length);
+                            Console.WriteLine("发送数据：" + SerialData.ToHexString(byteData) + "\t时间：" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss fff"));
                         }
                         catch (Exception e)
                         {
