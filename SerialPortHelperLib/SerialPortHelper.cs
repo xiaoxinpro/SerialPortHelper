@@ -304,7 +304,7 @@ namespace SerialPortHelperLib
                 {
                     lock (queueSerialDataWrite.SyncRoot)
                     {
-                        queueSerialDataWrite.Enqueue(arrData);
+                        queueSerialDataWrite.Enqueue((byte[])arrData.Clone());
                     }
                 }
                 else
