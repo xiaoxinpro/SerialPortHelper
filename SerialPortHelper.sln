@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortHelperTest", "Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortHelperLib", "SerialPortHelperLib\SerialPortHelperLib.csproj", "{33045BA2-C192-4A1A-8A96-31500719341B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPostTool", "SerialPostTool\SerialPostTool.csproj", "{D5B2036C-8FA7-4350-AF6B-7004022008D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{33045BA2-C192-4A1A-8A96-31500719341B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33045BA2-C192-4A1A-8A96-31500719341B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33045BA2-C192-4A1A-8A96-31500719341B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B2036C-8FA7-4350-AF6B-7004022008D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B2036C-8FA7-4350-AF6B-7004022008D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B2036C-8FA7-4350-AF6B-7004022008D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B2036C-8FA7-4350-AF6B-7004022008D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
