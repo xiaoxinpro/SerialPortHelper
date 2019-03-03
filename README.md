@@ -7,7 +7,7 @@ SerialPortHelper是一款基于C#的串口助手类库。
 欢迎加入测试并向我们提交BUG或建议，请下载最新[Releases](https://github.com/xiaoxinpro/SerialPortHelper/releases)版本参与测试！
 
 ## 开发状态
-串口助手类库项目，目前基于 .NET Framework 3.5 构建。
+串口助手类库项目，目前基于 .NET Framework 3.5 编译，若需要 .NET Framework 4+ 可以直接自行修改框架编译。
 
 > 使用文档：https://github.com/xiaoxinpro/SerialPortHelper/wiki
 
