@@ -33,6 +33,7 @@ namespace SerialPortHelperLib
         private Int32 _serialReceviedTimeInterval = SERIAL_RECEIVED_TIME_INTERVAL;
         private Int32 _serialReceviedLengthMax = SERIAL_RECEIVED_LENGTH_MAX;
         private Int32 _serialWriteTimeInterval = SERIAL_WRITE_TIME_INTERVAL;
+        private String _serialMark = "";
         #endregion
 
         #region 属性
@@ -40,6 +41,7 @@ namespace SerialPortHelperLib
         public int SerialReceviedTimeInterval { get => _serialReceviedTimeInterval; set => _serialReceviedTimeInterval = value; }
         public int SerialReceviedLengthMax { get => _serialReceviedLengthMax; set => _serialReceviedLengthMax = value; }
         public int SerialWriteTimeInterval { get => _serialWriteTimeInterval; set => _serialWriteTimeInterval = value; }
+        public string SerialMark { get => _serialMark; set => _serialMark = value; }
         public bool IsOpen { get => serialPort.IsOpen; }
         #endregion
 
@@ -130,7 +132,7 @@ namespace SerialPortHelperLib
             }
             catch (Exception error)
             {
-                EventSerialPortError(enumSerialError.ReceivedError, error.Message);
+                EventSerialPortError(this, enumSerialError.ReceivedError, error.Message);
             }
 
         }
@@ -182,7 +184,7 @@ namespace SerialPortHelperLib
                 }
                 Thread.Sleep(SerialReceviedTimeInterval);
             }
-            EventSerialPortError(enumSerialError.LinkError, "端口连接断开或未开启端口！");
+            EventSerialPortError(this, enumSerialError.LinkError, "端口连接断开或未开启端口！");
             queueSerialCacheReceived.Clear();
 
         }
@@ -199,7 +201,7 @@ namespace SerialPortHelperLib
                     if (queueSerialDataReceived.Count > 0)
                     {
                         byte[] byteData = (byte[])queueSerialDataReceived.Dequeue();
-                        EventSerialPortDataReceivedProcess(byteData); //触发事件
+                        EventSerialPortDataReceivedProcess(this, byteData); //触发事件
                         continue;
                     }
                 }
@@ -230,7 +232,7 @@ namespace SerialPortHelperLib
                         }
                         catch (Exception e)
                         {
-                            EventSerialPortError(enumSerialError.WriteError, e.Message);
+                            EventSerialPortError(this, enumSerialError.WriteError, e.Message);
                             return;
                         }
                     }
@@ -250,7 +252,7 @@ namespace SerialPortHelperLib
         /// 定义委托
         /// </summary>
         /// <param name="arrDataReceived">接收到的数据帧</param>
-        public delegate void DelegateSerialPortDataReceivedProcessEvent(byte[] arrDataReceived);
+        public delegate void DelegateSerialPortDataReceivedProcessEvent(object sender, byte[] arrDataReceived);
 
         /// <summary>
         /// 定义事件
@@ -274,7 +276,7 @@ namespace SerialPortHelperLib
         /// </summary>
         /// <param name="numError">错误代号</param>
         /// <param name="strError">错误信息</param>
-        public delegate void DelegateSerialPortErrorEvent(enumSerialError enumError, string strError);
+        public delegate void DelegateSerialPortErrorEvent(object sender, enumSerialError enumError, string strError);
 
         /// <summary>
         /// 定义事件
@@ -309,7 +311,7 @@ namespace SerialPortHelperLib
                 }
                 else
                 {
-                    EventSerialPortError(enumSerialError.LinkError, "端口未开启！");
+                    EventSerialPortError(this, enumSerialError.LinkError, "端口未开启！");
                 }
             }
 
