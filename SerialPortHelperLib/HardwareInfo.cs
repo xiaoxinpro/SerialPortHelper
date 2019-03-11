@@ -25,9 +25,16 @@ namespace SerialPortHelperLib
                     var hardInfos = searcher.Get();
                     foreach (var hardInfo in hardInfos)
                     {
-                        if (hardInfo.Properties[propKey].Value.ToString().Contains("COM"))
+                        try
                         {
-                            strs.Add(hardInfo.Properties[propKey].Value.ToString());
+                            if (hardInfo.Properties[propKey].Value.ToString().Contains("COM"))
+                            {
+                                strs.Add(hardInfo.Properties[propKey].Value.ToString());
+                            }
+                        }
+                        catch
+                        {
+                            //忽略错误
                         }
                     }
                     searcher.Dispose();
@@ -36,7 +43,7 @@ namespace SerialPortHelperLib
             }
             catch
             {
-                return null;
+                return new string[0];
             }
             finally
             { strs = null; }
