@@ -201,11 +201,14 @@ namespace SerialPortHelperTest
             spb.SerialReceviedLengthMax = 1024;
         }
 
+
+
         /// <summary>
         /// 串口接收数据处理
         /// </summary>
+        /// <param name="sender">串口助手类对象</param>
         /// <param name="arrData">接收数据数组</param>
-        private void SerialPortDataReceivedProcess(byte[] arrData)
+        private void SerialPortDataReceivedProcess(object sender, byte[] arrData)
         {
             this.Invoke(new Action(() =>
             {
@@ -228,7 +231,7 @@ namespace SerialPortHelperTest
         /// </summary>
         /// <param name="enumError">错误枚举</param>
         /// <param name="strError">错误内容</param>
-        private void SerialPortErrorProcess(enumSerialError enumError, string strError)
+        private void SerialPortErrorProcess(object sender, enumSerialError enumError, string strError)
         {
             this.Invoke(new Action(() =>
             {

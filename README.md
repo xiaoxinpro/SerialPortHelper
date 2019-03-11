@@ -103,8 +103,9 @@ SerialPortHelper是一款基于C#的串口助手类库。
     /// <summary>
     /// 串口接收数据处理
     /// </summary>
+    /// <param name="sender">串口助手类对象</param>
     /// <param name="arrData">接收数据数组</param>
-    private void SerialPortDataReceivedProcess(byte[] arrData)
+    private void SerialPortDataReceivedProcess(object sender, byte[] arrData)
     {
         this.Invoke(new Action(() =>
         {
