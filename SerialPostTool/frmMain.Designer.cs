@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBoxSerial1 = new System.Windows.Forms.GroupBox();
+            this.btnSerialPortSwitch1 = new System.Windows.Forms.Button();
             this.cbParity1 = new System.Windows.Forms.ComboBox();
             this.cbStop1 = new System.Windows.Forms.ComboBox();
             this.cbBaudRate1 = new System.Windows.Forms.ComboBox();
@@ -39,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnSerialPortSwitch1 = new System.Windows.Forms.Button();
             this.groupBoxSerial2 = new System.Windows.Forms.GroupBox();
             this.btnSerialPortSwitch2 = new System.Windows.Forms.Button();
             this.cbParity2 = new System.Windows.Forms.ComboBox();
@@ -53,18 +53,18 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupSerialReceived = new System.Windows.Forms.GroupBox();
+            this.txtDataReceived = new System.Windows.Forms.TextBox();
             this.splitSerialWrite = new System.Windows.Forms.SplitContainer();
             this.groupSerialWrite1 = new System.Windows.Forms.GroupBox();
-            this.btnSerialWrite1 = new System.Windows.Forms.Button();
-            this.txtSerialWrite1 = new System.Windows.Forms.TextBox();
-            this.btnSerialWriteConfig1 = new System.Windows.Forms.Button();
-            this.cbSerialWrite1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
             this.chkSerialWriteLoop1 = new System.Windows.Forms.CheckBox();
             this.txtSerialWriteInterval1 = new System.Windows.Forms.TextBox();
             this.labMs = new System.Windows.Forms.Label();
-            this.txtDataReceived = new System.Windows.Forms.TextBox();
+            this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbSerialWrite1 = new System.Windows.Forms.ComboBox();
+            this.btnSerialWriteConfig1 = new System.Windows.Forms.Button();
+            this.btnSerialWrite1 = new System.Windows.Forms.Button();
+            this.txtSerialWrite1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSerialWriteLoop2 = new System.Windows.Forms.CheckBox();
             this.txtSerialWriteInterval2 = new System.Windows.Forms.TextBox();
@@ -107,6 +107,17 @@
             this.groupBoxSerial1.TabIndex = 0;
             this.groupBoxSerial1.TabStop = false;
             this.groupBoxSerial1.Text = "串口配置1";
+            // 
+            // btnSerialPortSwitch1
+            // 
+            this.btnSerialPortSwitch1.Location = new System.Drawing.Point(16, 205);
+            this.btnSerialPortSwitch1.Name = "btnSerialPortSwitch1";
+            this.btnSerialPortSwitch1.Size = new System.Drawing.Size(131, 39);
+            this.btnSerialPortSwitch1.TabIndex = 20;
+            this.btnSerialPortSwitch1.Tag = "1";
+            this.btnSerialPortSwitch1.Text = "打开串口";
+            this.btnSerialPortSwitch1.UseVisualStyleBackColor = true;
+            this.btnSerialPortSwitch1.Click += new System.EventHandler(this.btnSerialPortSwitch_Click);
             // 
             // cbParity1
             // 
@@ -237,16 +248,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "端口号：";
             // 
-            // btnSerialPortSwitch1
-            // 
-            this.btnSerialPortSwitch1.Location = new System.Drawing.Point(16, 209);
-            this.btnSerialPortSwitch1.Name = "btnSerialPortSwitch1";
-            this.btnSerialPortSwitch1.Size = new System.Drawing.Size(131, 39);
-            this.btnSerialPortSwitch1.TabIndex = 20;
-            this.btnSerialPortSwitch1.Tag = "1";
-            this.btnSerialPortSwitch1.Text = "打开串口";
-            this.btnSerialPortSwitch1.UseVisualStyleBackColor = true;
-            // 
             // groupBoxSerial2
             // 
             this.groupBoxSerial2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -272,13 +273,14 @@
             // 
             // btnSerialPortSwitch2
             // 
-            this.btnSerialPortSwitch2.Location = new System.Drawing.Point(16, 209);
+            this.btnSerialPortSwitch2.Location = new System.Drawing.Point(16, 205);
             this.btnSerialPortSwitch2.Name = "btnSerialPortSwitch2";
             this.btnSerialPortSwitch2.Size = new System.Drawing.Size(131, 39);
             this.btnSerialPortSwitch2.TabIndex = 20;
             this.btnSerialPortSwitch2.Tag = "2";
             this.btnSerialPortSwitch2.Text = "打开串口";
             this.btnSerialPortSwitch2.UseVisualStyleBackColor = true;
+            this.btnSerialPortSwitch2.Click += new System.EventHandler(this.btnSerialPortSwitch_Click);
             // 
             // cbParity2
             // 
@@ -423,6 +425,19 @@
             this.groupSerialReceived.TabStop = false;
             this.groupSerialReceived.Text = "数据接收";
             // 
+            // txtDataReceived
+            // 
+            this.txtDataReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataReceived.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDataReceived.Location = new System.Drawing.Point(6, 22);
+            this.txtDataReceived.Multiline = true;
+            this.txtDataReceived.Name = "txtDataReceived";
+            this.txtDataReceived.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDataReceived.Size = new System.Drawing.Size(378, 226);
+            this.txtDataReceived.TabIndex = 1;
+            // 
             // splitSerialWrite
             // 
             this.splitSerialWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -463,74 +478,6 @@
             this.groupSerialWrite1.TabStop = false;
             this.groupSerialWrite1.Text = "数据发送1";
             // 
-            // btnSerialWrite1
-            // 
-            this.btnSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSerialWrite1.Location = new System.Drawing.Point(284, 95);
-            this.btnSerialWrite1.Name = "btnSerialWrite1";
-            this.btnSerialWrite1.Size = new System.Drawing.Size(72, 31);
-            this.btnSerialWrite1.TabIndex = 3;
-            this.btnSerialWrite1.Text = "发送";
-            this.btnSerialWrite1.UseVisualStyleBackColor = true;
-            // 
-            // txtSerialWrite1
-            // 
-            this.txtSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSerialWrite1.Location = new System.Drawing.Point(6, 26);
-            this.txtSerialWrite1.Multiline = true;
-            this.txtSerialWrite1.Name = "txtSerialWrite1";
-            this.txtSerialWrite1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSerialWrite1.Size = new System.Drawing.Size(350, 63);
-            this.txtSerialWrite1.TabIndex = 2;
-            // 
-            // btnSerialWriteConfig1
-            // 
-            this.btnSerialWriteConfig1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSerialWriteConfig1.Location = new System.Drawing.Point(6, 97);
-            this.btnSerialWriteConfig1.Name = "btnSerialWriteConfig1";
-            this.btnSerialWriteConfig1.Size = new System.Drawing.Size(73, 31);
-            this.btnSerialWriteConfig1.TabIndex = 3;
-            this.btnSerialWriteConfig1.Text = "快捷管理";
-            this.btnSerialWriteConfig1.UseVisualStyleBackColor = true;
-            // 
-            // cbSerialWrite1
-            // 
-            this.cbSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbSerialWrite1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.cbSerialWrite1.FormattingEnabled = true;
-            this.cbSerialWrite1.Location = new System.Drawing.Point(85, 97);
-            this.cbSerialWrite1.Name = "cbSerialWrite1";
-            this.cbSerialWrite1.Size = new System.Drawing.Size(193, 28);
-            this.cbSerialWrite1.TabIndex = 4;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 135);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 21);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "发送方式：";
-            // 
-            // cbWriteFormat1
-            // 
-            this.cbWriteFormat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWriteFormat1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbWriteFormat1.FormattingEnabled = true;
-            this.cbWriteFormat1.Items.AddRange(new object[] {
-            "自动",
-            "字符串",
-            "十六进制"});
-            this.cbWriteFormat1.Location = new System.Drawing.Point(85, 132);
-            this.cbWriteFormat1.Name = "cbWriteFormat1";
-            this.cbWriteFormat1.Size = new System.Drawing.Size(79, 28);
-            this.cbWriteFormat1.TabIndex = 6;
-            // 
             // chkSerialWriteLoop1
             // 
             this.chkSerialWriteLoop1.AutoSize = true;
@@ -558,18 +505,76 @@
             this.labMs.TabIndex = 9;
             this.labMs.Text = "ms";
             // 
-            // txtDataReceived
+            // cbWriteFormat1
             // 
-            this.txtDataReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbWriteFormat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWriteFormat1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbWriteFormat1.FormattingEnabled = true;
+            this.cbWriteFormat1.Items.AddRange(new object[] {
+            "自动",
+            "字符串",
+            "十六进制"});
+            this.cbWriteFormat1.Location = new System.Drawing.Point(85, 132);
+            this.cbWriteFormat1.Name = "cbWriteFormat1";
+            this.cbWriteFormat1.Size = new System.Drawing.Size(79, 28);
+            this.cbWriteFormat1.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 135);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 21);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "发送方式：";
+            // 
+            // cbSerialWrite1
+            // 
+            this.cbSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataReceived.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDataReceived.Location = new System.Drawing.Point(6, 22);
-            this.txtDataReceived.Multiline = true;
-            this.txtDataReceived.Name = "txtDataReceived";
-            this.txtDataReceived.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDataReceived.Size = new System.Drawing.Size(378, 226);
-            this.txtDataReceived.TabIndex = 1;
+            this.cbSerialWrite1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.cbSerialWrite1.FormattingEnabled = true;
+            this.cbSerialWrite1.Location = new System.Drawing.Point(85, 97);
+            this.cbSerialWrite1.Name = "cbSerialWrite1";
+            this.cbSerialWrite1.Size = new System.Drawing.Size(193, 28);
+            this.cbSerialWrite1.TabIndex = 4;
+            // 
+            // btnSerialWriteConfig1
+            // 
+            this.btnSerialWriteConfig1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSerialWriteConfig1.Location = new System.Drawing.Point(6, 97);
+            this.btnSerialWriteConfig1.Name = "btnSerialWriteConfig1";
+            this.btnSerialWriteConfig1.Size = new System.Drawing.Size(73, 31);
+            this.btnSerialWriteConfig1.TabIndex = 3;
+            this.btnSerialWriteConfig1.Text = "快捷管理";
+            this.btnSerialWriteConfig1.UseVisualStyleBackColor = true;
+            // 
+            // btnSerialWrite1
+            // 
+            this.btnSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSerialWrite1.Location = new System.Drawing.Point(284, 95);
+            this.btnSerialWrite1.Name = "btnSerialWrite1";
+            this.btnSerialWrite1.Size = new System.Drawing.Size(72, 31);
+            this.btnSerialWrite1.TabIndex = 3;
+            this.btnSerialWrite1.Tag = "1";
+            this.btnSerialWrite1.Text = "发送";
+            this.btnSerialWrite1.UseVisualStyleBackColor = true;
+            this.btnSerialWrite1.Click += new System.EventHandler(this.btnSerialWrite_Click);
+            // 
+            // txtSerialWrite1
+            // 
+            this.txtSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSerialWrite1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSerialWrite1.Location = new System.Drawing.Point(6, 26);
+            this.txtSerialWrite1.Multiline = true;
+            this.txtSerialWrite1.Name = "txtSerialWrite1";
+            this.txtSerialWrite1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtSerialWrite1.Size = new System.Drawing.Size(350, 63);
+            this.txtSerialWrite1.TabIndex = 2;
+            this.txtSerialWrite1.Tag = "1";
             // 
             // groupBox1
             // 
@@ -673,8 +678,10 @@
             this.btnSerialWrite2.Name = "btnSerialWrite2";
             this.btnSerialWrite2.Size = new System.Drawing.Size(72, 31);
             this.btnSerialWrite2.TabIndex = 3;
+            this.btnSerialWrite2.Tag = "2";
             this.btnSerialWrite2.Text = "发送";
             this.btnSerialWrite2.UseVisualStyleBackColor = true;
+            this.btnSerialWrite2.Click += new System.EventHandler(this.btnSerialWrite_Click);
             // 
             // txtSerialWrite2
             // 
@@ -687,6 +694,7 @@
             this.txtSerialWrite2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSerialWrite2.Size = new System.Drawing.Size(346, 63);
             this.txtSerialWrite2.TabIndex = 2;
+            this.txtSerialWrite2.Tag = "2";
             // 
             // frmMain
             // 
