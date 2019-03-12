@@ -88,7 +88,7 @@ namespace SerialPortHelperLib
         /// <summary>
         /// 校验16进制字符串
         /// </summary>
-        /// <param name="strBuffHex"></param>
+        /// <param name="strBuffHex">16进制字符串</param>
         /// <returns></returns>
         private static string CheakHexString(string strBuffHex)
         {
@@ -99,6 +99,21 @@ namespace SerialPortHelperLib
             strBuffHex = strBuffHex.Replace("0X", "");  //去掉0X
             strBuffHex = Regex.Replace(Regex.Replace(strBuffHex, @"(?i)[^a-f\d\s]+", ""), "\\w{3,}", m => string.Join(" ", Regex.Split(m.Value, @"(?<=\G\w{2})(?!$)").Select(x => x.PadLeft(2, '0')).ToArray())).ToUpper();
             return strBuffHex;
+        }
+
+        /// <summary>
+        /// 判断字符串是否是16进制字符串
+        /// </summary>
+        /// <param name="strBuffHex">16进制字符串</param>
+        /// <returns></returns>
+        public static bool IsStringHex(string strBuffHex)
+        {
+            strBuffHex = strBuffHex.Trim();     //去除前后空字符
+            strBuffHex = strBuffHex.Replace(',', ' ');  //去掉英文逗号
+            strBuffHex = strBuffHex.Replace('，', ' '); //去掉中文逗号
+            strBuffHex = strBuffHex.Replace("0x", "");  //去掉0x
+            strBuffHex = strBuffHex.Replace("0X", "");  //去掉0X
+            return Regex.IsMatch(strBuffHex, @"^[0-9a-fA-F ]+$");
         }
 
         /// <summary>
