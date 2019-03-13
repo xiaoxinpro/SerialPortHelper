@@ -356,6 +356,15 @@ namespace SerialPortHelperLib
         {
             detectCom.StrSerialPortDefaultInfo = new string[] { };
         }
+
+        /// <summary>
+        /// 获取检测串口类
+        /// </summary>
+        /// <returns></returns>
+        public DetectCom GetDetectCom()
+        {
+            return detectCom;
+        }
         #endregion
 
         #region 刷新串口列表
