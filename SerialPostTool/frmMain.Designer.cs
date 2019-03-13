@@ -448,6 +448,7 @@
             this.richTextInfo.TabIndex = 4;
             this.richTextInfo.Text = "";
             this.richTextInfo.VScroll += new System.EventHandler(this.richTextInfo_VScroll);
+            this.richTextInfo.SizeChanged += new System.EventHandler(this.richTextInfo_SizeChanged);
             this.richTextInfo.TextChanged += new System.EventHandler(this.richTextInfo_TextChanged);
             // 
             // btnInfoConfig
@@ -471,6 +472,7 @@
             this.btnInfoClear.TabIndex = 3;
             this.btnInfoClear.Text = "清空";
             this.btnInfoClear.UseVisualStyleBackColor = true;
+            this.btnInfoClear.Click += new System.EventHandler(this.btnInfoClear_Click);
             // 
             // chkShowTime
             // 

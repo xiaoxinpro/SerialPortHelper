@@ -186,6 +186,7 @@ namespace SerialPostTool
             Button btn = (Button)sender;
             ConfigCom cc = (btn.Tag.ToString() == "1") ? configCom1 : configCom2;
             SerialPortHelper spb = (btn.Tag.ToString() == "1") ? serialPort1 : serialPort2;
+            GroupBox grp = btn.Parent as GroupBox;
             if (btn.Text == "打开串口")
             {
                 spb.OpenCom(cc.GetConfigComData(), out string strError);
@@ -195,8 +196,10 @@ namespace SerialPostTool
                 }
                 else
                 {
+                    cc.GetDetectCom().Close();
                     Console.WriteLine("开启{0}端口成功。", cc.PortName);
                     btn.Text = "关闭串口";
+                    GroupBoxEnable(grp, false);
                 }
             }
             else
@@ -208,8 +211,26 @@ namespace SerialPostTool
                 }
                 else
                 {
+                    cc.GetDetectCom().Open();
                     Console.WriteLine("关闭端口成功。");
                     btn.Text = "打开串口";
+                    GroupBoxEnable(grp, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// GroupBox开关
+        /// </summary>
+        /// <param name="grp">GroupBox控件</param>
+        /// <param name="enable">开关量</param>
+        private void GroupBoxEnable(GroupBox grp, bool enable)
+        {
+            foreach (Control item in grp.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    item.Enabled = enable;
                 }
             }
         }
@@ -320,17 +341,24 @@ namespace SerialPostTool
                 richTextInfo.ScrollToCaret();
             }
         }
-        #endregion
 
+        /// <summary>
+        /// 文本框滚动条最大位置
+        /// </summary>
         private int MaxScrollPos = 0;
 
+        /// <summary>
+        /// 文本框滚动条改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "GetScrollPos")]
         public static extern int GetScrollPos(IntPtr hwnd, int nBar);
         private void richTextInfo_VScroll(object sender, EventArgs e)
         {
             RichTextBox richText = (RichTextBox)sender;
             int nowScroll = GetScrollPos(richText.Handle, 1);
-            if(nowScroll > MaxScrollPos)
+            if (nowScroll > MaxScrollPos)
             {
                 MaxScrollPos = nowScroll;
                 IsSrollFollow = true;
@@ -344,5 +372,29 @@ namespace SerialPostTool
                 IsSrollFollow = true;
             }
         }
+
+        /// <summary>
+        /// 消息文本框大小改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void richTextInfo_SizeChanged(object sender, EventArgs e)
+        {
+            MaxScrollPos = 0;
+        }
+
+        /// <summary>
+        /// 清空信息文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInfoClear_Click(object sender, EventArgs e)
+        {
+            richTextInfo.Clear();
+            IsSrollFollow = true;
+            MaxScrollPos = 0;
+        }
+        #endregion
+
     }
 }
