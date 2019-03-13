@@ -97,14 +97,16 @@ namespace SerialPostTool
                 SerialPortHelper spb = (SerialPortHelper)sender;
                 if (SerialData.IsBytesToString(arrData))
                 {
-                    Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
-                    Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
+                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
+                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToString(arrData));
+                    OutputInfo(SerialData.ToString(arrData), "接收", spb.SerialMark);
+                    //txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
                 }
                 else
                 {
-                    Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
-                    txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
+                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
+                    OutputInfo(SerialData.ToHexString(arrData), "接收", spb.SerialMark);
+                    //txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
                 }
             }));
         }
@@ -245,9 +247,102 @@ namespace SerialPostTool
                         break;
                 }
                 SerialPortDataWriteProcess(spb, txt.Text, format);
+                OutputInfo(txt.Text, "发送", spb.SerialMark);
             }
         }
         #endregion
 
+        #region 输出显示
+        /// <summary>
+        /// 输出显示信息
+        /// </summary>
+        /// <param name="strData">显示数据</param>
+        /// <param name="strTitle">显示标题</param>
+        /// <param name="strMark">显示备注</param>
+        private void OutputInfo(string strData, string strTitle = "提示", string strMark = "串口1")
+        {
+            Color color = Color.Black;
+            switch (strTitle)
+            {
+                case " ":
+                    richTextInfo.AppendTextColorful(strData + " ", Color.Green, false);
+                    return;
+                case "提示":
+                    color = Color.Black;
+                    break;
+                case "发送":
+                    color = Color.Blue;
+                    break;
+                case "接收":
+                    color = Color.Green;
+                    break;
+                case "错误":
+                    color = Color.Red;
+                    break;
+                case "警告":
+                    color = Color.Orange;
+                    break;
+                default:
+                    return;
+            }
+            string strHead = "";
+            if (chkShowSerial.Checked)
+            {
+                strHead += "[" + strMark + "]";
+            }
+            if (chkShowSend.Checked)
+            {
+                strHead += "[" + strTitle + "]";
+            }
+            if (chkShowTime.Checked)
+            {
+                strHead += "[" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fff") + "]";
+            }
+            richTextInfo.AppendTextColorful(strHead + strData, color);
+        }
+
+        /// <summary>
+        /// 滚动条是否跟随标志位
+        /// </summary>
+        private bool IsSrollFollow = true;
+
+        /// <summary>
+        /// 输出文本框数据变化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void richTextInfo_TextChanged(object sender, EventArgs e)
+        {
+            if (IsSrollFollow)
+            {
+                richTextInfo.SelectionStart = richTextInfo.Text.Length;
+                richTextInfo.SelectionLength = 0;
+                richTextInfo.ScrollToCaret();
+            }
+        }
+        #endregion
+
+        private int MaxScrollPos = 0;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "GetScrollPos")]
+        public static extern int GetScrollPos(IntPtr hwnd, int nBar);
+        private void richTextInfo_VScroll(object sender, EventArgs e)
+        {
+            RichTextBox richText = (RichTextBox)sender;
+            int nowScroll = GetScrollPos(richText.Handle, 1);
+            if(nowScroll > MaxScrollPos)
+            {
+                MaxScrollPos = nowScroll;
+                IsSrollFollow = true;
+            }
+            else if (nowScroll < MaxScrollPos - 10)
+            {
+                IsSrollFollow = false;
+            }
+            else
+            {
+                IsSrollFollow = true;
+            }
+        }
     }
 }

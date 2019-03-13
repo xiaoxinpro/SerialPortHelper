@@ -53,7 +53,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupSerialReceived = new System.Windows.Forms.GroupBox();
-            this.txtDataReceived = new System.Windows.Forms.TextBox();
+            this.richTextInfo = new System.Windows.Forms.RichTextBox();
+            this.btnInfoConfig = new System.Windows.Forms.Button();
+            this.btnInfoClear = new System.Windows.Forms.Button();
+            this.chkShowTime = new System.Windows.Forms.CheckBox();
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowSerial = new System.Windows.Forms.CheckBox();
             this.splitSerialWrite = new System.Windows.Forms.SplitContainer();
             this.groupSerialWrite1 = new System.Windows.Forms.GroupBox();
             this.chkSerialWriteLoop1 = new System.Windows.Forms.CheckBox();
@@ -416,32 +421,98 @@
             this.groupSerialReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupSerialReceived.Controls.Add(this.txtDataReceived);
+            this.groupSerialReceived.Controls.Add(this.richTextInfo);
+            this.groupSerialReceived.Controls.Add(this.btnInfoConfig);
+            this.groupSerialReceived.Controls.Add(this.btnInfoClear);
+            this.groupSerialReceived.Controls.Add(this.chkShowTime);
+            this.groupSerialReceived.Controls.Add(this.chkShowSend);
+            this.groupSerialReceived.Controls.Add(this.chkShowSerial);
             this.groupSerialReceived.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupSerialReceived.Location = new System.Drawing.Point(182, 12);
             this.groupSerialReceived.Name = "groupSerialReceived";
             this.groupSerialReceived.Size = new System.Drawing.Size(390, 254);
             this.groupSerialReceived.TabIndex = 2;
             this.groupSerialReceived.TabStop = false;
-            this.groupSerialReceived.Text = "数据接收";
+            this.groupSerialReceived.Text = "信息显示";
             // 
-            // txtDataReceived
+            // richTextInfo
             // 
-            this.txtDataReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataReceived.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDataReceived.Location = new System.Drawing.Point(6, 22);
-            this.txtDataReceived.Multiline = true;
-            this.txtDataReceived.Name = "txtDataReceived";
-            this.txtDataReceived.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDataReceived.Size = new System.Drawing.Size(378, 226);
-            this.txtDataReceived.TabIndex = 1;
+            this.richTextInfo.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextInfo.Location = new System.Drawing.Point(6, 22);
+            this.richTextInfo.Name = "richTextInfo";
+            this.richTextInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.richTextInfo.Size = new System.Drawing.Size(378, 199);
+            this.richTextInfo.TabIndex = 4;
+            this.richTextInfo.Text = "";
+            this.richTextInfo.VScroll += new System.EventHandler(this.richTextInfo_VScroll);
+            this.richTextInfo.TextChanged += new System.EventHandler(this.richTextInfo_TextChanged);
+            // 
+            // btnInfoConfig
+            // 
+            this.btnInfoConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInfoConfig.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInfoConfig.Location = new System.Drawing.Point(309, 225);
+            this.btnInfoConfig.Name = "btnInfoConfig";
+            this.btnInfoConfig.Size = new System.Drawing.Size(75, 23);
+            this.btnInfoConfig.TabIndex = 3;
+            this.btnInfoConfig.Text = "更多设置";
+            this.btnInfoConfig.UseVisualStyleBackColor = true;
+            // 
+            // btnInfoClear
+            // 
+            this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInfoClear.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInfoClear.Location = new System.Drawing.Point(255, 225);
+            this.btnInfoClear.Name = "btnInfoClear";
+            this.btnInfoClear.Size = new System.Drawing.Size(48, 23);
+            this.btnInfoClear.TabIndex = 3;
+            this.btnInfoClear.Text = "清空";
+            this.btnInfoClear.UseVisualStyleBackColor = true;
+            // 
+            // chkShowTime
+            // 
+            this.chkShowTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkShowTime.AutoSize = true;
+            this.chkShowTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowTime.Location = new System.Drawing.Point(168, 227);
+            this.chkShowTime.Name = "chkShowTime";
+            this.chkShowTime.Size = new System.Drawing.Size(75, 21);
+            this.chkShowTime.TabIndex = 2;
+            this.chkShowTime.Text = "显示时间";
+            this.chkShowTime.UseVisualStyleBackColor = true;
+            // 
+            // chkShowSend
+            // 
+            this.chkShowSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowSend.Location = new System.Drawing.Point(87, 227);
+            this.chkShowSend.Name = "chkShowSend";
+            this.chkShowSend.Size = new System.Drawing.Size(75, 21);
+            this.chkShowSend.TabIndex = 2;
+            this.chkShowSend.Text = "显示发送";
+            this.chkShowSend.UseVisualStyleBackColor = true;
+            // 
+            // chkShowSerial
+            // 
+            this.chkShowSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkShowSerial.AutoSize = true;
+            this.chkShowSerial.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowSerial.Location = new System.Drawing.Point(6, 227);
+            this.chkShowSerial.Name = "chkShowSerial";
+            this.chkShowSerial.Size = new System.Drawing.Size(75, 21);
+            this.chkShowSerial.TabIndex = 2;
+            this.chkShowSerial.Text = "显示串口";
+            this.chkShowSerial.UseVisualStyleBackColor = true;
             // 
             // splitSerialWrite
             // 
             this.splitSerialWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitSerialWrite.IsSplitterFixed = true;
             this.splitSerialWrite.Location = new System.Drawing.Point(12, 272);
             this.splitSerialWrite.Name = "splitSerialWrite";
             // 
@@ -765,7 +836,6 @@
         private System.Windows.Forms.CheckBox chkSerialWriteLoop1;
         private System.Windows.Forms.TextBox txtSerialWriteInterval1;
         private System.Windows.Forms.Label labMs;
-        private System.Windows.Forms.TextBox txtDataReceived;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkSerialWriteLoop2;
         private System.Windows.Forms.TextBox txtSerialWriteInterval2;
@@ -776,6 +846,12 @@
         private System.Windows.Forms.Button btnSerialWriteConfig2;
         private System.Windows.Forms.Button btnSerialWrite2;
         private System.Windows.Forms.TextBox txtSerialWrite2;
+        private System.Windows.Forms.Button btnInfoConfig;
+        private System.Windows.Forms.Button btnInfoClear;
+        private System.Windows.Forms.CheckBox chkShowTime;
+        private System.Windows.Forms.CheckBox chkShowSend;
+        private System.Windows.Forms.CheckBox chkShowSerial;
+        private System.Windows.Forms.RichTextBox richTextInfo;
     }
 }
 
