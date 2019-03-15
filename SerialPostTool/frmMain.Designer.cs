@@ -80,6 +80,12 @@
             this.btnSerialWriteConfig2 = new System.Windows.Forms.Button();
             this.btnSerialWrite2 = new System.Windows.Forms.Button();
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cbReceiveFormat2 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBoxSerial1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
             this.groupSerialReceived.SuspendLayout();
@@ -88,12 +94,15 @@
             this.splitSerialWrite.SuspendLayout();
             this.groupSerialWrite1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSerial1
             // 
             this.groupBoxSerial1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxSerial1.Controls.Add(this.panel1);
             this.groupBoxSerial1.Controls.Add(this.btnSerialPortSwitch1);
             this.groupBoxSerial1.Controls.Add(this.cbParity1);
             this.groupBoxSerial1.Controls.Add(this.cbStop1);
@@ -108,7 +117,7 @@
             this.groupBoxSerial1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxSerial1.Location = new System.Drawing.Point(12, 12);
             this.groupBoxSerial1.Name = "groupBoxSerial1";
-            this.groupBoxSerial1.Size = new System.Drawing.Size(164, 254);
+            this.groupBoxSerial1.Size = new System.Drawing.Size(164, 288);
             this.groupBoxSerial1.TabIndex = 0;
             this.groupBoxSerial1.TabStop = false;
             this.groupBoxSerial1.Text = "串口配置1";
@@ -257,6 +266,7 @@
             // 
             this.groupBoxSerial2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSerial2.Controls.Add(this.panel2);
             this.groupBoxSerial2.Controls.Add(this.btnSerialPortSwitch2);
             this.groupBoxSerial2.Controls.Add(this.cbParity2);
             this.groupBoxSerial2.Controls.Add(this.cbStop2);
@@ -271,7 +281,7 @@
             this.groupBoxSerial2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxSerial2.Location = new System.Drawing.Point(578, 12);
             this.groupBoxSerial2.Name = "groupBoxSerial2";
-            this.groupBoxSerial2.Size = new System.Drawing.Size(164, 254);
+            this.groupBoxSerial2.Size = new System.Drawing.Size(164, 288);
             this.groupBoxSerial2.TabIndex = 1;
             this.groupBoxSerial2.TabStop = false;
             this.groupBoxSerial2.Text = "串口配置2";
@@ -430,7 +440,7 @@
             this.groupSerialReceived.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupSerialReceived.Location = new System.Drawing.Point(182, 12);
             this.groupSerialReceived.Name = "groupSerialReceived";
-            this.groupSerialReceived.Size = new System.Drawing.Size(390, 254);
+            this.groupSerialReceived.Size = new System.Drawing.Size(390, 288);
             this.groupSerialReceived.TabIndex = 2;
             this.groupSerialReceived.TabStop = false;
             this.groupSerialReceived.Text = "信息显示";
@@ -444,7 +454,7 @@
             this.richTextInfo.Location = new System.Drawing.Point(6, 22);
             this.richTextInfo.Name = "richTextInfo";
             this.richTextInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextInfo.Size = new System.Drawing.Size(378, 199);
+            this.richTextInfo.Size = new System.Drawing.Size(378, 233);
             this.richTextInfo.TabIndex = 4;
             this.richTextInfo.Text = "";
             this.richTextInfo.VScroll += new System.EventHandler(this.richTextInfo_VScroll);
@@ -455,7 +465,7 @@
             // 
             this.btnInfoConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInfoConfig.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnInfoConfig.Location = new System.Drawing.Point(309, 225);
+            this.btnInfoConfig.Location = new System.Drawing.Point(309, 259);
             this.btnInfoConfig.Name = "btnInfoConfig";
             this.btnInfoConfig.Size = new System.Drawing.Size(75, 23);
             this.btnInfoConfig.TabIndex = 3;
@@ -466,7 +476,7 @@
             // 
             this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInfoClear.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnInfoClear.Location = new System.Drawing.Point(255, 225);
+            this.btnInfoClear.Location = new System.Drawing.Point(255, 259);
             this.btnInfoClear.Name = "btnInfoClear";
             this.btnInfoClear.Size = new System.Drawing.Size(48, 23);
             this.btnInfoClear.TabIndex = 3;
@@ -479,7 +489,7 @@
             this.chkShowTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowTime.AutoSize = true;
             this.chkShowTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowTime.Location = new System.Drawing.Point(168, 227);
+            this.chkShowTime.Location = new System.Drawing.Point(168, 261);
             this.chkShowTime.Name = "chkShowTime";
             this.chkShowTime.Size = new System.Drawing.Size(75, 21);
             this.chkShowTime.TabIndex = 2;
@@ -491,7 +501,7 @@
             this.chkShowSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowSend.AutoSize = true;
             this.chkShowSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowSend.Location = new System.Drawing.Point(87, 227);
+            this.chkShowSend.Location = new System.Drawing.Point(87, 261);
             this.chkShowSend.Name = "chkShowSend";
             this.chkShowSend.Size = new System.Drawing.Size(75, 21);
             this.chkShowSend.TabIndex = 2;
@@ -503,7 +513,7 @@
             this.chkShowSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowSerial.AutoSize = true;
             this.chkShowSerial.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowSerial.Location = new System.Drawing.Point(6, 227);
+            this.chkShowSerial.Location = new System.Drawing.Point(6, 261);
             this.chkShowSerial.Name = "chkShowSerial";
             this.chkShowSerial.Size = new System.Drawing.Size(75, 21);
             this.chkShowSerial.TabIndex = 2;
@@ -515,7 +525,7 @@
             this.splitSerialWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitSerialWrite.IsSplitterFixed = true;
-            this.splitSerialWrite.Location = new System.Drawing.Point(12, 272);
+            this.splitSerialWrite.Location = new System.Drawing.Point(12, 306);
             this.splitSerialWrite.Name = "splitSerialWrite";
             // 
             // splitSerialWrite.Panel1
@@ -599,7 +609,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 21);
             this.label11.TabIndex = 5;
-            this.label11.Text = "发送方式：";
+            this.label11.Text = "发送格式：";
             // 
             // cbSerialWrite1
             // 
@@ -719,7 +729,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(90, 21);
             this.label13.TabIndex = 5;
-            this.label13.Text = "发送方式：";
+            this.label13.Text = "发送格式：";
             // 
             // cbSerialWrite2
             // 
@@ -769,11 +779,77 @@
             this.txtSerialWrite2.TabIndex = 2;
             this.txtSerialWrite2.Tag = "2";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbReceiveFormat1);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Location = new System.Drawing.Point(6, 250);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(152, 32);
+            this.panel1.TabIndex = 21;
+            // 
+            // cbReceiveFormat1
+            // 
+            this.cbReceiveFormat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReceiveFormat1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbReceiveFormat1.FormattingEnabled = true;
+            this.cbReceiveFormat1.Items.AddRange(new object[] {
+            "自动",
+            "字符串",
+            "十六进制"});
+            this.cbReceiveFormat1.Location = new System.Drawing.Point(76, 2);
+            this.cbReceiveFormat1.Name = "cbReceiveFormat1";
+            this.cbReceiveFormat1.Size = new System.Drawing.Size(65, 25);
+            this.cbReceiveFormat1.TabIndex = 8;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(6, 4);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 20);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "接收格式：";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cbReceiveFormat2);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Location = new System.Drawing.Point(6, 250);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(152, 32);
+            this.panel2.TabIndex = 22;
+            // 
+            // cbReceiveFormat2
+            // 
+            this.cbReceiveFormat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReceiveFormat2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbReceiveFormat2.FormattingEnabled = true;
+            this.cbReceiveFormat2.Items.AddRange(new object[] {
+            "自动",
+            "字符串",
+            "十六进制"});
+            this.cbReceiveFormat2.Location = new System.Drawing.Point(76, 2);
+            this.cbReceiveFormat2.Name = "cbReceiveFormat2";
+            this.cbReceiveFormat2.Size = new System.Drawing.Size(65, 25);
+            this.cbReceiveFormat2.TabIndex = 8;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label15.Location = new System.Drawing.Point(6, 4);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 20);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "接收格式：";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 452);
+            this.ClientSize = new System.Drawing.Size(754, 486);
             this.Controls.Add(this.splitSerialWrite);
             this.Controls.Add(this.groupSerialReceived);
             this.Controls.Add(this.groupBoxSerial2);
@@ -796,6 +872,10 @@
             this.groupSerialWrite1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -854,6 +934,12 @@
         private System.Windows.Forms.CheckBox chkShowSend;
         private System.Windows.Forms.CheckBox chkShowSerial;
         private System.Windows.Forms.RichTextBox richTextInfo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cbReceiveFormat1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cbReceiveFormat2;
+        private System.Windows.Forms.Label label15;
     }
 }
 
