@@ -99,18 +99,26 @@ namespace SerialPostTool
         {
             pathSerialWriteConfig = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
             arrSerialWriteConfig = Json.ReadFile<SerialWriteConfig[]>(pathSerialWriteConfig);
-
-            cbSerialWrite1.Items.Clear();
-            cbSerialWrite2.Items.Clear();
-            cbSerialWrite1.Items.Add("");
-            cbSerialWrite2.Items.Add("");
-            for (int i = 0; i < arrSerialWriteConfig.Length; i++)
+            try
             {
-                cbSerialWrite1.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
-                cbSerialWrite2.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
+                cbSerialWrite1.Items.Clear();
+                cbSerialWrite2.Items.Clear();
+                cbSerialWrite1.Items.Add("");
+                cbSerialWrite2.Items.Add("");
+                for (int i = 0; i < arrSerialWriteConfig.Length; i++)
+                {
+                    cbSerialWrite1.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
+                    cbSerialWrite2.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
+                }
+                cbSerialWrite1.SelectedIndex = 0;
+                cbSerialWrite2.SelectedIndex = 0;
             }
-            cbSerialWrite1.SelectedIndex = 0;
-            cbSerialWrite2.SelectedIndex = 0;
+            catch (Exception e)
+            {
+                cbSerialWrite1.Items.Clear();
+                cbSerialWrite2.Items.Clear();
+                Console.WriteLine("未加载串口发送配置：" + e.Message);
+            }
         }
         #endregion
 
