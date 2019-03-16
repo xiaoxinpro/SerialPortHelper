@@ -93,23 +93,26 @@ namespace SerialPostTool
         /// <param name="arrData">接收数据数组</param>
         private void SerialPortDataReceivedProcess(object sender, byte[] arrData)
         {
-            this.Invoke(new Action(() =>
+            SerialPortHelper spb = (SerialPortHelper)sender;
+            try
             {
-                SerialPortHelper spb = (SerialPortHelper)sender;
-                if (SerialData.IsBytesToString(arrData))
+                this.Invoke(new Action(() =>
                 {
-                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
-                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToString(arrData));
-                    OutputInfo(SerialData.ToString(arrData), "接收", spb.SerialMark);
-                    //txtDataReceived.AppendText(SerialData.ToString(arrData) + "\r\n");
-                }
-                else
-                {
-                    //Console.WriteLine(spb.SerialMark + "接收数据：" + SerialData.ToHexString(arrData));
-                    OutputInfo(SerialData.ToHexString(arrData), "接收", spb.SerialMark);
-                    //txtDataReceived.AppendText(SerialData.ToHexString(arrData) + "\r\n");
-                }
-            }));
+                    SerialFormat sf = (spb.SerialMark == "串口1") ? ComboToSerialFormat(cbReceiveFormat1) : ComboToSerialFormat(cbReceiveFormat2);
+                    if ((sf == SerialFormat.String) || ((sf == SerialFormat.None) && SerialData.IsBytesToString(arrData)))
+                    {
+                        OutputInfo(SerialData.ToString(arrData), "接收", spb.SerialMark);
+                    }
+                    else
+                    {
+                        OutputInfo(SerialData.ToHexString(arrData), "接收", spb.SerialMark);
+                    }
+                }));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(spb.SerialMark + ":接收数据异常，" + e.Message);
+            }
         }
 
         /// <summary>
