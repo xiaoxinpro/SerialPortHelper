@@ -20,6 +20,10 @@ namespace SerialPostTool
         //串口助手类
         private SerialPortHelper serialPort1;
         private SerialPortHelper serialPort2;
+
+        //串口发送数据配置
+        private string pathSerialWriteConfig;
+        private SerialWriteConfig[] arrSerialWriteConfig;
         #endregion
 
         #region 初始化函数
@@ -43,6 +47,9 @@ namespace SerialPostTool
 
             //初始化UI
             InitUI();
+
+            //初始化发送数据配置
+            InitSerialWriteConfig();
         }
 
         /// <summary>
@@ -83,6 +90,27 @@ namespace SerialPostTool
             serialPort2.SerialWriteTimeInterval = 1;
             serialPort2.SerialReceviedLengthMax = 1024;
             serialPort2.SerialMark = "串口2";
+        }
+
+        /// <summary>
+        /// 初始化发送数据配置
+        /// </summary>
+        private void InitSerialWriteConfig()
+        {
+            pathSerialWriteConfig = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
+            arrSerialWriteConfig = Json.ReadFile<SerialWriteConfig[]>(pathSerialWriteConfig);
+
+            cbSerialWrite1.Items.Clear();
+            cbSerialWrite2.Items.Clear();
+            cbSerialWrite1.Items.Add("");
+            cbSerialWrite2.Items.Add("");
+            for (int i = 0; i < arrSerialWriteConfig.Length; i++)
+            {
+                cbSerialWrite1.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
+                cbSerialWrite2.Items.Add(arrSerialWriteConfig[i].Name + " -> " + arrSerialWriteConfig[i].Data);
+            }
+            cbSerialWrite1.SelectedIndex = 0;
+            cbSerialWrite2.SelectedIndex = 0;
         }
         #endregion
 
@@ -263,6 +291,33 @@ namespace SerialPostTool
         }
 
         /// <summary>
+        /// SerialFormat转Combo
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="format"></param>
+        private void SerialFormatToCombo(ComboBox cb, SerialFormat format)
+        {
+            if (cb.Items.Count == 3)
+            {
+                switch (format)
+                {
+                    case SerialFormat.None:
+                        cb.SelectedIndex = 0;
+                        break;
+                    case SerialFormat.Hex:
+                        cb.SelectedIndex = 2;
+                        break;
+                    case SerialFormat.String:
+                        cb.SelectedIndex = 1;
+                        break;
+                    default:
+                        cb.SelectedIndex = 0;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
         /// ComboBox转SerialFormat
         /// </summary>
         /// <param name="cb"></param>
@@ -285,6 +340,112 @@ namespace SerialPostTool
                     break;
             }
             return format;
+        }
+
+
+        /// <summary>
+        /// 快捷管理按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSerialWriteConfig_Click(object sender, EventArgs e)
+        {
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
+            SerialWriteConfig[] configArray = new SerialWriteConfig[10];
+            for (int i = 0; i < configArray.Length; i++)
+            {
+                configArray[i] = new SerialWriteConfig();
+                configArray[i].Name = "测试" + i;
+                configArray[i].Data = "2019年3月16日 14点40分 " + i;
+                configArray[i].Format = SerialFormat.String;
+                configArray[i].IsTimer = (i % 2 == 1);
+                configArray[i].Timer = 1200 + i;
+            }
+            Json.WriteFile(path, configArray);
+            SerialWriteConfig[] configArray2;
+            configArray2 = Json.ReadFile<SerialWriteConfig[]>(path);
+            Console.WriteLine(Json.ToString(configArray2));
+        }
+
+        /// <summary>
+        /// 选中快捷数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbSerialWrite_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox cbSerialWrite = (ComboBox)sender;
+            TextBox txtSerialWrite = (cbSerialWrite.Tag.ToString() == "1") ? txtSerialWrite1 : txtSerialWrite2;
+            ComboBox cbWriteFormat = (cbSerialWrite.Tag.ToString() == "1") ? cbWriteFormat1 : cbWriteFormat2;
+            CheckBox chkSerialWriteLoop = (cbSerialWrite.Tag.ToString() == "1") ? chkSerialWriteLoop1 : chkSerialWriteLoop2;
+            TextBox txtSerialWriteInterval = (cbSerialWrite.Tag.ToString() == "1") ? txtSerialWriteInterval1 : txtSerialWriteInterval2;
+            if (cbSerialWrite.SelectedIndex > 0)
+            {
+                SerialWriteConfig serialWriteConfig = arrSerialWriteConfig[cbSerialWrite.SelectedIndex - 1];
+                txtSerialWrite.Text = serialWriteConfig.Data;
+                SerialFormatToCombo(cbWriteFormat, serialWriteConfig.Format);
+                txtSerialWriteInterval.Text = serialWriteConfig.Timer.ToString();
+                chkSerialWriteLoop.Checked = serialWriteConfig.IsTimer;
+            }
+            else
+            {
+                chkSerialWriteLoop.Checked = false;
+            }
+        }
+
+        /// <summary>
+        /// 发送数据定时器中断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timSerialWrite_Tick(object sender, EventArgs e)
+        {
+            Timer timSerialWrite = (Timer)sender;
+            SerialPortHelper spb = (timSerialWrite.Tag.ToString() == "1") ? serialPort1 : serialPort2;
+            TextBox txt = (timSerialWrite.Tag.ToString() == "1") ? txtSerialWrite1 : txtSerialWrite2;
+            ComboBox cb = (timSerialWrite.Tag.ToString() == "1") ? cbWriteFormat1 : cbWriteFormat2;
+            CheckBox chkSerialWriteLoop = (timSerialWrite.Tag.ToString() == "1") ? chkSerialWriteLoop1 : chkSerialWriteLoop2;
+            if (!spb.IsOpen)
+            {
+                chkSerialWriteLoop.Checked = false;
+                MessageBox.Show("串口" + timSerialWrite.Tag.ToString() + "未开启，数据无法发送。", "发送失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                SerialPortDataWriteProcess(spb, txt.Text, ComboToSerialFormat(cb));
+                OutputInfo(txt.Text, "发送", spb.SerialMark);
+            }
+        }
+
+        /// <summary>
+        /// 定时发送数据开关
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkSerialWriteLoop_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkSerialWrite = (CheckBox)sender;
+            TextBox txtSerialWrite = (chkSerialWrite.Tag.ToString() == "1") ? txtSerialWrite1 : txtSerialWrite2;
+            TextBox txtSerialWriteInterval = (chkSerialWrite.Tag.ToString() == "1") ? txtSerialWriteInterval1 : txtSerialWriteInterval2;
+            ComboBox cbWriteFormat = (chkSerialWrite.Tag.ToString() == "1") ? cbWriteFormat1 : cbWriteFormat2;
+            Timer timSerialWrite = (chkSerialWrite.Tag.ToString() == "1") ? timSerialWrite1 : timSerialWrite2;
+            if (chkSerialWrite.Checked)
+            {
+                txtSerialWrite.Enabled = false;
+                txtSerialWriteInterval.Enabled = false;
+                cbWriteFormat.Enabled = false;
+                int interval = Convert.ToInt32(txtSerialWriteInterval.Text);
+                timSerialWrite.Interval = (interval > 20) ? interval : 20;
+                timSerialWrite.Enabled = true;
+            }
+            else
+            {
+                txtSerialWrite.Enabled = true;
+                txtSerialWriteInterval.Enabled = true;
+                cbWriteFormat.Enabled = true;
+                timSerialWrite.Enabled = false;
+            }
         }
         #endregion
 
@@ -410,5 +571,6 @@ namespace SerialPostTool
             MaxScrollPos = 0;
         }
         #endregion
+
     }
 }

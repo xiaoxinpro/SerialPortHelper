@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBoxSerial1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnSerialPortSwitch1 = new System.Windows.Forms.Button();
             this.cbParity1 = new System.Windows.Forms.ComboBox();
             this.cbStop1 = new System.Windows.Forms.ComboBox();
@@ -41,6 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxSerial2 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cbReceiveFormat2 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.btnSerialPortSwitch2 = new System.Windows.Forms.Button();
             this.cbParity2 = new System.Windows.Forms.ComboBox();
             this.cbStop2 = new System.Windows.Forms.ComboBox();
@@ -80,22 +87,18 @@
             this.btnSerialWriteConfig2 = new System.Windows.Forms.Button();
             this.btnSerialWrite2 = new System.Windows.Forms.Button();
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cbReceiveFormat2 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
+            this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
             this.groupBoxSerial1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupSerialReceived.SuspendLayout();
             this.splitSerialWrite.Panel1.SuspendLayout();
             this.splitSerialWrite.Panel2.SuspendLayout();
             this.splitSerialWrite.SuspendLayout();
             this.groupSerialWrite1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSerial1
@@ -121,6 +124,39 @@
             this.groupBoxSerial1.TabIndex = 0;
             this.groupBoxSerial1.TabStop = false;
             this.groupBoxSerial1.Text = "串口配置1";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbReceiveFormat1);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Location = new System.Drawing.Point(6, 250);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(152, 32);
+            this.panel1.TabIndex = 21;
+            // 
+            // cbReceiveFormat1
+            // 
+            this.cbReceiveFormat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReceiveFormat1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbReceiveFormat1.FormattingEnabled = true;
+            this.cbReceiveFormat1.Items.AddRange(new object[] {
+            "自动",
+            "字符串",
+            "十六进制"});
+            this.cbReceiveFormat1.Location = new System.Drawing.Point(76, 2);
+            this.cbReceiveFormat1.Name = "cbReceiveFormat1";
+            this.cbReceiveFormat1.Size = new System.Drawing.Size(65, 25);
+            this.cbReceiveFormat1.TabIndex = 8;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Location = new System.Drawing.Point(6, 4);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 20);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "接收格式：";
             // 
             // btnSerialPortSwitch1
             // 
@@ -285,6 +321,39 @@
             this.groupBoxSerial2.TabIndex = 1;
             this.groupBoxSerial2.TabStop = false;
             this.groupBoxSerial2.Text = "串口配置2";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cbReceiveFormat2);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Location = new System.Drawing.Point(6, 250);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(152, 32);
+            this.panel2.TabIndex = 22;
+            // 
+            // cbReceiveFormat2
+            // 
+            this.cbReceiveFormat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReceiveFormat2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbReceiveFormat2.FormattingEnabled = true;
+            this.cbReceiveFormat2.Items.AddRange(new object[] {
+            "自动",
+            "字符串",
+            "十六进制"});
+            this.cbReceiveFormat2.Location = new System.Drawing.Point(76, 2);
+            this.cbReceiveFormat2.Name = "cbReceiveFormat2";
+            this.cbReceiveFormat2.Size = new System.Drawing.Size(65, 25);
+            this.cbReceiveFormat2.TabIndex = 8;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label15.Location = new System.Drawing.Point(6, 4);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 20);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "接收格式：";
             // 
             // btnSerialPortSwitch2
             // 
@@ -568,8 +637,10 @@
             this.chkSerialWriteLoop1.Name = "chkSerialWriteLoop1";
             this.chkSerialWriteLoop1.Size = new System.Drawing.Size(93, 25);
             this.chkSerialWriteLoop1.TabIndex = 8;
+            this.chkSerialWriteLoop1.Tag = "1";
             this.chkSerialWriteLoop1.Text = "定时发送";
             this.chkSerialWriteLoop1.UseVisualStyleBackColor = true;
+            this.chkSerialWriteLoop1.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
             // 
             // txtSerialWriteInterval1
             // 
@@ -578,6 +649,7 @@
             this.txtSerialWriteInterval1.Name = "txtSerialWriteInterval1";
             this.txtSerialWriteInterval1.Size = new System.Drawing.Size(57, 26);
             this.txtSerialWriteInterval1.TabIndex = 7;
+            this.txtSerialWriteInterval1.Tag = "1";
             // 
             // labMs
             // 
@@ -601,6 +673,7 @@
             this.cbWriteFormat1.Name = "cbWriteFormat1";
             this.cbWriteFormat1.Size = new System.Drawing.Size(79, 28);
             this.cbWriteFormat1.TabIndex = 6;
+            this.cbWriteFormat1.Tag = "1";
             // 
             // label11
             // 
@@ -622,6 +695,8 @@
             this.cbSerialWrite1.Name = "cbSerialWrite1";
             this.cbSerialWrite1.Size = new System.Drawing.Size(193, 28);
             this.cbSerialWrite1.TabIndex = 4;
+            this.cbSerialWrite1.Tag = "1";
+            this.cbSerialWrite1.SelectionChangeCommitted += new System.EventHandler(this.cbSerialWrite_SelectionChangeCommitted);
             // 
             // btnSerialWriteConfig1
             // 
@@ -630,8 +705,10 @@
             this.btnSerialWriteConfig1.Name = "btnSerialWriteConfig1";
             this.btnSerialWriteConfig1.Size = new System.Drawing.Size(73, 31);
             this.btnSerialWriteConfig1.TabIndex = 3;
+            this.btnSerialWriteConfig1.Tag = "1";
             this.btnSerialWriteConfig1.Text = "快捷管理";
             this.btnSerialWriteConfig1.UseVisualStyleBackColor = true;
+            this.btnSerialWriteConfig1.Click += new System.EventHandler(this.btnSerialWriteConfig_Click);
             // 
             // btnSerialWrite1
             // 
@@ -688,8 +765,10 @@
             this.chkSerialWriteLoop2.Name = "chkSerialWriteLoop2";
             this.chkSerialWriteLoop2.Size = new System.Drawing.Size(93, 25);
             this.chkSerialWriteLoop2.TabIndex = 8;
+            this.chkSerialWriteLoop2.Tag = "2";
             this.chkSerialWriteLoop2.Text = "定时发送";
             this.chkSerialWriteLoop2.UseVisualStyleBackColor = true;
+            this.chkSerialWriteLoop2.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
             // 
             // txtSerialWriteInterval2
             // 
@@ -698,6 +777,7 @@
             this.txtSerialWriteInterval2.Name = "txtSerialWriteInterval2";
             this.txtSerialWriteInterval2.Size = new System.Drawing.Size(57, 26);
             this.txtSerialWriteInterval2.TabIndex = 7;
+            this.txtSerialWriteInterval2.Tag = "2";
             // 
             // label12
             // 
@@ -721,6 +801,7 @@
             this.cbWriteFormat2.Name = "cbWriteFormat2";
             this.cbWriteFormat2.Size = new System.Drawing.Size(79, 28);
             this.cbWriteFormat2.TabIndex = 6;
+            this.cbWriteFormat2.Tag = "2";
             // 
             // label13
             // 
@@ -742,6 +823,8 @@
             this.cbSerialWrite2.Name = "cbSerialWrite2";
             this.cbSerialWrite2.Size = new System.Drawing.Size(189, 28);
             this.cbSerialWrite2.TabIndex = 4;
+            this.cbSerialWrite2.Tag = "2";
+            this.cbSerialWrite2.SelectionChangeCommitted += new System.EventHandler(this.cbSerialWrite_SelectionChangeCommitted);
             // 
             // btnSerialWriteConfig2
             // 
@@ -750,6 +833,7 @@
             this.btnSerialWriteConfig2.Name = "btnSerialWriteConfig2";
             this.btnSerialWriteConfig2.Size = new System.Drawing.Size(73, 31);
             this.btnSerialWriteConfig2.TabIndex = 3;
+            this.btnSerialWriteConfig2.Tag = "2";
             this.btnSerialWriteConfig2.Text = "快捷管理";
             this.btnSerialWriteConfig2.UseVisualStyleBackColor = true;
             // 
@@ -779,71 +863,15 @@
             this.txtSerialWrite2.TabIndex = 2;
             this.txtSerialWrite2.Tag = "2";
             // 
-            // panel1
+            // timSerialWrite1
             // 
-            this.panel1.Controls.Add(this.cbReceiveFormat1);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(6, 250);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(152, 32);
-            this.panel1.TabIndex = 21;
+            this.timSerialWrite1.Tag = "1";
+            this.timSerialWrite1.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
-            // cbReceiveFormat1
+            // timSerialWrite2
             // 
-            this.cbReceiveFormat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReceiveFormat1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbReceiveFormat1.FormattingEnabled = true;
-            this.cbReceiveFormat1.Items.AddRange(new object[] {
-            "自动",
-            "字符串",
-            "十六进制"});
-            this.cbReceiveFormat1.Location = new System.Drawing.Point(76, 2);
-            this.cbReceiveFormat1.Name = "cbReceiveFormat1";
-            this.cbReceiveFormat1.Size = new System.Drawing.Size(65, 25);
-            this.cbReceiveFormat1.TabIndex = 8;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(6, 4);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 20);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "接收格式：";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.cbReceiveFormat2);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Location = new System.Drawing.Point(6, 250);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(152, 32);
-            this.panel2.TabIndex = 22;
-            // 
-            // cbReceiveFormat2
-            // 
-            this.cbReceiveFormat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReceiveFormat2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbReceiveFormat2.FormattingEnabled = true;
-            this.cbReceiveFormat2.Items.AddRange(new object[] {
-            "自动",
-            "字符串",
-            "十六进制"});
-            this.cbReceiveFormat2.Location = new System.Drawing.Point(76, 2);
-            this.cbReceiveFormat2.Name = "cbReceiveFormat2";
-            this.cbReceiveFormat2.Size = new System.Drawing.Size(65, 25);
-            this.cbReceiveFormat2.TabIndex = 8;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(6, 4);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 20);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "接收格式：";
+            this.timSerialWrite2.Tag = "2";
+            this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
             // frmMain
             // 
@@ -861,8 +889,12 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBoxSerial1.ResumeLayout(false);
             this.groupBoxSerial1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBoxSerial2.ResumeLayout(false);
             this.groupBoxSerial2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupSerialReceived.ResumeLayout(false);
             this.groupSerialReceived.PerformLayout();
             this.splitSerialWrite.Panel1.ResumeLayout(false);
@@ -872,10 +904,6 @@
             this.groupSerialWrite1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -940,6 +968,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox cbReceiveFormat2;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Timer timSerialWrite1;
+        private System.Windows.Forms.Timer timSerialWrite2;
     }
 }
 
