@@ -50,9 +50,10 @@ namespace SerialPostTool
         /// </summary>
         private void InitUI()
         {
-            //发送界面初始化
             cbWriteFormat1.SelectedIndex = 0;
             cbWriteFormat2.SelectedIndex = 0;
+            cbReceiveFormat1.SelectedIndex = 0;
+            cbReceiveFormat2.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -253,23 +254,34 @@ namespace SerialPostTool
             }
             else
             {
-                SerialFormat format;
-                switch (cb.SelectedIndex)
-                {
-                    case 1:
-                        format = SerialFormat.String;
-                        break;
-                    case 2:
-                        format = SerialFormat.Hex;
-                        break;
-                    case 0:
-                    default:
-                        format = SerialFormat.None;
-                        break;
-                }
-                SerialPortDataWriteProcess(spb, txt.Text, format);
+                SerialPortDataWriteProcess(spb, txt.Text, ComboToSerialFormat(cb));
                 OutputInfo(txt.Text, "发送", spb.SerialMark);
             }
+        }
+
+        /// <summary>
+        /// ComboBox转SerialFormat
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <returns></returns>
+        private SerialFormat ComboToSerialFormat(ComboBox cb)
+        {
+            SerialFormat format = SerialFormat.None;
+            if (cb.Items.Count == 3)
+            switch (cb.SelectedIndex)
+            {
+                case 1:
+                    format = SerialFormat.String;
+                    break;
+                case 2:
+                    format = SerialFormat.Hex;
+                    break;
+                case 0:
+                default:
+                    format = SerialFormat.None;
+                    break;
+            }
+            return format;
         }
         #endregion
 
@@ -395,6 +407,5 @@ namespace SerialPostTool
             MaxScrollPos = 0;
         }
         #endregion
-
     }
 }
