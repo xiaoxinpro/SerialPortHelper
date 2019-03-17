@@ -7,11 +7,11 @@ namespace SerialPostTool
 {
     public class SerialWriteConfig
     {
+        public static string Path { get; set; }
         public SerialWriteConfig()
         {
 
         }
-
         public string Name { get; set; }
         public string Data { get; set; }
         public SerialPortHelperLib.SerialFormat Format { get; set; }
