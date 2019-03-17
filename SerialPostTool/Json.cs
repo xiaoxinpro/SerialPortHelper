@@ -60,7 +60,14 @@ namespace SerialPostTool
             }
             using (StreamReader sr = new StreamReader(path, Encoding.UTF8))
             {
-                return ToObject<T>(sr.ReadLine().Trim().ToString());
+                try
+                {
+                    return ToObject<T>(sr.ReadLine().Trim().ToString());
+                }
+                catch (Exception)
+                {
+                    return json.Deserialize<T>("");
+                }
             }
         }
     }
