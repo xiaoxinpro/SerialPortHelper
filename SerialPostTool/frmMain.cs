@@ -24,6 +24,9 @@ namespace SerialPostTool
         //串口发送数据配置
         private string pathSerialWriteConfig;
         private SerialWriteConfig[] arrSerialWriteConfig;
+
+        //定义配件界面
+        private frmConfig FormConfig;
         #endregion
 
         #region 初始化函数
@@ -97,8 +100,12 @@ namespace SerialPostTool
         /// </summary>
         private void InitSerialWriteConfig()
         {
-            pathSerialWriteConfig = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
-            arrSerialWriteConfig = Json.ReadFile<SerialWriteConfig[]>(pathSerialWriteConfig);
+            SerialWriteConfig.Path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
+            arrSerialWriteConfig = Json.ReadFile<SerialWriteConfig[]>(SerialWriteConfig.Path);
+            if (arrSerialWriteConfig == null)
+            {
+                arrSerialWriteConfig = new SerialWriteConfig[0];
+            }
             try
             {
                 cbSerialWrite1.Items.Clear();
@@ -299,80 +306,33 @@ namespace SerialPostTool
         }
 
         /// <summary>
-        /// SerialFormat转Combo
-        /// </summary>
-        /// <param name="cb"></param>
-        /// <param name="format"></param>
-        private void SerialFormatToCombo(ComboBox cb, SerialFormat format)
-        {
-            if (cb.Items.Count == 3)
-            {
-                switch (format)
-                {
-                    case SerialFormat.None:
-                        cb.SelectedIndex = 0;
-                        break;
-                    case SerialFormat.Hex:
-                        cb.SelectedIndex = 2;
-                        break;
-                    case SerialFormat.String:
-                        cb.SelectedIndex = 1;
-                        break;
-                    default:
-                        cb.SelectedIndex = 0;
-                        break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// ComboBox转SerialFormat
-        /// </summary>
-        /// <param name="cb"></param>
-        /// <returns></returns>
-        private SerialFormat ComboToSerialFormat(ComboBox cb)
-        {
-            SerialFormat format = SerialFormat.None;
-            if (cb.Items.Count == 3)
-            switch (cb.SelectedIndex)
-            {
-                case 1:
-                    format = SerialFormat.String;
-                    break;
-                case 2:
-                    format = SerialFormat.Hex;
-                    break;
-                case 0:
-                default:
-                    format = SerialFormat.None;
-                    break;
-            }
-            return format;
-        }
-
-
-        /// <summary>
         /// 快捷管理按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSerialWriteConfig_Click(object sender, EventArgs e)
         {
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
-            SerialWriteConfig[] configArray = new SerialWriteConfig[10];
-            for (int i = 0; i < configArray.Length; i++)
+            if (FormConfig != null)
             {
-                configArray[i] = new SerialWriteConfig();
-                configArray[i].Name = "测试" + i;
-                configArray[i].Data = "2019年3月16日 14点40分 " + i;
-                configArray[i].Format = SerialFormat.String;
-                configArray[i].IsTimer = (i % 2 == 1);
-                configArray[i].Timer = 1200 + i;
+                FormConfig.Close();
             }
-            Json.WriteFile(path, configArray);
-            SerialWriteConfig[] configArray2;
-            configArray2 = Json.ReadFile<SerialWriteConfig[]>(path);
-            Console.WriteLine(Json.ToString(configArray2));
+            FormConfig = new frmConfig(arrSerialWriteConfig, cbSerialWrite1, cbSerialWrite2);
+            FormConfig.Show();
+            //string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
+            //SerialWriteConfig[] configArray = new SerialWriteConfig[10];
+            //for (int i = 0; i < configArray.Length; i++)
+            //{
+            //    configArray[i] = new SerialWriteConfig();
+            //    configArray[i].Name = "测试" + i;
+            //    configArray[i].Data = "2019年3月16日 14点40分 " + i;
+            //    configArray[i].Format = SerialFormat.String;
+            //    configArray[i].IsTimer = (i % 2 == 1);
+            //    configArray[i].Timer = 1200 + i;
+            //}
+            //Json.WriteFile(path, configArray);
+            //SerialWriteConfig[] configArray2;
+            //configArray2 = Json.ReadFile<SerialWriteConfig[]>(path);
+            //Console.WriteLine(Json.ToString(configArray2));
         }
 
         /// <summary>
@@ -579,6 +539,59 @@ namespace SerialPostTool
             MaxScrollPos = 0;
         }
         #endregion
+
+
+        /// <summary>
+        /// SerialFormat转Combo
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="format"></param>
+        public static void SerialFormatToCombo(ComboBox cb, SerialFormat format)
+        {
+            if (cb.Items.Count == 3)
+            {
+                switch (format)
+                {
+                    case SerialFormat.None:
+                        cb.SelectedIndex = 0;
+                        break;
+                    case SerialFormat.Hex:
+                        cb.SelectedIndex = 2;
+                        break;
+                    case SerialFormat.String:
+                        cb.SelectedIndex = 1;
+                        break;
+                    default:
+                        cb.SelectedIndex = 0;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// ComboBox转SerialFormat
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <returns></returns>
+        public static SerialFormat ComboToSerialFormat(ComboBox cb)
+        {
+            SerialFormat format = SerialFormat.None;
+            if (cb.Items.Count == 3)
+                switch (cb.SelectedIndex)
+                {
+                    case 1:
+                        format = SerialFormat.String;
+                        break;
+                    case 2:
+                        format = SerialFormat.Hex;
+                        break;
+                    case 0:
+                    default:
+                        format = SerialFormat.None;
+                        break;
+                }
+            return format;
+        }
 
     }
 }

@@ -836,6 +836,7 @@
             this.btnSerialWriteConfig2.Tag = "2";
             this.btnSerialWriteConfig2.Text = "快捷管理";
             this.btnSerialWriteConfig2.UseVisualStyleBackColor = true;
+            this.btnSerialWriteConfig2.Click += new System.EventHandler(this.btnSerialWriteConfig_Click);
             // 
             // btnSerialWrite2
             // 
