@@ -14,7 +14,9 @@ SerialPortHelper是一款基于C#的串口助手类库。
 注意：目前处于开发阶段无法用于生产，有想法或建议请[Issues](https://github.com/xiaoxinpro/SerialPortHelper/issues)。
 
 ## 使用实例
-详见 [SerialPortHelperTest](https://github.com/xiaoxinpro/SerialPortHelper/tree/master/SerialPortHelperTest) 串口助手类库测试项目，主要用于演示SerialPortHelper类库的各项功能与测试任务。
+* [SerialPortHelperTest](https://github.com/xiaoxinpro/SerialPortHelper/tree/master/SerialPortHelperTest) 串口助手类库测试项目，主要用于演示SerialPortHelper类库的各项功能与测试任务。
+
+* [SerialPostTool](https://github.com/xiaoxinpro/SerialPortHelper/tree/master/SerialPostTool) 串口调试工具，基于SerialPortHelper类库开发的高级串口调试工具，下载后可直接使用。
 
 ## 快速上手
 这里只列举部分功能，详细操作文档请参考[使用文档](https://github.com/xiaoxinpro/SerialPortHelper/wiki)
