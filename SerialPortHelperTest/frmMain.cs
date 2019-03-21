@@ -229,6 +229,7 @@ namespace SerialPortHelperTest
         /// <summary>
         /// 串口错误事件
         /// </summary>
+        /// <param name="sender">串口助手类对象</param>
         /// <param name="enumError">错误枚举</param>
         /// <param name="strError">错误内容</param>
         private void SerialPortErrorProcess(object sender, enumSerialError enumError, string strError)
