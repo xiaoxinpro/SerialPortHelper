@@ -540,6 +540,7 @@
             this.btnInfoConfig.TabIndex = 3;
             this.btnInfoConfig.Text = "更多设置";
             this.btnInfoConfig.UseVisualStyleBackColor = true;
+            this.btnInfoConfig.Click += new System.EventHandler(this.btnInfoConfig_Click);
             // 
             // btnInfoClear
             // 
@@ -939,7 +940,6 @@
         private System.Windows.Forms.SplitContainer splitSerialWrite;
         private System.Windows.Forms.GroupBox groupSerialWrite1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbSerialWrite1;
         private System.Windows.Forms.Button btnSerialWriteConfig1;
         private System.Windows.Forms.Button btnSerialWrite1;
         private System.Windows.Forms.TextBox txtSerialWrite1;
@@ -953,7 +953,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbWriteFormat2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbSerialWrite2;
         private System.Windows.Forms.Button btnSerialWriteConfig2;
         private System.Windows.Forms.Button btnSerialWrite2;
         private System.Windows.Forms.TextBox txtSerialWrite2;
@@ -971,6 +970,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Timer timSerialWrite1;
         private System.Windows.Forms.Timer timSerialWrite2;
+        private System.Windows.Forms.ComboBox cbSerialWrite1;
+        private System.Windows.Forms.ComboBox cbSerialWrite2;
     }
 }
 

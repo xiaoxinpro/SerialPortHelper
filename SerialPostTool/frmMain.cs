@@ -12,7 +12,12 @@ namespace SerialPostTool
 {
     public partial class frmMain : Form
     {
-        #region 字段
+        #region 公共字段
+        //串口发送数据配置
+        public SerialWriteConfig[] arrSerialWriteConfig;
+        #endregion
+
+        #region 私有字段
         //串口配置类
         private ConfigCom configCom1;
         private ConfigCom configCom2;
@@ -20,10 +25,6 @@ namespace SerialPostTool
         //串口助手类
         private SerialPortHelper serialPort1;
         private SerialPortHelper serialPort2;
-
-        //串口发送数据配置
-        private string pathSerialWriteConfig;
-        private SerialWriteConfig[] arrSerialWriteConfig;
 
         //定义配件界面
         private frmConfig FormConfig;
@@ -98,7 +99,7 @@ namespace SerialPostTool
         /// <summary>
         /// 初始化发送数据配置
         /// </summary>
-        private void InitSerialWriteConfig()
+        public void InitSerialWriteConfig()
         {
             SerialWriteConfig.Path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
             arrSerialWriteConfig = Json.ReadFile<SerialWriteConfig[]>(SerialWriteConfig.Path);
@@ -233,6 +234,7 @@ namespace SerialPostTool
             Button btn = (Button)sender;
             ConfigCom cc = (btn.Tag.ToString() == "1") ? configCom1 : configCom2;
             SerialPortHelper spb = (btn.Tag.ToString() == "1") ? serialPort1 : serialPort2;
+            CheckBox chkTimer = (btn.Tag.ToString() == "1") ? chkSerialWriteLoop1 : chkSerialWriteLoop2;
             GroupBox grp = btn.Parent as GroupBox;
             if (btn.Text == "打开串口")
             {
@@ -262,6 +264,7 @@ namespace SerialPostTool
                     Console.WriteLine("关闭端口成功。");
                     btn.Text = "打开串口";
                     GroupBoxEnable(grp, true);
+                    chkTimer.Checked = false;
                 }
             }
         }
@@ -316,23 +319,8 @@ namespace SerialPostTool
             {
                 FormConfig.Close();
             }
-            FormConfig = new frmConfig(arrSerialWriteConfig, cbSerialWrite1, cbSerialWrite2);
+            FormConfig = new frmConfig(this);
             FormConfig.Show();
-            //string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialWriteConfig.config";
-            //SerialWriteConfig[] configArray = new SerialWriteConfig[10];
-            //for (int i = 0; i < configArray.Length; i++)
-            //{
-            //    configArray[i] = new SerialWriteConfig();
-            //    configArray[i].Name = "测试" + i;
-            //    configArray[i].Data = "2019年3月16日 14点40分 " + i;
-            //    configArray[i].Format = SerialFormat.String;
-            //    configArray[i].IsTimer = (i % 2 == 1);
-            //    configArray[i].Timer = 1200 + i;
-            //}
-            //Json.WriteFile(path, configArray);
-            //SerialWriteConfig[] configArray2;
-            //configArray2 = Json.ReadFile<SerialWriteConfig[]>(path);
-            //Console.WriteLine(Json.ToString(configArray2));
         }
 
         /// <summary>
@@ -538,9 +526,24 @@ namespace SerialPostTool
             IsSrollFollow = true;
             MaxScrollPos = 0;
         }
+
+        /// <summary>
+        /// 更多配置按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInfoConfig_Click(object sender, EventArgs e)
+        {
+            if (FormConfig != null)
+            {
+                FormConfig.Close();
+            }
+            FormConfig = new frmConfig(this, 1);
+            FormConfig.Show();
+        }
         #endregion
 
-
+        #region 静态函数
         /// <summary>
         /// SerialFormat转Combo
         /// </summary>
@@ -592,6 +595,8 @@ namespace SerialPostTool
                 }
             return format;
         }
+
+        #endregion
 
     }
 }
