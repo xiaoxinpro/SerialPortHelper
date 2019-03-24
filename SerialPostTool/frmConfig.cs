@@ -12,20 +12,19 @@ namespace SerialPostTool
     public partial class frmConfig : Form
     {
         #region 字段
-        private SerialWriteConfig[] arrSerialWriteConfigs;
-        private ComboBox cbSerialWrite1;
-        private ComboBox cbSerialWrite2;
+        private frmMain FormMain;
         #endregion
 
         #region 初始化
-        public frmConfig(SerialWriteConfig[] writeConfig, ComboBox cb1, ComboBox cb2)
+        public frmConfig(frmMain main, int tab = 0)
         {
             InitializeComponent();
 
             //初始化字段
-            arrSerialWriteConfigs = writeConfig;
-            cbSerialWrite1 = cb1;
-            cbSerialWrite2 = cb2;
+            FormMain = main;
+
+            //切换初始Tab
+            tabConfig.SelectedIndex = tab;
         }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace SerialPostTool
         {
             //初始化快捷管理UI
             InitSerialWriteUI();
-
+            
             //初始化表格
             InitListViewWriteConfig(listViewWriteConfig);
         }
@@ -76,12 +75,12 @@ namespace SerialPostTool
             listView.BeginUpdate();
             try
             {
-                for (int i = 0; i < arrSerialWriteConfigs.Length; i++)
+                for (int i = 0; i < FormMain.arrSerialWriteConfig.Length; i++)
                 {
                     ListViewItem listViewItem = new ListViewItem();
                     listViewItem.Text = (i + 1).ToString();
-                    listViewItem.SubItems.Add(arrSerialWriteConfigs[i].Name);
-                    listViewItem.SubItems.Add(arrSerialWriteConfigs[i].Data);
+                    listViewItem.SubItems.Add(FormMain.arrSerialWriteConfig[i].Name);
+                    listViewItem.SubItems.Add(FormMain.arrSerialWriteConfig[i].Data);
                     listView.Items.Add(listViewItem);
                 }
             }
@@ -105,6 +104,17 @@ namespace SerialPostTool
             ListView listView = listViewWriteConfig;
             SerialWriteConfig serialWriteConfig = new SerialWriteConfig();
 
+            if (txtWriteConfigName.Text.Trim() == "")
+            {
+                MessageBox.Show("名称不能为空，请重新输入。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (txtWriteConfigData.Text.Trim() == "")
+            {
+                MessageBox.Show("数据不能为空，请重新输入。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             serialWriteConfig.Name = txtWriteConfigName.Text;
             serialWriteConfig.Data = txtWriteConfigData.Text;
             serialWriteConfig.Format = frmMain.ComboToSerialFormat(cbWriteConfigFormat);
@@ -113,19 +123,31 @@ namespace SerialPostTool
 
             if (listView.SelectedIndices.Count > 0)
             {
+                int selectIndex = listView.SelectedIndices[0];
+                int getIndex = SerialWriteConfig.GetIndex(FormMain.arrSerialWriteConfig, txtWriteConfigName.Text.Trim());
+                if (selectIndex != getIndex && getIndex >= 0)
+                {
+                    MessageBox.Show("名称已经存在，请重新输入。", "冲突", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //修改数据
-                int i = listView.SelectedIndices[0];
-                EditWriteConfig(serialWriteConfig, i);
+                EditWriteConfig(serialWriteConfig, selectIndex);
             }
             else
             {
+                if (SerialWriteConfig.GetIndex(FormMain.arrSerialWriteConfig, txtWriteConfigName.Text.Trim()) >= 0)
+                {
+                    MessageBox.Show("名称已经存在，请重新输入。", "冲突", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //添加数据
                 AddWriteConfig(serialWriteConfig);
             }
 
-            Json.WriteFile(SerialWriteConfig.Path, arrSerialWriteConfigs);
+            Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
             InitListViewWriteConfig(listViewWriteConfig);
             InitSerialWriteUI();
+            FormMain.InitSerialWriteConfig();
         }
 
         /// <summary>
@@ -134,9 +156,9 @@ namespace SerialPostTool
         /// <param name="serialWriteConfig"></param>
         private void AddWriteConfig(SerialWriteConfig serialWriteConfig)
         {
-            List<SerialWriteConfig> listSerialWriteConfigs = arrSerialWriteConfigs.ToList();
+            List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
             listSerialWriteConfigs.Add(serialWriteConfig);
-            arrSerialWriteConfigs = listSerialWriteConfigs.ToArray();
+            FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
         }
 
         /// <summary>
@@ -146,11 +168,43 @@ namespace SerialPostTool
         /// <param name="index"></param>
         private void EditWriteConfig(SerialWriteConfig serialWriteConfig, int index)
         {
-            arrSerialWriteConfigs[index].Name = serialWriteConfig.Name;
-            arrSerialWriteConfigs[index].Data = serialWriteConfig.Data;
-            arrSerialWriteConfigs[index].Format = serialWriteConfig.Format;
-            arrSerialWriteConfigs[index].IsTimer = serialWriteConfig.IsTimer;
-            arrSerialWriteConfigs[index].Timer = serialWriteConfig.Timer;
+            FormMain.arrSerialWriteConfig[index].Name = serialWriteConfig.Name;
+            FormMain.arrSerialWriteConfig[index].Data = serialWriteConfig.Data;
+            FormMain.arrSerialWriteConfig[index].Format = serialWriteConfig.Format;
+            FormMain.arrSerialWriteConfig[index].IsTimer = serialWriteConfig.IsTimer;
+            FormMain.arrSerialWriteConfig[index].Timer = serialWriteConfig.Timer;
+        }
+
+        /// <summary>
+        /// 删除快捷发送数据
+        /// </summary>
+        /// <param name="index"></param>
+        private void DeleteWriteConfig(int index)
+        {
+            if (index >= 0 && index < FormMain.arrSerialWriteConfig.Length)
+            {
+                List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
+                listSerialWriteConfigs.RemoveAt(index);
+                FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// 快捷数据表格双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listViewWriteConfig_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListView listView = (ListView)sender;
+            if (listView.SelectedIndices.Count > 0)
+            {
+                DeleteWriteConfig(listView.SelectedIndices[0]);
+                Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
+                InitSerialWriteUI();
+                InitListViewWriteConfig(listView);
+                FormMain.InitSerialWriteConfig();
+            }
         }
 
         /// <summary>
@@ -165,7 +219,7 @@ namespace SerialPostTool
             {
                 //修改数据
                 int i = listView.SelectedIndices[0];
-                LoadSerialWriteUI(arrSerialWriteConfigs[i]);
+                LoadSerialWriteUI(FormMain.arrSerialWriteConfig[i]);
             }
             else
             {
