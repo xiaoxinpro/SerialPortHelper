@@ -13,6 +13,8 @@ namespace SerialPostTool
     {
         #region 字段
         private frmMain FormMain;
+        private FontDialog InfoFont = new FontDialog();
+        private ColorDialog InfoFontColor = new ColorDialog();
         #endregion
 
         #region 初始化
@@ -240,6 +242,39 @@ namespace SerialPostTool
             chkWriteConfigTimer.Checked = serialWriteConfig.IsTimer;
             numWriteConfigTimer.Value = serialWriteConfig.Timer;
             btnWriteConfigSave.Text = "修改";
+        }
+        #endregion
+
+        #region 显示设置
+        /// <summary>
+        /// 字体选择按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnInfoFont_Click(object sender, EventArgs e)
+        {
+            InfoFont.Font = txtInfoFont.Font;
+            DialogResult result = InfoFont.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtInfoFont.Font = InfoFont.Font;
+            }
+        }
+
+        /// <summary>
+        /// 字体颜色按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnInfoFontColor_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            InfoFontColor.Color = btn.ForeColor;
+            DialogResult result = InfoFontColor.ShowDialog(btn);
+            if (result == DialogResult.OK)
+            {
+                btn.ForeColor = InfoFontColor.Color;
+            }
         }
         #endregion
 
