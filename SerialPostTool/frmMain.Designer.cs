@@ -570,6 +570,8 @@
             // 
             this.chkShowSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Checked = true;
+            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.chkShowSend.Location = new System.Drawing.Point(87, 261);
             this.chkShowSend.Name = "chkShowSend";

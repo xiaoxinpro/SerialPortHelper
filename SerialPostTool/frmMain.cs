@@ -425,6 +425,10 @@ namespace SerialPostTool
                     break;
                 case "发送":
                     color = Color.Blue;
+                    if (chkShowSend.Checked == false)
+                    {
+                        return ;
+                    }
                     break;
                 case "接收":
                     color = Color.Green;
