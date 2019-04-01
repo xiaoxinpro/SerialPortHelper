@@ -60,6 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RichTextBoxExtension.cs" />
+    <Compile Include="SerialInfoConfig.cs" />
     <Compile Include="SerialWriteConfig.cs" />
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
