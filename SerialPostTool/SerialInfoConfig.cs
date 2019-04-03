@@ -11,7 +11,7 @@ namespace SerialPostTool
         public static string Path { get; set; }
         public SerialInfoConfig()
         {
-            ResetConfig();
+
         }
 
         public Font Font;

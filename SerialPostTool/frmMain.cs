@@ -15,6 +15,7 @@ namespace SerialPostTool
         #region 公共字段
         //串口发送数据配置
         public SerialWriteConfig[] arrSerialWriteConfig;
+        public SerialInfoConfig objSerialInfoConfig;
         #endregion
 
         #region 私有字段
@@ -54,6 +55,9 @@ namespace SerialPostTool
 
             //初始化发送数据配置
             InitSerialWriteConfig();
+
+            //初始化串口消息配置
+            InitSerialInfoConfig();
         }
 
         /// <summary>
@@ -126,6 +130,21 @@ namespace SerialPostTool
                 cbSerialWrite1.Items.Clear();
                 cbSerialWrite2.Items.Clear();
                 Console.WriteLine("未加载串口发送配置：" + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 初始化串口消息配置
+        /// </summary>
+        public void InitSerialInfoConfig()
+        {
+            SerialInfoConfig.Path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialInfoConfig.config";
+            //objSerialInfoConfig = Json.ReadFile<SerialInfoConfig[]>(SerialInfoConfig.Path);
+            objSerialInfoConfig = (SerialInfoConfig)Json.ReadFile(SerialInfoConfig.Path, new SerialInfoConfig());
+            if (objSerialInfoConfig == null)
+            {
+                objSerialInfoConfig = new SerialInfoConfig();
+                objSerialInfoConfig.ResetConfig();
             }
         }
         #endregion
