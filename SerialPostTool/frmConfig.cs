@@ -41,6 +41,9 @@ namespace SerialPostTool
             
             //初始化表格
             InitListViewWriteConfig(listViewWriteConfig);
+
+            //初始化串口消息UI
+            InitSerialInfoUI(FormMain.objSerialInfoConfig);
         }
 
         /// <summary>
@@ -91,6 +94,18 @@ namespace SerialPostTool
                 listView.Items.Clear();
             }
             listView.EndUpdate();
+        }
+
+        /// <summary>
+        /// 初始化串口消息UI
+        /// </summary>
+        private void InitSerialInfoUI(SerialInfoConfig serialInfoConfig)
+        {
+            txtInfoFont.Font = serialInfoConfig.Font;
+            BtnInfoFontColor1.ForeColor = serialInfoConfig.Color1Write;
+            BtnInfoFontColor2.ForeColor = serialInfoConfig.Color1Receive;
+            BtnInfoFontColor3.ForeColor = serialInfoConfig.Color2Write;
+            BtnInfoFontColor4.ForeColor = serialInfoConfig.Color2Receive;
         }
         #endregion
 
@@ -258,6 +273,8 @@ namespace SerialPostTool
             if (result == DialogResult.OK)
             {
                 txtInfoFont.Font = InfoFont.Font;
+                FormMain.objSerialInfoConfig.Font = InfoFont.Font;
+                Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
             }
         }
 
@@ -274,6 +291,24 @@ namespace SerialPostTool
             if (result == DialogResult.OK)
             {
                 btn.ForeColor = InfoFontColor.Color;
+                switch (btn.Tag.ToString())
+                {
+                    case "1":
+                        FormMain.objSerialInfoConfig.Color1Write = InfoFontColor.Color;
+                        break;
+                    case "2":
+                        FormMain.objSerialInfoConfig.Color1Receive = InfoFontColor.Color;
+                        break;
+                    case "3":
+                        FormMain.objSerialInfoConfig.Color2Write = InfoFontColor.Color;
+                        break;
+                    case "4":
+                        FormMain.objSerialInfoConfig.Color2Receive = InfoFontColor.Color;
+                        break;
+                    default:
+                        break;
+                }
+                Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
             }
         }
         #endregion
