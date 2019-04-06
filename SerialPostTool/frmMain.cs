@@ -443,14 +443,14 @@ namespace SerialPostTool
                     color = Color.Black;
                     break;
                 case "发送":
-                    color = Color.Blue;
+                    color = (strMark == "串口1") ? objSerialInfoConfig.Color1Write : objSerialInfoConfig.Color2Write;
                     if (chkShowSend.Checked == false)
                     {
                         return ;
                     }
                     break;
                 case "接收":
-                    color = Color.Green;
+                    color = (strMark == "串口1") ? objSerialInfoConfig.Color1Receive : objSerialInfoConfig.Color2Receive;
                     break;
                 case "错误":
                     color = Color.Red;
