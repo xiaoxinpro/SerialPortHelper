@@ -24,17 +24,6 @@ namespace SerialPostTool
         }
 
         /// <summary>
-        /// 从一个Json串生成对象信息
-        /// </summary>
-        /// <param name="jsonString"></param>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static object JsonToObject(string jsonString, object obj)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString, obj.GetType());
-        }
-
-        /// <summary>
         /// 从一个Json串生成对象信息(包含DataTable和List<>集合对象)
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -85,24 +74,6 @@ namespace SerialPostTool
                 {
                     return JsonToObject<T>("");
                 }
-            }
-        }
-
-        /// <summary>
-        /// 读取文件
-        /// </summary>
-        /// <param name="path">路径</param>
-        /// <param name="obj">对象原型</param>
-        /// <returns></returns>
-        public static object ReadFile(string path, object obj)
-        {
-            if (!File.Exists(path))
-            {
-                return null;
-            }
-            using (StreamReader sr = new StreamReader(path, Encoding.UTF8))
-            {
-                return JsonToObject(sr.ReadLine().Trim().ToString(), obj);
             }
         }
     }

@@ -139,8 +139,7 @@ namespace SerialPostTool
         public void InitSerialInfoConfig()
         {
             SerialInfoConfig.Path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialInfoConfig.config";
-            //objSerialInfoConfig = Json.ReadFile<SerialInfoConfig[]>(SerialInfoConfig.Path);
-            objSerialInfoConfig = (SerialInfoConfig)Json.ReadFile(SerialInfoConfig.Path, new SerialInfoConfig());
+            objSerialInfoConfig = Json.ReadFile<SerialInfoConfig>(SerialInfoConfig.Path);
             if (objSerialInfoConfig == null)
             {
                 objSerialInfoConfig = new SerialInfoConfig();
