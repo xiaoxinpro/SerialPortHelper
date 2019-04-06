@@ -432,6 +432,7 @@ namespace SerialPostTool
         /// <param name="strMark">显示备注</param>
         private void OutputInfo(string strData, string strTitle = "提示", string strMark = "串口1")
         {
+            Font font = objSerialInfoConfig.Font;
             Color color = Color.Black;
             switch (strTitle)
             {
@@ -473,7 +474,7 @@ namespace SerialPostTool
             {
                 strHead += "[" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fff") + "]";
             }
-            richTextInfo.AppendTextColorful(strHead + strData, color);
+            richTextInfo.AppendTextColorFont(strHead + strData, color, font);
         }
 
         /// <summary>
