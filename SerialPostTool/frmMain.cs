@@ -352,13 +352,13 @@ namespace SerialPostTool
             TextBox txtSerialWrite = (cbSerialWrite.Tag.ToString() == "1") ? txtSerialWrite1 : txtSerialWrite2;
             ComboBox cbWriteFormat = (cbSerialWrite.Tag.ToString() == "1") ? cbWriteFormat1 : cbWriteFormat2;
             CheckBox chkSerialWriteLoop = (cbSerialWrite.Tag.ToString() == "1") ? chkSerialWriteLoop1 : chkSerialWriteLoop2;
-            TextBox txtSerialWriteInterval = (cbSerialWrite.Tag.ToString() == "1") ? txtSerialWriteInterval1 : txtSerialWriteInterval2;
+            NumericUpDown numSerialWriteInterval = (cbSerialWrite.Tag.ToString() == "1") ? numSerialWriteInterval1 : numSerialWriteInterval2;
             if (cbSerialWrite.SelectedIndex > 0)
             {
                 SerialWriteConfig serialWriteConfig = arrSerialWriteConfig[cbSerialWrite.SelectedIndex - 1];
                 txtSerialWrite.Text = serialWriteConfig.Data;
                 SerialFormatToCombo(cbWriteFormat, serialWriteConfig.Format);
-                txtSerialWriteInterval.Text = serialWriteConfig.Timer.ToString();
+                numSerialWriteInterval.Value = Convert.ToDecimal(serialWriteConfig.Timer);
                 chkSerialWriteLoop.Checked = serialWriteConfig.IsTimer;
             }
             else
@@ -401,22 +401,22 @@ namespace SerialPostTool
         {
             CheckBox chkSerialWrite = (CheckBox)sender;
             TextBox txtSerialWrite = (chkSerialWrite.Tag.ToString() == "1") ? txtSerialWrite1 : txtSerialWrite2;
-            TextBox txtSerialWriteInterval = (chkSerialWrite.Tag.ToString() == "1") ? txtSerialWriteInterval1 : txtSerialWriteInterval2;
+            NumericUpDown numSerialWriteInterval = (chkSerialWrite.Tag.ToString() == "1") ? numSerialWriteInterval1 : numSerialWriteInterval2;
             ComboBox cbWriteFormat = (chkSerialWrite.Tag.ToString() == "1") ? cbWriteFormat1 : cbWriteFormat2;
             Timer timSerialWrite = (chkSerialWrite.Tag.ToString() == "1") ? timSerialWrite1 : timSerialWrite2;
             if (chkSerialWrite.Checked)
             {
                 txtSerialWrite.Enabled = false;
-                txtSerialWriteInterval.Enabled = false;
+                numSerialWriteInterval.Enabled = false;
                 cbWriteFormat.Enabled = false;
-                int interval = Convert.ToInt32(txtSerialWriteInterval.Text);
+                int interval = Convert.ToInt32(numSerialWriteInterval.Text);
                 timSerialWrite.Interval = (interval > 20) ? interval : 20;
                 timSerialWrite.Enabled = true;
             }
             else
             {
                 txtSerialWrite.Enabled = true;
-                txtSerialWriteInterval.Enabled = true;
+                numSerialWriteInterval.Enabled = true;
                 cbWriteFormat.Enabled = true;
                 timSerialWrite.Enabled = false;
             }

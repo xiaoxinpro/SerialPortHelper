@@ -69,7 +69,6 @@
             this.splitSerialWrite = new System.Windows.Forms.SplitContainer();
             this.groupSerialWrite1 = new System.Windows.Forms.GroupBox();
             this.chkSerialWriteLoop1 = new System.Windows.Forms.CheckBox();
-            this.txtSerialWriteInterval1 = new System.Windows.Forms.TextBox();
             this.labMs = new System.Windows.Forms.Label();
             this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -79,7 +78,6 @@
             this.txtSerialWrite1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSerialWriteLoop2 = new System.Windows.Forms.CheckBox();
-            this.txtSerialWriteInterval2 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cbWriteFormat2 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -89,6 +87,8 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
+            this.numSerialWriteInterval1 = new System.Windows.Forms.NumericUpDown();
+            this.numSerialWriteInterval2 = new System.Windows.Forms.NumericUpDown();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
@@ -99,6 +99,8 @@
             this.splitSerialWrite.SuspendLayout();
             this.groupSerialWrite1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxSerial1
@@ -616,8 +618,8 @@
             this.groupSerialWrite1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupSerialWrite1.Controls.Add(this.numSerialWriteInterval1);
             this.groupSerialWrite1.Controls.Add(this.chkSerialWriteLoop1);
-            this.groupSerialWrite1.Controls.Add(this.txtSerialWriteInterval1);
             this.groupSerialWrite1.Controls.Add(this.labMs);
             this.groupSerialWrite1.Controls.Add(this.cbWriteFormat1);
             this.groupSerialWrite1.Controls.Add(this.label11);
@@ -644,15 +646,6 @@
             this.chkSerialWriteLoop1.Text = "定时发送";
             this.chkSerialWriteLoop1.UseVisualStyleBackColor = true;
             this.chkSerialWriteLoop1.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
-            // 
-            // txtSerialWriteInterval1
-            // 
-            this.txtSerialWriteInterval1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.txtSerialWriteInterval1.Location = new System.Drawing.Point(270, 132);
-            this.txtSerialWriteInterval1.Name = "txtSerialWriteInterval1";
-            this.txtSerialWriteInterval1.Size = new System.Drawing.Size(57, 26);
-            this.txtSerialWriteInterval1.TabIndex = 7;
-            this.txtSerialWriteInterval1.Tag = "1";
             // 
             // labMs
             // 
@@ -744,8 +737,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.numSerialWriteInterval2);
             this.groupBox1.Controls.Add(this.chkSerialWriteLoop2);
-            this.groupBox1.Controls.Add(this.txtSerialWriteInterval2);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.cbWriteFormat2);
             this.groupBox1.Controls.Add(this.label13);
@@ -772,15 +765,6 @@
             this.chkSerialWriteLoop2.Text = "定时发送";
             this.chkSerialWriteLoop2.UseVisualStyleBackColor = true;
             this.chkSerialWriteLoop2.CheckedChanged += new System.EventHandler(this.chkSerialWriteLoop_CheckedChanged);
-            // 
-            // txtSerialWriteInterval2
-            // 
-            this.txtSerialWriteInterval2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.txtSerialWriteInterval2.Location = new System.Drawing.Point(270, 132);
-            this.txtSerialWriteInterval2.Name = "txtSerialWriteInterval2";
-            this.txtSerialWriteInterval2.Size = new System.Drawing.Size(57, 26);
-            this.txtSerialWriteInterval2.TabIndex = 7;
-            this.txtSerialWriteInterval2.Tag = "2";
             // 
             // label12
             // 
@@ -877,6 +861,66 @@
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
+            // numSerialWriteInterval1
+            // 
+            this.numSerialWriteInterval1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numSerialWriteInterval1.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Location = new System.Drawing.Point(264, 135);
+            this.numSerialWriteInterval1.Maximum = new decimal(new int[] {
+            600000,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Name = "numSerialWriteInterval1";
+            this.numSerialWriteInterval1.Size = new System.Drawing.Size(63, 23);
+            this.numSerialWriteInterval1.TabIndex = 10;
+            this.numSerialWriteInterval1.Tag = "1";
+            this.numSerialWriteInterval1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSerialWriteInterval1.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // numSerialWriteInterval2
+            // 
+            this.numSerialWriteInterval2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numSerialWriteInterval2.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Location = new System.Drawing.Point(264, 135);
+            this.numSerialWriteInterval2.Maximum = new decimal(new int[] {
+            600000,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Name = "numSerialWriteInterval2";
+            this.numSerialWriteInterval2.Size = new System.Drawing.Size(63, 23);
+            this.numSerialWriteInterval2.TabIndex = 11;
+            this.numSerialWriteInterval2.Tag = "1";
+            this.numSerialWriteInterval2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSerialWriteInterval2.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -908,6 +952,8 @@
             this.groupSerialWrite1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -947,11 +993,9 @@
         private System.Windows.Forms.TextBox txtSerialWrite1;
         private System.Windows.Forms.ComboBox cbWriteFormat1;
         private System.Windows.Forms.CheckBox chkSerialWriteLoop1;
-        private System.Windows.Forms.TextBox txtSerialWriteInterval1;
         private System.Windows.Forms.Label labMs;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkSerialWriteLoop2;
-        private System.Windows.Forms.TextBox txtSerialWriteInterval2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbWriteFormat2;
         private System.Windows.Forms.Label label13;
@@ -974,6 +1018,8 @@
         private System.Windows.Forms.Timer timSerialWrite2;
         private System.Windows.Forms.ComboBox cbSerialWrite1;
         private System.Windows.Forms.ComboBox cbSerialWrite2;
+        private System.Windows.Forms.NumericUpDown numSerialWriteInterval1;
+        private System.Windows.Forms.NumericUpDown numSerialWriteInterval2;
     }
 }
 
