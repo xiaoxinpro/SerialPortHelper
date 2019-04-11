@@ -11,7 +11,7 @@ namespace SerialPostTool
         public static string Path { get; set; }
         public SerialInfoConfig()
         {
-
+            ResetConfig();
         }
 
         public Font Font;
@@ -19,6 +19,7 @@ namespace SerialPostTool
         public Color Color1Receive;
         public Color Color2Write;
         public Color Color2Receive;
+        public String TimeFormat;
 
         /// <summary>
         /// 默认配置
@@ -30,6 +31,7 @@ namespace SerialPostTool
             Color2Write = Color.Blue;
             Color1Receive = Color.Green;
             Color2Receive = Color.Green;
+            TimeFormat = "yyyy-MM-dd hh:mm:ss.fff";
         }
     }
 }
