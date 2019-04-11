@@ -44,17 +44,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
-            this.tabPageSerial = new System.Windows.Forms.TabPage();
             this.groupBoxInfoConfigFont = new System.Windows.Forms.GroupBox();
+            this.BtnInfoFontDefault = new System.Windows.Forms.Button();
+            this.BtnInfoFontColor4 = new System.Windows.Forms.Button();
+            this.BtnInfoFontColor3 = new System.Windows.Forms.Button();
+            this.BtnInfoFontColor2 = new System.Windows.Forms.Button();
+            this.BtnInfoFontColor1 = new System.Windows.Forms.Button();
             this.BtnInfoFont = new System.Windows.Forms.Button();
             this.txtInfoFont = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.BtnInfoFontColor1 = new System.Windows.Forms.Button();
-            this.BtnInfoFontColor2 = new System.Windows.Forms.Button();
-            this.BtnInfoFontColor3 = new System.Windows.Forms.Button();
-            this.BtnInfoFontColor4 = new System.Windows.Forms.Button();
-            this.BtnInfoFontDefault = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabPageSerial = new System.Windows.Forms.TabPage();
+            this.groupBoxInfoConfigTimeFormat = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTimeFormat = new System.Windows.Forms.TextBox();
+            this.btnTimeFormat = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtShowTimeFormat = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.linkTimeFormatHelp = new System.Windows.Forms.LinkLabel();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -62,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numWriteConfigTimer)).BeginInit();
             this.tabPageInfo.SuspendLayout();
             this.groupBoxInfoConfigFont.SuspendLayout();
+            this.groupBoxInfoConfigTimeFormat.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabConfig
@@ -250,6 +259,7 @@
             // 
             // tabPageInfo
             // 
+            this.tabPageInfo.Controls.Add(this.groupBoxInfoConfigTimeFormat);
             this.tabPageInfo.Controls.Add(this.groupBoxInfoConfigFont);
             this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
             this.tabPageInfo.Name = "tabPageInfo";
@@ -258,16 +268,6 @@
             this.tabPageInfo.TabIndex = 1;
             this.tabPageInfo.Text = "信息显示";
             this.tabPageInfo.UseVisualStyleBackColor = true;
-            // 
-            // tabPageSerial
-            // 
-            this.tabPageSerial.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSerial.Name = "tabPageSerial";
-            this.tabPageSerial.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSerial.Size = new System.Drawing.Size(312, 391);
-            this.tabPageSerial.TabIndex = 2;
-            this.tabPageSerial.Text = "串口配置";
-            this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
             // groupBoxInfoConfigFont
             // 
@@ -286,6 +286,59 @@
             this.groupBoxInfoConfigFont.TabIndex = 0;
             this.groupBoxInfoConfigFont.TabStop = false;
             this.groupBoxInfoConfigFont.Text = "文字设置";
+            // 
+            // BtnInfoFontDefault
+            // 
+            this.BtnInfoFontDefault.Location = new System.Drawing.Point(220, 51);
+            this.BtnInfoFontDefault.Name = "BtnInfoFontDefault";
+            this.BtnInfoFontDefault.Size = new System.Drawing.Size(74, 53);
+            this.BtnInfoFontDefault.TabIndex = 10;
+            this.BtnInfoFontDefault.Text = "恢复默认";
+            this.BtnInfoFontDefault.UseVisualStyleBackColor = true;
+            // 
+            // BtnInfoFontColor4
+            // 
+            this.BtnInfoFontColor4.Location = new System.Drawing.Point(135, 80);
+            this.BtnInfoFontColor4.Name = "BtnInfoFontColor4";
+            this.BtnInfoFontColor4.Size = new System.Drawing.Size(79, 24);
+            this.BtnInfoFontColor4.TabIndex = 9;
+            this.BtnInfoFontColor4.Tag = "4";
+            this.BtnInfoFontColor4.Text = "串口2接收";
+            this.BtnInfoFontColor4.UseVisualStyleBackColor = true;
+            this.BtnInfoFontColor4.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            // 
+            // BtnInfoFontColor3
+            // 
+            this.BtnInfoFontColor3.Location = new System.Drawing.Point(50, 80);
+            this.BtnInfoFontColor3.Name = "BtnInfoFontColor3";
+            this.BtnInfoFontColor3.Size = new System.Drawing.Size(79, 24);
+            this.BtnInfoFontColor3.TabIndex = 9;
+            this.BtnInfoFontColor3.Tag = "3";
+            this.BtnInfoFontColor3.Text = "串口2发送";
+            this.BtnInfoFontColor3.UseVisualStyleBackColor = true;
+            this.BtnInfoFontColor3.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            // 
+            // BtnInfoFontColor2
+            // 
+            this.BtnInfoFontColor2.Location = new System.Drawing.Point(135, 50);
+            this.BtnInfoFontColor2.Name = "BtnInfoFontColor2";
+            this.BtnInfoFontColor2.Size = new System.Drawing.Size(79, 24);
+            this.BtnInfoFontColor2.TabIndex = 9;
+            this.BtnInfoFontColor2.Tag = "2";
+            this.BtnInfoFontColor2.Text = "串口1接收";
+            this.BtnInfoFontColor2.UseVisualStyleBackColor = true;
+            this.BtnInfoFontColor2.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            // 
+            // BtnInfoFontColor1
+            // 
+            this.BtnInfoFontColor1.Location = new System.Drawing.Point(50, 50);
+            this.BtnInfoFontColor1.Name = "BtnInfoFontColor1";
+            this.BtnInfoFontColor1.Size = new System.Drawing.Size(79, 24);
+            this.BtnInfoFontColor1.TabIndex = 9;
+            this.BtnInfoFontColor1.Tag = "1";
+            this.BtnInfoFontColor1.Text = "串口1发送";
+            this.BtnInfoFontColor1.UseVisualStyleBackColor = true;
+            this.BtnInfoFontColor1.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
             // 
             // BtnInfoFont
             // 
@@ -308,16 +361,6 @@
             this.txtInfoFont.TabIndex = 8;
             this.txtInfoFont.Text = "串口调试工具 0x55 0xAA";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(7, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "字体：";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -328,58 +371,115 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "颜色：";
             // 
-            // BtnInfoFontColor1
+            // label5
             // 
-            this.BtnInfoFontColor1.Location = new System.Drawing.Point(50, 50);
-            this.BtnInfoFontColor1.Name = "BtnInfoFontColor1";
-            this.BtnInfoFontColor1.Size = new System.Drawing.Size(79, 24);
-            this.BtnInfoFontColor1.TabIndex = 9;
-            this.BtnInfoFontColor1.Tag = "1";
-            this.BtnInfoFontColor1.Text = "串口1发送";
-            this.BtnInfoFontColor1.UseVisualStyleBackColor = true;
-            this.BtnInfoFontColor1.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(7, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "字体：";
             // 
-            // BtnInfoFontColor2
+            // tabPageSerial
             // 
-            this.BtnInfoFontColor2.Location = new System.Drawing.Point(135, 50);
-            this.BtnInfoFontColor2.Name = "BtnInfoFontColor2";
-            this.BtnInfoFontColor2.Size = new System.Drawing.Size(79, 24);
-            this.BtnInfoFontColor2.TabIndex = 9;
-            this.BtnInfoFontColor2.Tag = "2";
-            this.BtnInfoFontColor2.Text = "串口1接收";
-            this.BtnInfoFontColor2.UseVisualStyleBackColor = true;
-            this.BtnInfoFontColor2.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            this.tabPageSerial.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSerial.Name = "tabPageSerial";
+            this.tabPageSerial.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSerial.Size = new System.Drawing.Size(312, 391);
+            this.tabPageSerial.TabIndex = 2;
+            this.tabPageSerial.Text = "串口配置";
+            this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
-            // BtnInfoFontColor3
+            // groupBoxInfoConfigTimeFormat
             // 
-            this.BtnInfoFontColor3.Location = new System.Drawing.Point(50, 80);
-            this.BtnInfoFontColor3.Name = "BtnInfoFontColor3";
-            this.BtnInfoFontColor3.Size = new System.Drawing.Size(79, 24);
-            this.BtnInfoFontColor3.TabIndex = 9;
-            this.BtnInfoFontColor3.Tag = "3";
-            this.BtnInfoFontColor3.Text = "串口2发送";
-            this.BtnInfoFontColor3.UseVisualStyleBackColor = true;
-            this.BtnInfoFontColor3.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.linkTimeFormatHelp);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.txtTimeFormat);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label7);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.btnTimeFormat);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label9);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.txtShowTimeFormat);
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label8);
+            this.groupBoxInfoConfigTimeFormat.Location = new System.Drawing.Point(6, 124);
+            this.groupBoxInfoConfigTimeFormat.Name = "groupBoxInfoConfigTimeFormat";
+            this.groupBoxInfoConfigTimeFormat.Size = new System.Drawing.Size(300, 106);
+            this.groupBoxInfoConfigTimeFormat.TabIndex = 1;
+            this.groupBoxInfoConfigTimeFormat.TabStop = false;
+            this.groupBoxInfoConfigTimeFormat.Text = "时间格式";
             // 
-            // BtnInfoFontColor4
+            // label7
             // 
-            this.BtnInfoFontColor4.Location = new System.Drawing.Point(135, 80);
-            this.BtnInfoFontColor4.Name = "BtnInfoFontColor4";
-            this.BtnInfoFontColor4.Size = new System.Drawing.Size(79, 24);
-            this.BtnInfoFontColor4.TabIndex = 9;
-            this.BtnInfoFontColor4.Tag = "4";
-            this.BtnInfoFontColor4.Text = "串口2接收";
-            this.BtnInfoFontColor4.UseVisualStyleBackColor = true;
-            this.BtnInfoFontColor4.Click += new System.EventHandler(this.BtnInfoFontColor_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(7, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 20);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "格式：";
             // 
-            // BtnInfoFontDefault
+            // txtTimeFormat
             // 
-            this.BtnInfoFontDefault.Location = new System.Drawing.Point(220, 51);
-            this.BtnInfoFontDefault.Name = "BtnInfoFontDefault";
-            this.BtnInfoFontDefault.Size = new System.Drawing.Size(74, 53);
-            this.BtnInfoFontDefault.TabIndex = 10;
-            this.BtnInfoFontDefault.Text = "恢复默认";
-            this.BtnInfoFontDefault.UseVisualStyleBackColor = true;
+            this.txtTimeFormat.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTimeFormat.Location = new System.Drawing.Point(50, 21);
+            this.txtTimeFormat.Name = "txtTimeFormat";
+            this.txtTimeFormat.Size = new System.Drawing.Size(164, 23);
+            this.txtTimeFormat.TabIndex = 8;
+            this.txtTimeFormat.Text = "yyyy-MM-dd hh:mm:ss.fff";
+            // 
+            // btnTimeFormat
+            // 
+            this.btnTimeFormat.Location = new System.Drawing.Point(220, 20);
+            this.btnTimeFormat.Name = "btnTimeFormat";
+            this.btnTimeFormat.Size = new System.Drawing.Size(74, 24);
+            this.btnTimeFormat.TabIndex = 9;
+            this.btnTimeFormat.Text = "保存";
+            this.btnTimeFormat.UseVisualStyleBackColor = true;
+            this.btnTimeFormat.Click += new System.EventHandler(this.btnTimeFormat_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(7, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 20);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "实例：";
+            // 
+            // txtShowTimeFormat
+            // 
+            this.txtShowTimeFormat.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtShowTimeFormat.Location = new System.Drawing.Point(50, 50);
+            this.txtShowTimeFormat.Multiline = true;
+            this.txtShowTimeFormat.Name = "txtShowTimeFormat";
+            this.txtShowTimeFormat.ReadOnly = true;
+            this.txtShowTimeFormat.Size = new System.Drawing.Size(244, 23);
+            this.txtShowTimeFormat.TabIndex = 8;
+            this.txtShowTimeFormat.Text = "yyyy-MM-dd hh:mm:ss.fff";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(7, 79);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "帮助：";
+            // 
+            // linkTimeFormatHelp
+            // 
+            this.linkTimeFormatHelp.AutoSize = true;
+            this.linkTimeFormatHelp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkTimeFormatHelp.Location = new System.Drawing.Point(46, 79);
+            this.linkTimeFormatHelp.Name = "linkTimeFormatHelp";
+            this.linkTimeFormatHelp.Size = new System.Drawing.Size(177, 20);
+            this.linkTimeFormatHelp.TabIndex = 10;
+            this.linkTimeFormatHelp.TabStop = true;
+            this.linkTimeFormatHelp.Tag = "https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-tim" +
+    "e-format-strings?view=netframework-3.5";
+            this.linkTimeFormatHelp.Text = "标准日期和时间格式字符串";
+            this.linkTimeFormatHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTimeFormatHelp_LinkClicked);
             // 
             // frmConfig
             // 
@@ -402,6 +502,8 @@
             this.tabPageInfo.ResumeLayout(false);
             this.groupBoxInfoConfigFont.ResumeLayout(false);
             this.groupBoxInfoConfigFont.PerformLayout();
+            this.groupBoxInfoConfigTimeFormat.ResumeLayout(false);
+            this.groupBoxInfoConfigTimeFormat.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -435,5 +537,13 @@
         private System.Windows.Forms.TextBox txtInfoFont;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBoxInfoConfigTimeFormat;
+        private System.Windows.Forms.TextBox txtTimeFormat;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnTimeFormat;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtShowTimeFormat;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.LinkLabel linkTimeFormatHelp;
     }
 }
