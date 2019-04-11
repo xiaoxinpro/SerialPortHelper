@@ -106,6 +106,7 @@ namespace SerialPostTool
             BtnInfoFontColor2.ForeColor = serialInfoConfig.Color1Receive;
             BtnInfoFontColor3.ForeColor = serialInfoConfig.Color2Write;
             BtnInfoFontColor4.ForeColor = serialInfoConfig.Color2Receive;
+            ShowTimeFormat(serialInfoConfig.TimeFormat);
         }
         #endregion
 
@@ -260,7 +261,7 @@ namespace SerialPostTool
         }
         #endregion
 
-        #region 显示设置
+        #region 显示设置 - 文字设置
         /// <summary>
         /// 字体选择按钮
         /// </summary>
@@ -313,5 +314,45 @@ namespace SerialPostTool
         }
         #endregion
 
+        #region 显示设置 - 时间格式
+        /// <summary>
+        /// 帮助链接
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkTimeFormatHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel link = (LinkLabel)sender;
+            System.Diagnostics.Process.Start(link.Tag.ToString());
+        }
+
+        /// <summary>
+        /// 时间格式保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnTimeFormat_Click(object sender, EventArgs e)
+        {
+            string strFormat = txtTimeFormat.Text.Trim();
+            try
+            {
+                ShowTimeFormat(strFormat);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 显示时间格式
+        /// </summary>
+        /// <param name="strFormat">格式字符串</param>
+        private void ShowTimeFormat(string strFormat)
+        {
+            txtShowTimeFormat.Text = DateTime.Now.ToString(strFormat);
+        }
+
+        #endregion
     }
 }
