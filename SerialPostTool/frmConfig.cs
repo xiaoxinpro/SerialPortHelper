@@ -106,6 +106,7 @@ namespace SerialPostTool
             BtnInfoFontColor2.ForeColor = serialInfoConfig.Color1Receive;
             BtnInfoFontColor3.ForeColor = serialInfoConfig.Color2Write;
             BtnInfoFontColor4.ForeColor = serialInfoConfig.Color2Receive;
+            txtTimeFormat.Text = serialInfoConfig.TimeFormat;
             ShowTimeFormat(serialInfoConfig.TimeFormat);
         }
         #endregion
@@ -337,6 +338,8 @@ namespace SerialPostTool
             try
             {
                 ShowTimeFormat(strFormat);
+                FormMain.objSerialInfoConfig.TimeFormat = strFormat;
+                Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
             }
             catch (Exception err)
             {
