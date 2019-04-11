@@ -472,7 +472,7 @@ namespace SerialPostTool
             }
             if (chkShowTime.Checked)
             {
-                strHead += "[" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fff") + "]";
+                strHead += "[" + DateTime.Now.ToString(objSerialInfoConfig.TimeFormat) + "]";
             }
             richTextInfo.AppendTextColorFont(strHead + strData, color, font);
         }
