@@ -313,6 +313,18 @@ namespace SerialPostTool
                 Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
             }
         }
+
+        /// <summary>
+        /// 恢复默认按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnInfoFontDefault_Click(object sender, EventArgs e)
+        {
+            FormMain.objSerialInfoConfig.ResetConfig();
+            InitSerialInfoUI(FormMain.objSerialInfoConfig);
+            Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
+        }
         #endregion
 
         #region 显示设置 - 时间格式
@@ -357,5 +369,6 @@ namespace SerialPostTool
         }
 
         #endregion
+
     }
 }
