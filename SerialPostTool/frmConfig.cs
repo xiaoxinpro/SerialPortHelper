@@ -321,7 +321,7 @@ namespace SerialPostTool
         /// <param name="e"></param>
         private void BtnInfoFontDefault_Click(object sender, EventArgs e)
         {
-            FormMain.objSerialInfoConfig.ResetConfig();
+            FormMain.objSerialInfoConfig.ResetFontConfig();
             InitSerialInfoUI(FormMain.objSerialInfoConfig);
             Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
         }
