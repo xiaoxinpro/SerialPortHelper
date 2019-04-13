@@ -368,7 +368,18 @@ namespace SerialPostTool
             txtShowTimeFormat.Text = DateTime.Now.ToString(strFormat);
         }
 
-        #endregion
+        /// <summary>
+        /// 恢复默认按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInfoTimeDefault_Click(object sender, EventArgs e)
+        {
+            FormMain.objSerialInfoConfig.ResetTimeConfig();
+            InitSerialInfoUI(FormMain.objSerialInfoConfig);
+            Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
+        }
 
+        #endregion
     }
 }

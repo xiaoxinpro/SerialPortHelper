@@ -63,6 +63,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageSerial = new System.Windows.Forms.TabPage();
+            this.btnInfoTimeDefault = new System.Windows.Forms.Button();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -271,6 +272,7 @@
             // 
             // groupBoxInfoConfigTimeFormat
             // 
+            this.groupBoxInfoConfigTimeFormat.Controls.Add(this.btnInfoTimeDefault);
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.linkTimeFormatHelp);
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.txtTimeFormat);
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label7);
@@ -280,7 +282,7 @@
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label8);
             this.groupBoxInfoConfigTimeFormat.Location = new System.Drawing.Point(6, 124);
             this.groupBoxInfoConfigTimeFormat.Name = "groupBoxInfoConfigTimeFormat";
-            this.groupBoxInfoConfigTimeFormat.Size = new System.Drawing.Size(300, 106);
+            this.groupBoxInfoConfigTimeFormat.Size = new System.Drawing.Size(300, 110);
             this.groupBoxInfoConfigTimeFormat.TabIndex = 1;
             this.groupBoxInfoConfigTimeFormat.TabStop = false;
             this.groupBoxInfoConfigTimeFormat.Text = "时间格式";
@@ -482,6 +484,16 @@
             this.tabPageSerial.Text = "串口配置";
             this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
+            // btnInfoTimeDefault
+            // 
+            this.btnInfoTimeDefault.Location = new System.Drawing.Point(220, 79);
+            this.btnInfoTimeDefault.Name = "btnInfoTimeDefault";
+            this.btnInfoTimeDefault.Size = new System.Drawing.Size(74, 24);
+            this.btnInfoTimeDefault.TabIndex = 10;
+            this.btnInfoTimeDefault.Text = "恢复默认";
+            this.btnInfoTimeDefault.UseVisualStyleBackColor = true;
+            this.btnInfoTimeDefault.Click += new System.EventHandler(this.btnInfoTimeDefault_Click);
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -546,5 +558,6 @@
         private System.Windows.Forms.TextBox txtShowTimeFormat;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel linkTimeFormatHelp;
+        private System.Windows.Forms.Button btnInfoTimeDefault;
     }
 }
