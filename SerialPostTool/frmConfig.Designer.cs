@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
             this.groupBoxInfoConfigTimeFormat = new System.Windows.Forms.GroupBox();
+            this.btnInfoTimeDefault = new System.Windows.Forms.Button();
             this.linkTimeFormatHelp = new System.Windows.Forms.LinkLabel();
             this.txtTimeFormat = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,7 +64,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageSerial = new System.Windows.Forms.TabPage();
-            this.btnInfoTimeDefault = new System.Windows.Forms.Button();
+            this.groupBoxInfoConfigFunction = new System.Windows.Forms.GroupBox();
+            this.chkShowTime = new System.Windows.Forms.CheckBox();
+            this.chkShowSend = new System.Windows.Forms.CheckBox();
+            this.chkShowSerial = new System.Windows.Forms.CheckBox();
+            this.chkMemoryFunction = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -72,6 +78,8 @@
             this.tabPageInfo.SuspendLayout();
             this.groupBoxInfoConfigTimeFormat.SuspendLayout();
             this.groupBoxInfoConfigFont.SuspendLayout();
+            this.groupBoxInfoConfigFunction.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabConfig
@@ -260,6 +268,7 @@
             // 
             // tabPageInfo
             // 
+            this.tabPageInfo.Controls.Add(this.groupBoxInfoConfigFunction);
             this.tabPageInfo.Controls.Add(this.groupBoxInfoConfigTimeFormat);
             this.tabPageInfo.Controls.Add(this.groupBoxInfoConfigFont);
             this.tabPageInfo.Location = new System.Drawing.Point(4, 22);
@@ -286,6 +295,16 @@
             this.groupBoxInfoConfigTimeFormat.TabIndex = 1;
             this.groupBoxInfoConfigTimeFormat.TabStop = false;
             this.groupBoxInfoConfigTimeFormat.Text = "时间格式";
+            // 
+            // btnInfoTimeDefault
+            // 
+            this.btnInfoTimeDefault.Location = new System.Drawing.Point(220, 79);
+            this.btnInfoTimeDefault.Name = "btnInfoTimeDefault";
+            this.btnInfoTimeDefault.Size = new System.Drawing.Size(74, 24);
+            this.btnInfoTimeDefault.TabIndex = 10;
+            this.btnInfoTimeDefault.Text = "恢复默认";
+            this.btnInfoTimeDefault.UseVisualStyleBackColor = true;
+            this.btnInfoTimeDefault.Click += new System.EventHandler(this.btnInfoTimeDefault_Click);
             // 
             // linkTimeFormatHelp
             // 
@@ -458,7 +477,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(6, 50);
+            this.label6.Location = new System.Drawing.Point(7, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
             this.label6.TabIndex = 7;
@@ -484,15 +503,73 @@
             this.tabPageSerial.Text = "串口配置";
             this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
-            // btnInfoTimeDefault
+            // groupBoxInfoConfigFunction
             // 
-            this.btnInfoTimeDefault.Location = new System.Drawing.Point(220, 79);
-            this.btnInfoTimeDefault.Name = "btnInfoTimeDefault";
-            this.btnInfoTimeDefault.Size = new System.Drawing.Size(74, 24);
-            this.btnInfoTimeDefault.TabIndex = 10;
-            this.btnInfoTimeDefault.Text = "恢复默认";
-            this.btnInfoTimeDefault.UseVisualStyleBackColor = true;
-            this.btnInfoTimeDefault.Click += new System.EventHandler(this.btnInfoTimeDefault_Click);
+            this.groupBoxInfoConfigFunction.Controls.Add(this.groupBox2);
+            this.groupBoxInfoConfigFunction.Controls.Add(this.chkMemoryFunction);
+            this.groupBoxInfoConfigFunction.Location = new System.Drawing.Point(6, 240);
+            this.groupBoxInfoConfigFunction.Name = "groupBoxInfoConfigFunction";
+            this.groupBoxInfoConfigFunction.Size = new System.Drawing.Size(300, 145);
+            this.groupBoxInfoConfigFunction.TabIndex = 2;
+            this.groupBoxInfoConfigFunction.TabStop = false;
+            this.groupBoxInfoConfigFunction.Text = "附加功能";
+            // 
+            // chkShowTime
+            // 
+            this.chkShowTime.AutoSize = true;
+            this.chkShowTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowTime.Location = new System.Drawing.Point(6, 66);
+            this.chkShowTime.Name = "chkShowTime";
+            this.chkShowTime.Size = new System.Drawing.Size(99, 21);
+            this.chkShowTime.TabIndex = 3;
+            this.chkShowTime.Text = "默认显示时间";
+            this.chkShowTime.UseVisualStyleBackColor = true;
+            // 
+            // chkShowSend
+            // 
+            this.chkShowSend.AutoSize = true;
+            this.chkShowSend.Checked = true;
+            this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowSend.Location = new System.Drawing.Point(6, 39);
+            this.chkShowSend.Name = "chkShowSend";
+            this.chkShowSend.Size = new System.Drawing.Size(99, 21);
+            this.chkShowSend.TabIndex = 4;
+            this.chkShowSend.Text = "默认显示发送";
+            this.chkShowSend.UseVisualStyleBackColor = true;
+            // 
+            // chkShowSerial
+            // 
+            this.chkShowSerial.AutoSize = true;
+            this.chkShowSerial.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkShowSerial.Location = new System.Drawing.Point(6, 12);
+            this.chkShowSerial.Name = "chkShowSerial";
+            this.chkShowSerial.Size = new System.Drawing.Size(99, 21);
+            this.chkShowSerial.TabIndex = 5;
+            this.chkShowSerial.Text = "默认显示串口";
+            this.chkShowSerial.UseVisualStyleBackColor = true;
+            // 
+            // chkMemoryFunction
+            // 
+            this.chkMemoryFunction.AutoSize = true;
+            this.chkMemoryFunction.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkMemoryFunction.Location = new System.Drawing.Point(11, 20);
+            this.chkMemoryFunction.Name = "chkMemoryFunction";
+            this.chkMemoryFunction.Size = new System.Drawing.Size(99, 21);
+            this.chkMemoryFunction.TabIndex = 5;
+            this.chkMemoryFunction.Text = "记忆附加功能";
+            this.chkMemoryFunction.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkShowSerial);
+            this.groupBox2.Controls.Add(this.chkShowTime);
+            this.groupBox2.Controls.Add(this.chkShowSend);
+            this.groupBox2.Location = new System.Drawing.Point(10, 36);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(283, 92);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
             // 
             // frmConfig
             // 
@@ -517,6 +594,10 @@
             this.groupBoxInfoConfigTimeFormat.PerformLayout();
             this.groupBoxInfoConfigFont.ResumeLayout(false);
             this.groupBoxInfoConfigFont.PerformLayout();
+            this.groupBoxInfoConfigFunction.ResumeLayout(false);
+            this.groupBoxInfoConfigFunction.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -559,5 +640,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel linkTimeFormatHelp;
         private System.Windows.Forms.Button btnInfoTimeDefault;
+        private System.Windows.Forms.GroupBox groupBoxInfoConfigFunction;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkShowSerial;
+        private System.Windows.Forms.CheckBox chkShowTime;
+        private System.Windows.Forms.CheckBox chkShowSend;
+        private System.Windows.Forms.CheckBox chkMemoryFunction;
     }
 }
