@@ -20,6 +20,10 @@ namespace SerialPostTool
         public Color Color2Write;
         public Color Color2Receive;
         public String TimeFormat;
+        public Boolean MemoryFunction;
+        public Boolean ShowSerial;
+        public Boolean ShowSend;
+        public Boolean ShowTime;
 
         /// <summary>
         /// 默认配置
@@ -28,6 +32,7 @@ namespace SerialPostTool
         {
             ResetFontConfig();
             ResetTimeConfig();
+            ResetFunctionConfig();
         }
 
         /// <summary>
@@ -48,6 +53,17 @@ namespace SerialPostTool
         public void ResetTimeConfig()
         {
             TimeFormat = "yyyy-MM-dd hh:mm:ss.fff";
+        }
+
+        /// <summary>
+        /// 复位附加功能
+        /// </summary>
+        public void ResetFunctionConfig()
+        {
+            MemoryFunction = false;
+            ShowSerial = false;
+            ShowSend = true;
+            ShowTime = false;
         }
     }
 }
