@@ -108,6 +108,27 @@ namespace SerialPostTool
             BtnInfoFontColor4.ForeColor = serialInfoConfig.Color2Receive;
             txtTimeFormat.Text = serialInfoConfig.TimeFormat;
             ShowTimeFormat(serialInfoConfig.TimeFormat);
+            chkMemoryFunction.Checked = serialInfoConfig.MemoryFunction;
+            chkShowSerial.Checked = serialInfoConfig.ShowSerial;
+            chkShowSend.Checked = serialInfoConfig.ShowSend;
+            chkShowTime.Checked = serialInfoConfig.ShowTime;
+            GroupBoxEnable(groupBoxInfoConfigMemaryFunction, !chkMemoryFunction.Checked);
+        }
+
+        /// <summary>
+        /// GroupBox开关
+        /// </summary>
+        /// <param name="grp">GroupBox控件</param>
+        /// <param name="enable">开关量</param>
+        private void GroupBoxEnable(GroupBox grp, bool enable)
+        {
+            foreach (Control item in grp.Controls)
+            {
+                if (item is CheckBox)
+                {
+                    item.Enabled = enable;
+                }
+            }
         }
         #endregion
 
@@ -381,5 +402,36 @@ namespace SerialPostTool
         }
 
         #endregion
+
+        #region 显示设置 - 附加功能
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkFunction_Click(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            switch (checkBox.Tag.ToString())
+            {
+                case "0":
+                    FormMain.objSerialInfoConfig.MemoryFunction = checkBox.Checked;
+                    GroupBoxEnable(groupBoxInfoConfigMemaryFunction, !checkBox.Checked);
+                    break;
+                case "1":
+                    FormMain.objSerialInfoConfig.ShowSerial = checkBox.Checked;
+                    break;
+                case "2":
+                    FormMain.objSerialInfoConfig.ShowSend = checkBox.Checked;
+                    break;
+                case "3":
+                    FormMain.objSerialInfoConfig.ShowTime = checkBox.Checked;
+                    break;
+                default:
+                    break;
+            }
+            Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
+        }
+       #endregion
     }
 }
