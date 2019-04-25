@@ -145,6 +145,9 @@ namespace SerialPostTool
                 objSerialInfoConfig = new SerialInfoConfig();
                 objSerialInfoConfig.ResetConfig();
             }
+            chkShowSend.Checked = objSerialInfoConfig.ShowSend;
+            chkShowSerial.Checked = objSerialInfoConfig.ShowSerial;
+            chkShowTime.Checked = objSerialInfoConfig.ShowTime;
         }
         #endregion
 
