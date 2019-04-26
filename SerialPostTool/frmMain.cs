@@ -567,6 +567,35 @@ namespace SerialPostTool
             FormConfig = new frmConfig(this, 1);
             FormConfig.Show();
         }
+
+        /// <summary>
+        /// 显示功能点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkShowFunction_Click(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if (objSerialInfoConfig.MemoryFunction)
+            {
+                switch (checkBox.Tag.ToString())
+                {
+                    case "1":
+                        objSerialInfoConfig.ShowSerial = checkBox.Checked;
+                        break;
+                    case "2":
+                        objSerialInfoConfig.ShowSend = checkBox.Checked;
+                        break;
+                    case "3":
+                        objSerialInfoConfig.ShowTime = checkBox.Checked;
+                        break;
+                    default:
+                        break;
+                }
+                Json.WriteFile(SerialInfoConfig.Path, objSerialInfoConfig);
+            }
+        }
+
         #endregion
 
         #region 静态函数
@@ -623,6 +652,5 @@ namespace SerialPostTool
         }
 
         #endregion
-
     }
 }

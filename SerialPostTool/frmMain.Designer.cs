@@ -68,6 +68,7 @@
             this.chkShowSerial = new System.Windows.Forms.CheckBox();
             this.splitSerialWrite = new System.Windows.Forms.SplitContainer();
             this.groupSerialWrite1 = new System.Windows.Forms.GroupBox();
+            this.numSerialWriteInterval1 = new System.Windows.Forms.NumericUpDown();
             this.chkSerialWriteLoop1 = new System.Windows.Forms.CheckBox();
             this.labMs = new System.Windows.Forms.Label();
             this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
@@ -77,6 +78,7 @@
             this.btnSerialWrite1 = new System.Windows.Forms.Button();
             this.txtSerialWrite1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numSerialWriteInterval2 = new System.Windows.Forms.NumericUpDown();
             this.chkSerialWriteLoop2 = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cbWriteFormat2 = new System.Windows.Forms.ComboBox();
@@ -87,8 +89,6 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
-            this.numSerialWriteInterval1 = new System.Windows.Forms.NumericUpDown();
-            this.numSerialWriteInterval2 = new System.Windows.Forms.NumericUpDown();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
@@ -98,8 +98,8 @@
             this.splitSerialWrite.Panel2.SuspendLayout();
             this.splitSerialWrite.SuspendLayout();
             this.groupSerialWrite1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -565,8 +565,10 @@
             this.chkShowTime.Name = "chkShowTime";
             this.chkShowTime.Size = new System.Drawing.Size(75, 21);
             this.chkShowTime.TabIndex = 2;
+            this.chkShowTime.Tag = "3";
             this.chkShowTime.Text = "显示时间";
             this.chkShowTime.UseVisualStyleBackColor = true;
+            this.chkShowTime.Click += new System.EventHandler(this.chkShowFunction_Click);
             // 
             // chkShowSend
             // 
@@ -579,8 +581,10 @@
             this.chkShowSend.Name = "chkShowSend";
             this.chkShowSend.Size = new System.Drawing.Size(75, 21);
             this.chkShowSend.TabIndex = 2;
+            this.chkShowSend.Tag = "2";
             this.chkShowSend.Text = "显示发送";
             this.chkShowSend.UseVisualStyleBackColor = true;
+            this.chkShowSend.Click += new System.EventHandler(this.chkShowFunction_Click);
             // 
             // chkShowSerial
             // 
@@ -591,8 +595,10 @@
             this.chkShowSerial.Name = "chkShowSerial";
             this.chkShowSerial.Size = new System.Drawing.Size(75, 21);
             this.chkShowSerial.TabIndex = 2;
+            this.chkShowSerial.Tag = "1";
             this.chkShowSerial.Text = "显示串口";
             this.chkShowSerial.UseVisualStyleBackColor = true;
+            this.chkShowSerial.Click += new System.EventHandler(this.chkShowFunction_Click);
             // 
             // splitSerialWrite
             // 
@@ -634,6 +640,36 @@
             this.groupSerialWrite1.TabIndex = 0;
             this.groupSerialWrite1.TabStop = false;
             this.groupSerialWrite1.Text = "数据发送1";
+            // 
+            // numSerialWriteInterval1
+            // 
+            this.numSerialWriteInterval1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numSerialWriteInterval1.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Location = new System.Drawing.Point(264, 135);
+            this.numSerialWriteInterval1.Maximum = new decimal(new int[] {
+            600000,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval1.Name = "numSerialWriteInterval1";
+            this.numSerialWriteInterval1.Size = new System.Drawing.Size(63, 23);
+            this.numSerialWriteInterval1.TabIndex = 10;
+            this.numSerialWriteInterval1.Tag = "1";
+            this.numSerialWriteInterval1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSerialWriteInterval1.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // chkSerialWriteLoop1
             // 
@@ -754,6 +790,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "数据发送2";
             // 
+            // numSerialWriteInterval2
+            // 
+            this.numSerialWriteInterval2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numSerialWriteInterval2.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Location = new System.Drawing.Point(264, 135);
+            this.numSerialWriteInterval2.Maximum = new decimal(new int[] {
+            600000,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSerialWriteInterval2.Name = "numSerialWriteInterval2";
+            this.numSerialWriteInterval2.Size = new System.Drawing.Size(63, 23);
+            this.numSerialWriteInterval2.TabIndex = 11;
+            this.numSerialWriteInterval2.Tag = "1";
+            this.numSerialWriteInterval2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSerialWriteInterval2.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
             // chkSerialWriteLoop2
             // 
             this.chkSerialWriteLoop2.AutoSize = true;
@@ -861,66 +927,6 @@
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
-            // numSerialWriteInterval1
-            // 
-            this.numSerialWriteInterval1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.numSerialWriteInterval1.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval1.Location = new System.Drawing.Point(264, 135);
-            this.numSerialWriteInterval1.Maximum = new decimal(new int[] {
-            600000,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval1.Minimum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval1.Name = "numSerialWriteInterval1";
-            this.numSerialWriteInterval1.Size = new System.Drawing.Size(63, 23);
-            this.numSerialWriteInterval1.TabIndex = 10;
-            this.numSerialWriteInterval1.Tag = "1";
-            this.numSerialWriteInterval1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numSerialWriteInterval1.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            // 
-            // numSerialWriteInterval2
-            // 
-            this.numSerialWriteInterval2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.numSerialWriteInterval2.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval2.Location = new System.Drawing.Point(264, 135);
-            this.numSerialWriteInterval2.Maximum = new decimal(new int[] {
-            600000,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval2.Minimum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numSerialWriteInterval2.Name = "numSerialWriteInterval2";
-            this.numSerialWriteInterval2.Size = new System.Drawing.Size(63, 23);
-            this.numSerialWriteInterval2.TabIndex = 11;
-            this.numSerialWriteInterval2.Tag = "1";
-            this.numSerialWriteInterval2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numSerialWriteInterval2.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -950,9 +956,9 @@
             this.splitSerialWrite.ResumeLayout(false);
             this.groupSerialWrite1.ResumeLayout(false);
             this.groupSerialWrite1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).EndInit();
             this.ResumeLayout(false);
 
