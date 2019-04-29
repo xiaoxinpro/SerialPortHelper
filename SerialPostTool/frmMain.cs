@@ -596,6 +596,24 @@ namespace SerialPostTool
             }
         }
 
+        /// <summary>
+        /// 右键复制按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string str = richTextInfo.SelectedText;
+            if (str.Length > 0)
+            {
+                Clipboard.SetText(str.Replace("\n","\r\n"));
+            }
+            else
+            {
+                Clipboard.Clear();
+            }
+        }
+
         #endregion
 
         #region 静态函数
@@ -652,5 +670,6 @@ namespace SerialPostTool
         }
 
         #endregion
+
     }
 }
