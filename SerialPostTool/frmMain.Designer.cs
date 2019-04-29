@@ -61,6 +61,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.groupSerialReceived = new System.Windows.Forms.GroupBox();
             this.richTextInfo = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStripInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInfoConfig = new System.Windows.Forms.Button();
             this.btnInfoClear = new System.Windows.Forms.Button();
             this.chkShowTime = new System.Windows.Forms.CheckBox();
@@ -89,15 +93,12 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStripInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupSerialReceived.SuspendLayout();
+            this.contextMenuStripInfo.SuspendLayout();
             this.splitSerialWrite.Panel1.SuspendLayout();
             this.splitSerialWrite.Panel2.SuspendLayout();
             this.splitSerialWrite.SuspendLayout();
@@ -105,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).BeginInit();
-            this.contextMenuStripInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSerial1
@@ -538,6 +538,35 @@
             this.richTextInfo.SizeChanged += new System.EventHandler(this.richTextInfo_SizeChanged);
             this.richTextInfo.TextChanged += new System.EventHandler(this.richTextInfo_TextChanged);
             // 
+            // contextMenuStripInfo
+            // 
+            this.contextMenuStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyToolStripMenuItem,
+            this.ClearToolStripMenuItem,
+            this.SiteToolStripMenuItem});
+            this.contextMenuStripInfo.Name = "contextMenuStripInfo";
+            this.contextMenuStripInfo.Size = new System.Drawing.Size(181, 92);
+            // 
+            // CopyToolStripMenuItem
+            // 
+            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CopyToolStripMenuItem.Text = "复制";
+            // 
+            // ClearToolStripMenuItem
+            // 
+            this.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem";
+            this.ClearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ClearToolStripMenuItem.Text = "清空";
+            this.ClearToolStripMenuItem.Click += new System.EventHandler(this.btnInfoClear_Click);
+            // 
+            // SiteToolStripMenuItem
+            // 
+            this.SiteToolStripMenuItem.Name = "SiteToolStripMenuItem";
+            this.SiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SiteToolStripMenuItem.Text = "设置";
+            this.SiteToolStripMenuItem.Click += new System.EventHandler(this.btnInfoConfig_Click);
+            // 
             // btnInfoConfig
             // 
             this.btnInfoConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -933,35 +962,6 @@
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
-            // contextMenuStripInfo
-            // 
-            this.contextMenuStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.复制ToolStripMenuItem,
-            this.清空ToolStripMenuItem,
-            this.设置ToolStripMenuItem});
-            this.contextMenuStripInfo.Name = "contextMenuStripInfo";
-            this.contextMenuStripInfo.Size = new System.Drawing.Size(181, 92);
-            // 
-            // 复制ToolStripMenuItem
-            // 
-            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
-            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.复制ToolStripMenuItem.Text = "复制";
-            // 
-            // 清空ToolStripMenuItem
-            // 
-            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
-            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.清空ToolStripMenuItem.Text = "清空";
-            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.btnInfoClear_Click);
-            // 
-            // 设置ToolStripMenuItem
-            // 
-            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.设置ToolStripMenuItem.Text = "设置";
-            this.设置ToolStripMenuItem.Click += new System.EventHandler(this.btnInfoConfig_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -986,6 +986,7 @@
             this.panel2.PerformLayout();
             this.groupSerialReceived.ResumeLayout(false);
             this.groupSerialReceived.PerformLayout();
+            this.contextMenuStripInfo.ResumeLayout(false);
             this.splitSerialWrite.Panel1.ResumeLayout(false);
             this.splitSerialWrite.Panel2.ResumeLayout(false);
             this.splitSerialWrite.ResumeLayout(false);
@@ -995,7 +996,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).EndInit();
-            this.contextMenuStripInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1063,9 +1063,9 @@
         private System.Windows.Forms.NumericUpDown numSerialWriteInterval1;
         private System.Windows.Forms.NumericUpDown numSerialWriteInterval2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripInfo;
-        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SiteToolStripMenuItem;
     }
 }
 
