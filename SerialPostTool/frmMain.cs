@@ -477,6 +477,7 @@ namespace SerialPostTool
             {
                 strHead += "[" + DateTime.Now.ToString(objSerialInfoConfig.TimeFormat) + "]";
             }
+            CloseFocus(richTextInfo);
             richTextInfo.AppendTextColorFont(strHead + strData, color, font);
         }
 
@@ -492,7 +493,7 @@ namespace SerialPostTool
         /// <param name="e"></param>
         private void richTextInfo_TextChanged(object sender, EventArgs e)
         {
-            if (IsSrollFollow)
+            if (IsSrollFollow && !ScrollToolStripMenuItem.Checked)
             {
                 richTextInfo.SelectionStart = richTextInfo.Text.Length;
                 richTextInfo.SelectionLength = 0;
@@ -516,6 +517,7 @@ namespace SerialPostTool
         {
             RichTextBox richText = (RichTextBox)sender;
             int nowScroll = GetScrollPos(richText.Handle, 1);
+            CloseFocus(richText);   //使文本框失去焦点
             if (nowScroll > MaxScrollPos)
             {
                 MaxScrollPos = nowScroll;
@@ -528,6 +530,18 @@ namespace SerialPostTool
             else
             {
                 IsSrollFollow = true;
+            }
+        }
+
+        /// <summary>
+        /// 指定控件失去焦点
+        /// </summary>
+        /// <param name="control"></param>
+        private void CloseFocus(Control control)
+        {
+            if (control.Focused)
+            {
+                txtCloseFocus.Focus();
             }
         }
 
@@ -549,6 +563,7 @@ namespace SerialPostTool
         private void btnInfoClear_Click(object sender, EventArgs e)
         {
             richTextInfo.Clear();
+            CloseFocus(richTextInfo);
             IsSrollFollow = true;
             MaxScrollPos = 0;
         }

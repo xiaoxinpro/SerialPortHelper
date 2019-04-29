@@ -93,6 +93,10 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ScrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCloseFocus = new System.Windows.Forms.TextBox();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
@@ -542,29 +546,32 @@
             // 
             this.contextMenuStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CopyToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.ScrollToolStripMenuItem,
+            this.toolStripSeparator2,
             this.ClearToolStripMenuItem,
             this.SiteToolStripMenuItem});
             this.contextMenuStripInfo.Name = "contextMenuStripInfo";
-            this.contextMenuStripInfo.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStripInfo.Size = new System.Drawing.Size(137, 104);
             // 
             // CopyToolStripMenuItem
             // 
             this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
-            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.CopyToolStripMenuItem.Text = "复制";
             this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // ClearToolStripMenuItem
             // 
             this.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem";
-            this.ClearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ClearToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.ClearToolStripMenuItem.Text = "清空";
             this.ClearToolStripMenuItem.Click += new System.EventHandler(this.btnInfoClear_Click);
             // 
             // SiteToolStripMenuItem
             // 
             this.SiteToolStripMenuItem.Name = "SiteToolStripMenuItem";
-            this.SiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SiteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.SiteToolStripMenuItem.Text = "设置";
             this.SiteToolStripMenuItem.Click += new System.EventHandler(this.btnInfoConfig_Click);
             // 
@@ -963,11 +970,36 @@
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
+            // 
+            // ScrollToolStripMenuItem
+            // 
+            this.ScrollToolStripMenuItem.CheckOnClick = true;
+            this.ScrollToolStripMenuItem.Name = "ScrollToolStripMenuItem";
+            this.ScrollToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.ScrollToolStripMenuItem.Text = "固定滚动条";
+            // 
+            // txtCloseFocus
+            // 
+            this.txtCloseFocus.Location = new System.Drawing.Point(-100, -100);
+            this.txtCloseFocus.Name = "txtCloseFocus";
+            this.txtCloseFocus.Size = new System.Drawing.Size(20, 21);
+            this.txtCloseFocus.TabIndex = 0;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 486);
+            this.Controls.Add(this.txtCloseFocus);
             this.Controls.Add(this.splitSerialWrite);
             this.Controls.Add(this.groupSerialReceived);
             this.Controls.Add(this.groupBoxSerial2);
@@ -998,6 +1030,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1067,6 +1100,10 @@
         private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ScrollToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.TextBox txtCloseFocus;
     }
 }
 
