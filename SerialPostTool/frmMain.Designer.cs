@@ -89,6 +89,10 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStripInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxSerial2.SuspendLayout();
@@ -101,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).BeginInit();
+            this.contextMenuStripInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxSerial1
@@ -521,6 +526,7 @@
             this.richTextInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextInfo.ContextMenuStrip = this.contextMenuStripInfo;
             this.richTextInfo.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.richTextInfo.Location = new System.Drawing.Point(6, 22);
             this.richTextInfo.Name = "richTextInfo";
@@ -927,6 +933,35 @@
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
             // 
+            // contextMenuStripInfo
+            // 
+            this.contextMenuStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.复制ToolStripMenuItem,
+            this.清空ToolStripMenuItem,
+            this.设置ToolStripMenuItem});
+            this.contextMenuStripInfo.Name = "contextMenuStripInfo";
+            this.contextMenuStripInfo.Size = new System.Drawing.Size(181, 92);
+            // 
+            // 复制ToolStripMenuItem
+            // 
+            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.复制ToolStripMenuItem.Text = "复制";
+            // 
+            // 清空ToolStripMenuItem
+            // 
+            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
+            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.清空ToolStripMenuItem.Text = "清空";
+            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.btnInfoClear_Click);
+            // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.设置ToolStripMenuItem.Text = "设置";
+            this.设置ToolStripMenuItem.Click += new System.EventHandler(this.btnInfoConfig_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -960,6 +995,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSerialWriteInterval2)).EndInit();
+            this.contextMenuStripInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1026,6 +1062,10 @@
         private System.Windows.Forms.ComboBox cbSerialWrite2;
         private System.Windows.Forms.NumericUpDown numSerialWriteInterval1;
         private System.Windows.Forms.NumericUpDown numSerialWriteInterval2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripInfo;
+        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
     }
 }
 
