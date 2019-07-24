@@ -24,6 +24,7 @@ namespace SerialPostTool
         public Boolean ShowSerial;
         public Boolean ShowSend;
         public Boolean ShowTime;
+        public Boolean FrameWarp;
 
         /// <summary>
         /// 默认配置
@@ -64,6 +65,7 @@ namespace SerialPostTool
             ShowSerial = false;
             ShowSend = true;
             ShowTime = false;
+            FrameWarp = true;
         }
     }
 }
