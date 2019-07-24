@@ -70,6 +70,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageSerial = new System.Windows.Forms.TabPage();
+            this.chkFrameWrap = new System.Windows.Forms.CheckBox();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -117,6 +118,7 @@
             // 
             // listViewWriteConfig
             // 
+            this.listViewWriteConfig.HideSelection = false;
             this.listViewWriteConfig.Location = new System.Drawing.Point(7, 20);
             this.listViewWriteConfig.MultiSelect = false;
             this.listViewWriteConfig.Name = "listViewWriteConfig";
@@ -293,6 +295,7 @@
             // groupBoxInfoConfigMemaryFunction
             // 
             this.groupBoxInfoConfigMemaryFunction.Controls.Add(this.chkShowSerial);
+            this.groupBoxInfoConfigMemaryFunction.Controls.Add(this.chkFrameWrap);
             this.groupBoxInfoConfigMemaryFunction.Controls.Add(this.chkShowTime);
             this.groupBoxInfoConfigMemaryFunction.Controls.Add(this.chkShowSend);
             this.groupBoxInfoConfigMemaryFunction.Location = new System.Drawing.Point(10, 36);
@@ -318,7 +321,7 @@
             // 
             this.chkShowTime.AutoSize = true;
             this.chkShowTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowTime.Location = new System.Drawing.Point(6, 66);
+            this.chkShowTime.Location = new System.Drawing.Point(178, 12);
             this.chkShowTime.Name = "chkShowTime";
             this.chkShowTime.Size = new System.Drawing.Size(99, 21);
             this.chkShowTime.TabIndex = 3;
@@ -579,6 +582,19 @@
             this.tabPageSerial.Text = "串口配置";
             this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
+            // chkFrameWrap
+            // 
+            this.chkFrameWrap.AutoSize = true;
+            this.chkFrameWrap.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkFrameWrap.Location = new System.Drawing.Point(178, 39);
+            this.chkFrameWrap.Name = "chkFrameWrap";
+            this.chkFrameWrap.Size = new System.Drawing.Size(87, 21);
+            this.chkFrameWrap.TabIndex = 3;
+            this.chkFrameWrap.Tag = "4";
+            this.chkFrameWrap.Text = "默认帧换行";
+            this.chkFrameWrap.UseVisualStyleBackColor = true;
+            this.chkFrameWrap.Click += new System.EventHandler(this.chkFunction_Click);
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -654,5 +670,6 @@
         private System.Windows.Forms.CheckBox chkShowTime;
         private System.Windows.Forms.CheckBox chkShowSend;
         private System.Windows.Forms.CheckBox chkMemoryFunction;
+        private System.Windows.Forms.CheckBox chkFrameWrap;
     }
 }
