@@ -112,6 +112,7 @@ namespace SerialPostTool
             chkShowSerial.Checked = serialInfoConfig.ShowSerial;
             chkShowSend.Checked = serialInfoConfig.ShowSend;
             chkShowTime.Checked = serialInfoConfig.ShowTime;
+            chkFrameWrap.Checked = serialInfoConfig.FrameWarp;
             GroupBoxEnable(groupBoxInfoConfigMemaryFunction, !chkMemoryFunction.Checked);
         }
 
@@ -427,11 +428,14 @@ namespace SerialPostTool
                 case "3":
                     FormMain.objSerialInfoConfig.ShowTime = checkBox.Checked;
                     break;
+                case "4":
+                    FormMain.objSerialInfoConfig.FrameWarp = checkBox.Checked;
+                    break;
                 default:
                     break;
             }
             Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
         }
-       #endregion
+        #endregion
     }
 }
