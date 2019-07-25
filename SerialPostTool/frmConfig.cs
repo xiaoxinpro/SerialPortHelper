@@ -421,20 +421,41 @@ namespace SerialPostTool
                     break;
                 case "1":
                     FormMain.objSerialInfoConfig.ShowSerial = checkBox.Checked;
+                    FormMain.objSerialInfoConfig.FrameWarp = checkBox.Checked ? true : FormMain.objSerialInfoConfig.FrameWarp;
                     break;
                 case "2":
                     FormMain.objSerialInfoConfig.ShowSend = checkBox.Checked;
+                    FormMain.objSerialInfoConfig.FrameWarp = checkBox.Checked ? true : FormMain.objSerialInfoConfig.FrameWarp;
                     break;
                 case "3":
                     FormMain.objSerialInfoConfig.ShowTime = checkBox.Checked;
+                    FormMain.objSerialInfoConfig.FrameWarp = checkBox.Checked ? true : FormMain.objSerialInfoConfig.FrameWarp;
                     break;
                 case "4":
                     FormMain.objSerialInfoConfig.FrameWarp = checkBox.Checked;
+                    if (checkBox.Checked == false)
+                    {
+                        FormMain.objSerialInfoConfig.ShowSerial = false;
+                        FormMain.objSerialInfoConfig.ShowSend = false;
+                        FormMain.objSerialInfoConfig.ShowTime = false;
+                    }
                     break;
                 default:
                     break;
             }
+            UpdataCheckBox();
             Json.WriteFile(SerialInfoConfig.Path, FormMain.objSerialInfoConfig);
+        }
+
+        /// <summary>
+        /// 更新CheckBox控件
+        /// </summary>
+        private void UpdataCheckBox()
+        {
+            chkShowSerial.Checked = FormMain.objSerialInfoConfig.ShowSerial;
+            chkShowSend.Checked = FormMain.objSerialInfoConfig.ShowSend;
+            chkShowTime.Checked = FormMain.objSerialInfoConfig.ShowTime;
+            chkFrameWrap.Checked = FormMain.objSerialInfoConfig.FrameWarp;
         }
         #endregion
     }

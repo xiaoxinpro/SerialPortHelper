@@ -478,7 +478,7 @@ namespace SerialPostTool
                 strHead += "[" + DateTime.Now.ToString(objSerialInfoConfig.TimeFormat) + "]";
             }
             CloseFocus(richTextInfo);
-            richTextInfo.AppendTextColorFont(strHead + strData, color, font);
+            richTextInfo.AppendTextColorFont(strHead + strData, color, font, objSerialInfoConfig.FrameWarp);
         }
 
         /// <summary>
@@ -591,6 +591,10 @@ namespace SerialPostTool
         private void chkShowFunction_Click(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
+            if (checkBox.Checked)
+            {
+                objSerialInfoConfig.FrameWarp = true;
+            }
             if (objSerialInfoConfig.MemoryFunction)
             {
                 switch (checkBox.Tag.ToString())

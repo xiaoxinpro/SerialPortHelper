@@ -47,6 +47,7 @@
             this.groupBoxInfoConfigFunction = new System.Windows.Forms.GroupBox();
             this.groupBoxInfoConfigMemaryFunction = new System.Windows.Forms.GroupBox();
             this.chkShowSerial = new System.Windows.Forms.CheckBox();
+            this.chkFrameWrap = new System.Windows.Forms.CheckBox();
             this.chkShowTime = new System.Windows.Forms.CheckBox();
             this.chkShowSend = new System.Windows.Forms.CheckBox();
             this.chkMemoryFunction = new System.Windows.Forms.CheckBox();
@@ -70,7 +71,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageSerial = new System.Windows.Forms.TabPage();
-            this.chkFrameWrap = new System.Windows.Forms.CheckBox();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -316,6 +316,19 @@
             this.chkShowSerial.Text = "默认显示串口";
             this.chkShowSerial.UseVisualStyleBackColor = true;
             this.chkShowSerial.Click += new System.EventHandler(this.chkFunction_Click);
+            // 
+            // chkFrameWrap
+            // 
+            this.chkFrameWrap.AutoSize = true;
+            this.chkFrameWrap.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkFrameWrap.Location = new System.Drawing.Point(178, 39);
+            this.chkFrameWrap.Name = "chkFrameWrap";
+            this.chkFrameWrap.Size = new System.Drawing.Size(87, 21);
+            this.chkFrameWrap.TabIndex = 3;
+            this.chkFrameWrap.Tag = "4";
+            this.chkFrameWrap.Text = "输出帧换行";
+            this.chkFrameWrap.UseVisualStyleBackColor = true;
+            this.chkFrameWrap.Click += new System.EventHandler(this.chkFunction_Click);
             // 
             // chkShowTime
             // 
@@ -581,19 +594,6 @@
             this.tabPageSerial.TabIndex = 2;
             this.tabPageSerial.Text = "串口配置";
             this.tabPageSerial.UseVisualStyleBackColor = true;
-            // 
-            // chkFrameWrap
-            // 
-            this.chkFrameWrap.AutoSize = true;
-            this.chkFrameWrap.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkFrameWrap.Location = new System.Drawing.Point(178, 39);
-            this.chkFrameWrap.Name = "chkFrameWrap";
-            this.chkFrameWrap.Size = new System.Drawing.Size(87, 21);
-            this.chkFrameWrap.TabIndex = 3;
-            this.chkFrameWrap.Tag = "4";
-            this.chkFrameWrap.Text = "默认帧换行";
-            this.chkFrameWrap.UseVisualStyleBackColor = true;
-            this.chkFrameWrap.Click += new System.EventHandler(this.chkFunction_Click);
             // 
             // frmConfig
             // 
