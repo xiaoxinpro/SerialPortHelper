@@ -60,11 +60,11 @@ namespace SerialPortHelperLib
             {
                 for (int i = 0; i < bytes.Length; i++)
                 {
-                    if (i > 0)
-                    {
-                        returnStr += " ";
-                    }
-                    returnStr += bytes[i].ToString("X2");
+                    //if (i > 0)
+                    //{
+                    //    returnStr += " ";
+                    //}
+                    returnStr += bytes[i].ToString("X2") + " ";
                 }
             }
             return returnStr;
