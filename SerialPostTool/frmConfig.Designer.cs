@@ -324,9 +324,9 @@
             // 
             this.groupBoxInfoConfigFunction.Controls.Add(this.groupBoxInfoConfigMemaryFunction);
             this.groupBoxInfoConfigFunction.Controls.Add(this.chkMemoryFunction);
-            this.groupBoxInfoConfigFunction.Location = new System.Drawing.Point(6, 240);
+            this.groupBoxInfoConfigFunction.Location = new System.Drawing.Point(6, 269);
             this.groupBoxInfoConfigFunction.Name = "groupBoxInfoConfigFunction";
-            this.groupBoxInfoConfigFunction.Size = new System.Drawing.Size(300, 145);
+            this.groupBoxInfoConfigFunction.Size = new System.Drawing.Size(300, 116);
             this.groupBoxInfoConfigFunction.TabIndex = 2;
             this.groupBoxInfoConfigFunction.TabStop = false;
             this.groupBoxInfoConfigFunction.Text = "附加功能";
@@ -339,7 +339,7 @@
             this.groupBoxInfoConfigMemaryFunction.Controls.Add(this.chkShowSend);
             this.groupBoxInfoConfigMemaryFunction.Location = new System.Drawing.Point(10, 36);
             this.groupBoxInfoConfigMemaryFunction.Name = "groupBoxInfoConfigMemaryFunction";
-            this.groupBoxInfoConfigMemaryFunction.Size = new System.Drawing.Size(283, 92);
+            this.groupBoxInfoConfigMemaryFunction.Size = new System.Drawing.Size(283, 70);
             this.groupBoxInfoConfigMemaryFunction.TabIndex = 6;
             this.groupBoxInfoConfigMemaryFunction.TabStop = false;
             // 
@@ -420,7 +420,7 @@
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label9);
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.txtShowTimeFormat);
             this.groupBoxInfoConfigTimeFormat.Controls.Add(this.label8);
-            this.groupBoxInfoConfigTimeFormat.Location = new System.Drawing.Point(6, 124);
+            this.groupBoxInfoConfigTimeFormat.Location = new System.Drawing.Point(6, 153);
             this.groupBoxInfoConfigTimeFormat.Name = "groupBoxInfoConfigTimeFormat";
             this.groupBoxInfoConfigTimeFormat.Size = new System.Drawing.Size(300, 110);
             this.groupBoxInfoConfigTimeFormat.TabIndex = 1;
@@ -524,14 +524,14 @@
             this.groupBoxInfoConfigFont.Controls.Add(this.label5);
             this.groupBoxInfoConfigFont.Location = new System.Drawing.Point(6, 6);
             this.groupBoxInfoConfigFont.Name = "groupBoxInfoConfigFont";
-            this.groupBoxInfoConfigFont.Size = new System.Drawing.Size(300, 112);
+            this.groupBoxInfoConfigFont.Size = new System.Drawing.Size(300, 141);
             this.groupBoxInfoConfigFont.TabIndex = 0;
             this.groupBoxInfoConfigFont.TabStop = false;
             this.groupBoxInfoConfigFont.Text = "文字设置";
             // 
             // BtnInfoFontDefault
             // 
-            this.BtnInfoFontDefault.Location = new System.Drawing.Point(220, 51);
+            this.BtnInfoFontDefault.Location = new System.Drawing.Point(220, 82);
             this.BtnInfoFontDefault.Name = "BtnInfoFontDefault";
             this.BtnInfoFontDefault.Size = new System.Drawing.Size(74, 53);
             this.BtnInfoFontDefault.TabIndex = 10;
@@ -541,7 +541,7 @@
             // 
             // BtnInfoFontColor4
             // 
-            this.BtnInfoFontColor4.Location = new System.Drawing.Point(135, 80);
+            this.BtnInfoFontColor4.Location = new System.Drawing.Point(135, 111);
             this.BtnInfoFontColor4.Name = "BtnInfoFontColor4";
             this.BtnInfoFontColor4.Size = new System.Drawing.Size(79, 24);
             this.BtnInfoFontColor4.TabIndex = 9;
@@ -552,7 +552,7 @@
             // 
             // BtnInfoFontColor3
             // 
-            this.BtnInfoFontColor3.Location = new System.Drawing.Point(50, 80);
+            this.BtnInfoFontColor3.Location = new System.Drawing.Point(50, 111);
             this.BtnInfoFontColor3.Name = "BtnInfoFontColor3";
             this.BtnInfoFontColor3.Size = new System.Drawing.Size(79, 24);
             this.BtnInfoFontColor3.TabIndex = 9;
@@ -563,7 +563,7 @@
             // 
             // BtnInfoFontColor2
             // 
-            this.BtnInfoFontColor2.Location = new System.Drawing.Point(135, 50);
+            this.BtnInfoFontColor2.Location = new System.Drawing.Point(135, 81);
             this.BtnInfoFontColor2.Name = "BtnInfoFontColor2";
             this.BtnInfoFontColor2.Size = new System.Drawing.Size(79, 24);
             this.BtnInfoFontColor2.TabIndex = 9;
@@ -574,7 +574,7 @@
             // 
             // BtnInfoFontColor1
             // 
-            this.BtnInfoFontColor1.Location = new System.Drawing.Point(50, 50);
+            this.BtnInfoFontColor1.Location = new System.Drawing.Point(50, 81);
             this.BtnInfoFontColor1.Name = "BtnInfoFontColor1";
             this.BtnInfoFontColor1.Size = new System.Drawing.Size(79, 24);
             this.BtnInfoFontColor1.TabIndex = 9;
@@ -587,7 +587,7 @@
             // 
             this.BtnInfoFont.Location = new System.Drawing.Point(220, 20);
             this.BtnInfoFont.Name = "BtnInfoFont";
-            this.BtnInfoFont.Size = new System.Drawing.Size(74, 24);
+            this.BtnInfoFont.Size = new System.Drawing.Size(74, 55);
             this.BtnInfoFont.TabIndex = 9;
             this.BtnInfoFont.Text = "选择";
             this.BtnInfoFont.UseVisualStyleBackColor = true;
@@ -600,15 +600,17 @@
             this.txtInfoFont.Multiline = true;
             this.txtInfoFont.Name = "txtInfoFont";
             this.txtInfoFont.ReadOnly = true;
-            this.txtInfoFont.Size = new System.Drawing.Size(164, 23);
+            this.txtInfoFont.Size = new System.Drawing.Size(164, 54);
             this.txtInfoFont.TabIndex = 8;
             this.txtInfoFont.Text = "串口调试工具 0x55 0xAA";
+            this.txtInfoFont.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInfoFont.WordWrap = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(7, 50);
+            this.label6.Location = new System.Drawing.Point(7, 81);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 20);
             this.label6.TabIndex = 7;
