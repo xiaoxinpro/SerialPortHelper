@@ -71,41 +71,41 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageSerial = new System.Windows.Forms.TabPage();
-            this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
-            this.groupBoxSerialConfgDefault1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.cbWriteFormat2 = new System.Windows.Forms.ComboBox();
+            this.cbReceiveFormat2 = new System.Windows.Forms.ComboBox();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.cbStop2 = new System.Windows.Forms.ComboBox();
+            this.cbDataBits2 = new System.Windows.Forms.ComboBox();
+            this.cbBaudRate2 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.groupBoxSerialConfgDefault1 = new System.Windows.Forms.GroupBox();
+            this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
+            this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cbStop1 = new System.Windows.Forms.ComboBox();
+            this.cbDataBits1 = new System.Windows.Forms.ComboBox();
+            this.cbBaudRate1 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBoxSerialConfig = new System.Windows.Forms.GroupBox();
+            this.comboSerial2Encode = new System.Windows.Forms.ComboBox();
+            this.comboSerial1Encode = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chkAutoLinkSerial2 = new System.Windows.Forms.CheckBox();
+            this.chkAutoLinkSerial1 = new System.Windows.Forms.CheckBox();
+            this.chkSaveSerial2Config = new System.Windows.Forms.CheckBox();
+            this.chkSaveSerial1Config = new System.Windows.Forms.CheckBox();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
@@ -117,9 +117,9 @@
             this.groupBoxInfoConfigTimeFormat.SuspendLayout();
             this.groupBoxInfoConfigFont.SuspendLayout();
             this.tabPageSerial.SuspendLayout();
-            this.groupBoxSerialConfig.SuspendLayout();
-            this.groupBoxSerialConfgDefault1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBoxSerialConfgDefault1.SuspendLayout();
+            this.groupBoxSerialConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabConfig
@@ -639,246 +639,14 @@
             this.tabPageSerial.Text = "串口配置";
             this.tabPageSerial.UseVisualStyleBackColor = true;
             // 
-            // groupBoxSerialConfig
-            // 
-            this.groupBoxSerialConfig.Controls.Add(this.comboBox2);
-            this.groupBoxSerialConfig.Controls.Add(this.comboBox1);
-            this.groupBoxSerialConfig.Controls.Add(this.label11);
-            this.groupBoxSerialConfig.Controls.Add(this.label10);
-            this.groupBoxSerialConfig.Controls.Add(this.checkBox4);
-            this.groupBoxSerialConfig.Controls.Add(this.checkBox3);
-            this.groupBoxSerialConfig.Controls.Add(this.checkBox2);
-            this.groupBoxSerialConfig.Controls.Add(this.checkBox1);
-            this.groupBoxSerialConfig.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxSerialConfig.Name = "groupBoxSerialConfig";
-            this.groupBoxSerialConfig.Size = new System.Drawing.Size(300, 114);
-            this.groupBoxSerialConfig.TabIndex = 0;
-            this.groupBoxSerialConfig.TabStop = false;
-            this.groupBoxSerialConfig.Text = "全局配置";
-            // 
-            // groupBoxSerialConfgDefault1
-            // 
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox7);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox8);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox6);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox5);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox4);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox3);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label17);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label15);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label16);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label13);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label14);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.label12);
-            this.groupBoxSerialConfgDefault1.Location = new System.Drawing.Point(6, 126);
-            this.groupBoxSerialConfgDefault1.Name = "groupBoxSerialConfgDefault1";
-            this.groupBoxSerialConfgDefault1.Size = new System.Drawing.Size(300, 103);
-            this.groupBoxSerialConfgDefault1.TabIndex = 0;
-            this.groupBoxSerialConfgDefault1.TabStop = false;
-            this.groupBoxSerialConfgDefault1.Text = "串口默认配置1";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox1.Location = new System.Drawing.Point(11, 21);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 16);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "记忆串口1默认配置";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox2.Location = new System.Drawing.Point(168, 20);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(126, 16);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "记忆串口2默认配置";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox3.Location = new System.Drawing.Point(11, 43);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(126, 16);
-            this.checkBox3.TabIndex = 0;
-            this.checkBox3.Text = "自动尝试连接串口1";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox4.Location = new System.Drawing.Point(168, 42);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(126, 16);
-            this.checkBox4.TabIndex = 0;
-            this.checkBox4.Text = "自动尝试连接串口2";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 69);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 12);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "串口1字符编码：";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "默认",
-            "GBK",
-            "Big5",
-            "Unicode",
-            "UTF-8"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 84);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(124, 20);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(166, 69);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 12);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "串口2字符编码：";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "默认",
-            "GBK",
-            "Big5",
-            "Unicode",
-            "UTF-8"});
-            this.comboBox2.Location = new System.Drawing.Point(168, 84);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(124, 20);
-            this.comboBox2.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 12);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "波特率：";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 51);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "数据位：";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(166, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "停止位：";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(166, 51);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 12);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "校验位：";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 75);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 12);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "接收格式：";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(166, 75);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 12);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "发送格式：";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(61, 20);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(76, 20);
-            this.comboBox3.TabIndex = 1;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(61, 46);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(76, 20);
-            this.comboBox4.TabIndex = 1;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(216, 20);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(76, 20);
-            this.comboBox5.TabIndex = 1;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(216, 46);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(76, 20);
-            this.comboBox6.TabIndex = 1;
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(71, 72);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(66, 20);
-            this.comboBox8.TabIndex = 1;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(226, 72);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(66, 20);
-            this.comboBox7.TabIndex = 1;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox9);
-            this.groupBox1.Controls.Add(this.comboBox10);
+            this.groupBox1.Controls.Add(this.cbWriteFormat2);
+            this.groupBox1.Controls.Add(this.cbReceiveFormat2);
             this.groupBox1.Controls.Add(this.comboBox11);
-            this.groupBox1.Controls.Add(this.comboBox12);
-            this.groupBox1.Controls.Add(this.comboBox13);
-            this.groupBox1.Controls.Add(this.comboBox14);
+            this.groupBox1.Controls.Add(this.cbStop2);
+            this.groupBox1.Controls.Add(this.cbDataBits2);
+            this.groupBox1.Controls.Add(this.cbBaudRate2);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label20);
@@ -892,21 +660,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "串口默认配置2";
             // 
-            // comboBox9
+            // cbWriteFormat2
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(226, 72);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(66, 20);
-            this.comboBox9.TabIndex = 1;
+            this.cbWriteFormat2.FormattingEnabled = true;
+            this.cbWriteFormat2.Location = new System.Drawing.Point(226, 72);
+            this.cbWriteFormat2.Name = "cbWriteFormat2";
+            this.cbWriteFormat2.Size = new System.Drawing.Size(66, 20);
+            this.cbWriteFormat2.TabIndex = 1;
             // 
-            // comboBox10
+            // cbReceiveFormat2
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(71, 72);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(66, 20);
-            this.comboBox10.TabIndex = 1;
+            this.cbReceiveFormat2.FormattingEnabled = true;
+            this.cbReceiveFormat2.Location = new System.Drawing.Point(71, 72);
+            this.cbReceiveFormat2.Name = "cbReceiveFormat2";
+            this.cbReceiveFormat2.Size = new System.Drawing.Size(66, 20);
+            this.cbReceiveFormat2.TabIndex = 1;
             // 
             // comboBox11
             // 
@@ -916,29 +684,29 @@
             this.comboBox11.Size = new System.Drawing.Size(76, 20);
             this.comboBox11.TabIndex = 1;
             // 
-            // comboBox12
+            // cbStop2
             // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(216, 20);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(76, 20);
-            this.comboBox12.TabIndex = 1;
+            this.cbStop2.FormattingEnabled = true;
+            this.cbStop2.Location = new System.Drawing.Point(216, 20);
+            this.cbStop2.Name = "cbStop2";
+            this.cbStop2.Size = new System.Drawing.Size(76, 20);
+            this.cbStop2.TabIndex = 1;
             // 
-            // comboBox13
+            // cbDataBits2
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(61, 46);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(76, 20);
-            this.comboBox13.TabIndex = 1;
+            this.cbDataBits2.FormattingEnabled = true;
+            this.cbDataBits2.Location = new System.Drawing.Point(61, 46);
+            this.cbDataBits2.Name = "cbDataBits2";
+            this.cbDataBits2.Size = new System.Drawing.Size(76, 20);
+            this.cbDataBits2.TabIndex = 1;
             // 
-            // comboBox14
+            // cbBaudRate2
             // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(61, 20);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(76, 20);
-            this.comboBox14.TabIndex = 1;
+            this.cbBaudRate2.FormattingEnabled = true;
+            this.cbBaudRate2.Location = new System.Drawing.Point(61, 20);
+            this.cbBaudRate2.Name = "cbBaudRate2";
+            this.cbBaudRate2.Size = new System.Drawing.Size(76, 20);
+            this.cbBaudRate2.TabIndex = 1;
             // 
             // label18
             // 
@@ -994,6 +762,238 @@
             this.label23.TabIndex = 0;
             this.label23.Text = "波特率：";
             // 
+            // groupBoxSerialConfgDefault1
+            // 
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbWriteFormat1);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbReceiveFormat1);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox6);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbStop1);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbDataBits1);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbBaudRate1);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label17);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label15);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label16);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label13);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label14);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.label12);
+            this.groupBoxSerialConfgDefault1.Location = new System.Drawing.Point(6, 126);
+            this.groupBoxSerialConfgDefault1.Name = "groupBoxSerialConfgDefault1";
+            this.groupBoxSerialConfgDefault1.Size = new System.Drawing.Size(300, 103);
+            this.groupBoxSerialConfgDefault1.TabIndex = 0;
+            this.groupBoxSerialConfgDefault1.TabStop = false;
+            this.groupBoxSerialConfgDefault1.Text = "串口默认配置1";
+            // 
+            // cbWriteFormat1
+            // 
+            this.cbWriteFormat1.FormattingEnabled = true;
+            this.cbWriteFormat1.Location = new System.Drawing.Point(226, 72);
+            this.cbWriteFormat1.Name = "cbWriteFormat1";
+            this.cbWriteFormat1.Size = new System.Drawing.Size(66, 20);
+            this.cbWriteFormat1.TabIndex = 1;
+            // 
+            // cbReceiveFormat1
+            // 
+            this.cbReceiveFormat1.FormattingEnabled = true;
+            this.cbReceiveFormat1.Location = new System.Drawing.Point(71, 72);
+            this.cbReceiveFormat1.Name = "cbReceiveFormat1";
+            this.cbReceiveFormat1.Size = new System.Drawing.Size(66, 20);
+            this.cbReceiveFormat1.TabIndex = 1;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(216, 46);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(76, 20);
+            this.comboBox6.TabIndex = 1;
+            // 
+            // cbStop1
+            // 
+            this.cbStop1.FormattingEnabled = true;
+            this.cbStop1.Location = new System.Drawing.Point(216, 20);
+            this.cbStop1.Name = "cbStop1";
+            this.cbStop1.Size = new System.Drawing.Size(76, 20);
+            this.cbStop1.TabIndex = 1;
+            // 
+            // cbDataBits1
+            // 
+            this.cbDataBits1.FormattingEnabled = true;
+            this.cbDataBits1.Location = new System.Drawing.Point(61, 46);
+            this.cbDataBits1.Name = "cbDataBits1";
+            this.cbDataBits1.Size = new System.Drawing.Size(76, 20);
+            this.cbDataBits1.TabIndex = 1;
+            // 
+            // cbBaudRate1
+            // 
+            this.cbBaudRate1.FormattingEnabled = true;
+            this.cbBaudRate1.Location = new System.Drawing.Point(61, 20);
+            this.cbBaudRate1.Name = "cbBaudRate1";
+            this.cbBaudRate1.Size = new System.Drawing.Size(76, 20);
+            this.cbBaudRate1.TabIndex = 1;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(166, 75);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 12);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "发送格式：";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(166, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "校验位：";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 75);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "接收格式：";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "数据位：";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(166, 23);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "停止位：";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "波特率：";
+            // 
+            // groupBoxSerialConfig
+            // 
+            this.groupBoxSerialConfig.Controls.Add(this.comboSerial2Encode);
+            this.groupBoxSerialConfig.Controls.Add(this.comboSerial1Encode);
+            this.groupBoxSerialConfig.Controls.Add(this.label11);
+            this.groupBoxSerialConfig.Controls.Add(this.label10);
+            this.groupBoxSerialConfig.Controls.Add(this.chkAutoLinkSerial2);
+            this.groupBoxSerialConfig.Controls.Add(this.chkAutoLinkSerial1);
+            this.groupBoxSerialConfig.Controls.Add(this.chkSaveSerial2Config);
+            this.groupBoxSerialConfig.Controls.Add(this.chkSaveSerial1Config);
+            this.groupBoxSerialConfig.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxSerialConfig.Name = "groupBoxSerialConfig";
+            this.groupBoxSerialConfig.Size = new System.Drawing.Size(300, 114);
+            this.groupBoxSerialConfig.TabIndex = 0;
+            this.groupBoxSerialConfig.TabStop = false;
+            this.groupBoxSerialConfig.Text = "全局配置";
+            // 
+            // comboSerial2Encode
+            // 
+            this.comboSerial2Encode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSerial2Encode.FormattingEnabled = true;
+            this.comboSerial2Encode.Items.AddRange(new object[] {
+            "默认",
+            "GBK",
+            "Big5",
+            "Unicode",
+            "UTF-8"});
+            this.comboSerial2Encode.Location = new System.Drawing.Point(168, 84);
+            this.comboSerial2Encode.Name = "comboSerial2Encode";
+            this.comboSerial2Encode.Size = new System.Drawing.Size(124, 20);
+            this.comboSerial2Encode.TabIndex = 2;
+            // 
+            // comboSerial1Encode
+            // 
+            this.comboSerial1Encode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSerial1Encode.FormattingEnabled = true;
+            this.comboSerial1Encode.Items.AddRange(new object[] {
+            "默认",
+            "GBK",
+            "Big5",
+            "Unicode",
+            "UTF-8"});
+            this.comboSerial1Encode.Location = new System.Drawing.Point(13, 84);
+            this.comboSerial1Encode.Name = "comboSerial1Encode";
+            this.comboSerial1Encode.Size = new System.Drawing.Size(124, 20);
+            this.comboSerial1Encode.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(166, 69);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 12);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "串口2字符编码：";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(11, 69);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 12);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "串口1字符编码：";
+            // 
+            // chkAutoLinkSerial2
+            // 
+            this.chkAutoLinkSerial2.AutoSize = true;
+            this.chkAutoLinkSerial2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkAutoLinkSerial2.Location = new System.Drawing.Point(168, 42);
+            this.chkAutoLinkSerial2.Name = "chkAutoLinkSerial2";
+            this.chkAutoLinkSerial2.Size = new System.Drawing.Size(126, 16);
+            this.chkAutoLinkSerial2.TabIndex = 0;
+            this.chkAutoLinkSerial2.Text = "自动尝试连接串口2";
+            this.chkAutoLinkSerial2.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoLinkSerial1
+            // 
+            this.chkAutoLinkSerial1.AutoSize = true;
+            this.chkAutoLinkSerial1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkAutoLinkSerial1.Location = new System.Drawing.Point(11, 43);
+            this.chkAutoLinkSerial1.Name = "chkAutoLinkSerial1";
+            this.chkAutoLinkSerial1.Size = new System.Drawing.Size(126, 16);
+            this.chkAutoLinkSerial1.TabIndex = 0;
+            this.chkAutoLinkSerial1.Text = "自动尝试连接串口1";
+            this.chkAutoLinkSerial1.UseVisualStyleBackColor = true;
+            // 
+            // chkSaveSerial2Config
+            // 
+            this.chkSaveSerial2Config.AutoSize = true;
+            this.chkSaveSerial2Config.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkSaveSerial2Config.Location = new System.Drawing.Point(168, 20);
+            this.chkSaveSerial2Config.Name = "chkSaveSerial2Config";
+            this.chkSaveSerial2Config.Size = new System.Drawing.Size(126, 16);
+            this.chkSaveSerial2Config.TabIndex = 0;
+            this.chkSaveSerial2Config.Text = "记忆串口2默认配置";
+            this.chkSaveSerial2Config.UseVisualStyleBackColor = true;
+            // 
+            // chkSaveSerial1Config
+            // 
+            this.chkSaveSerial1Config.AutoSize = true;
+            this.chkSaveSerial1Config.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chkSaveSerial1Config.Location = new System.Drawing.Point(11, 21);
+            this.chkSaveSerial1Config.Name = "chkSaveSerial1Config";
+            this.chkSaveSerial1Config.Size = new System.Drawing.Size(126, 16);
+            this.chkSaveSerial1Config.TabIndex = 0;
+            this.chkSaveSerial1Config.Text = "记忆串口1默认配置";
+            this.chkSaveSerial1Config.UseVisualStyleBackColor = true;
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1022,12 +1022,12 @@
             this.groupBoxInfoConfigFont.ResumeLayout(false);
             this.groupBoxInfoConfigFont.PerformLayout();
             this.tabPageSerial.ResumeLayout(false);
-            this.groupBoxSerialConfig.ResumeLayout(false);
-            this.groupBoxSerialConfig.PerformLayout();
-            this.groupBoxSerialConfgDefault1.ResumeLayout(false);
-            this.groupBoxSerialConfgDefault1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxSerialConfgDefault1.ResumeLayout(false);
+            this.groupBoxSerialConfgDefault1.PerformLayout();
+            this.groupBoxSerialConfig.ResumeLayout(false);
+            this.groupBoxSerialConfig.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1079,33 +1079,33 @@
         private System.Windows.Forms.CheckBox chkFrameWrap;
         private System.Windows.Forms.GroupBox groupBoxSerialConfgDefault1;
         private System.Windows.Forms.GroupBox groupBoxSerialConfig;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkAutoLinkSerial2;
+        private System.Windows.Forms.CheckBox chkAutoLinkSerial1;
+        private System.Windows.Forms.CheckBox chkSaveSerial2Config;
+        private System.Windows.Forms.CheckBox chkSaveSerial1Config;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboSerial2Encode;
+        private System.Windows.Forms.ComboBox comboSerial1Encode;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cbWriteFormat1;
+        private System.Windows.Forms.ComboBox cbReceiveFormat1;
         private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbStop1;
+        private System.Windows.Forms.ComboBox cbDataBits1;
+        private System.Windows.Forms.ComboBox cbBaudRate1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox cbWriteFormat2;
+        private System.Windows.Forms.ComboBox cbReceiveFormat2;
         private System.Windows.Forms.ComboBox comboBox11;
-        private System.Windows.Forms.ComboBox comboBox12;
-        private System.Windows.Forms.ComboBox comboBox13;
-        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.ComboBox cbStop2;
+        private System.Windows.Forms.ComboBox cbDataBits2;
+        private System.Windows.Forms.ComboBox cbBaudRate2;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
