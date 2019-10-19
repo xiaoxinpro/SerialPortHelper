@@ -49,7 +49,7 @@ namespace SerialPostTool
 
             //判断SerialPortHelperLib.dll版本号
             Version verSerialPortHelperLib = new Version(FileVersionInfo.GetVersionInfo(strPathSerialPortHelperLib).FileVersion);
-            if (verSerialPortHelperLib < new Version("19.3.11.0"))
+            if (verSerialPortHelperLib < new Version("19.10.19.0"))
             {
                 message = "类库文件SerialPortHelperLib.dll版本过低，请安装最新版本。";
                 return false;
