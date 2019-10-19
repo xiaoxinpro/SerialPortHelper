@@ -15,8 +15,8 @@ namespace SerialPortHelperLib
         private const StopBits STOP_BITS = StopBits.One;
         private const Parity PARITY = Parity.None;
 
-        private int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 57600, 115200, 128000 };
-        private int[] ARRAY_DATA_BITS = { 5, 6, 7, 8 };
+        private static int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 57600, 115200, 128000 };
+        private static int[] ARRAY_DATA_BITS = { 5, 6, 7, 8 };
         #endregion
 
         #region 内部变量
@@ -364,6 +364,38 @@ namespace SerialPortHelperLib
         public DetectCom GetDetectCom()
         {
             return detectCom;
+        }
+        #endregion
+
+        #region 静态公共函数（获取信息）
+        /// <summary>
+        /// 获取默认串口配置
+        /// </summary>
+        /// <param name="config"></param>
+        public static void GetDefaultConfigCom(ref ConfigComType config)
+        {
+            config.BaudRate = BAUD_RATE;
+            config.DataBits = DATA_BITS;
+            config.Parity = PARITY;
+            config.StopBits = STOP_BITS;
+        }
+
+        /// <summary>
+        /// 获取波特率列表
+        /// </summary>
+        /// <returns></returns>
+        public static int[] GetBaudRateList()
+        {
+            return ARRAY_BAUD_RATE.ToArray();
+        }
+
+        /// <summary>
+        /// 获取数据位列表
+        /// </summary>
+        /// <returns></returns>
+        public static int[] GetDataBitsList()
+        {
+            return ARRAY_DATA_BITS.ToArray();
         }
         #endregion
 
