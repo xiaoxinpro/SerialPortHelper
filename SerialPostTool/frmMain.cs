@@ -16,6 +16,7 @@ namespace SerialPostTool
         //串口发送数据配置
         public SerialWriteConfig[] arrSerialWriteConfig;
         public SerialInfoConfig objSerialInfoConfig;
+        public SerialMainConfig objSerialMainConfig;
         #endregion
 
         #region 私有字段
@@ -58,6 +59,9 @@ namespace SerialPostTool
 
             //初始化串口消息配置
             InitSerialInfoConfig();
+
+            //初始化串口主配置
+            InitSerialMainConfig();
         }
 
         /// <summary>
@@ -149,6 +153,21 @@ namespace SerialPostTool
             chkShowSerial.Checked = objSerialInfoConfig.ShowSerial;
             chkShowTime.Checked = objSerialInfoConfig.ShowTime;
         }
+
+        /// <summary>
+        /// 初始化串口主配置
+        /// </summary>
+        public void InitSerialMainConfig()
+        {
+            SerialMainConfig.Path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "SerialMainConfig.config";
+            objSerialMainConfig = Json.ReadFile<SerialMainConfig>(SerialMainConfig.Path);
+            if (objSerialMainConfig == null)
+            {
+                objSerialMainConfig = new SerialMainConfig();
+                objSerialMainConfig.ResetConfig();
+            }
+        }
+
         #endregion
 
         #region 串口数据函数
