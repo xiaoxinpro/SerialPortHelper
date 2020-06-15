@@ -74,7 +74,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbWriteFormat2 = new System.Windows.Forms.ComboBox();
             this.cbReceiveFormat2 = new System.Windows.Forms.ComboBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.cbParity2 = new System.Windows.Forms.ComboBox();
             this.cbStop2 = new System.Windows.Forms.ComboBox();
             this.cbDataBits2 = new System.Windows.Forms.ComboBox();
             this.cbBaudRate2 = new System.Windows.Forms.ComboBox();
@@ -87,7 +87,7 @@
             this.groupBoxSerialConfgDefault1 = new System.Windows.Forms.GroupBox();
             this.cbWriteFormat1 = new System.Windows.Forms.ComboBox();
             this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cbParity1 = new System.Windows.Forms.ComboBox();
             this.cbStop1 = new System.Windows.Forms.ComboBox();
             this.cbDataBits1 = new System.Windows.Forms.ComboBox();
             this.cbBaudRate1 = new System.Windows.Forms.ComboBox();
@@ -643,7 +643,7 @@
             // 
             this.groupBox1.Controls.Add(this.cbWriteFormat2);
             this.groupBox1.Controls.Add(this.cbReceiveFormat2);
-            this.groupBox1.Controls.Add(this.comboBox11);
+            this.groupBox1.Controls.Add(this.cbParity2);
             this.groupBox1.Controls.Add(this.cbStop2);
             this.groupBox1.Controls.Add(this.cbDataBits2);
             this.groupBox1.Controls.Add(this.cbBaudRate2);
@@ -676,13 +676,13 @@
             this.cbReceiveFormat2.Size = new System.Drawing.Size(66, 20);
             this.cbReceiveFormat2.TabIndex = 1;
             // 
-            // comboBox11
+            // cbParity2
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(216, 46);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(76, 20);
-            this.comboBox11.TabIndex = 1;
+            this.cbParity2.FormattingEnabled = true;
+            this.cbParity2.Location = new System.Drawing.Point(216, 46);
+            this.cbParity2.Name = "cbParity2";
+            this.cbParity2.Size = new System.Drawing.Size(76, 20);
+            this.cbParity2.TabIndex = 1;
             // 
             // cbStop2
             // 
@@ -766,7 +766,7 @@
             // 
             this.groupBoxSerialConfgDefault1.Controls.Add(this.cbWriteFormat1);
             this.groupBoxSerialConfgDefault1.Controls.Add(this.cbReceiveFormat1);
-            this.groupBoxSerialConfgDefault1.Controls.Add(this.comboBox6);
+            this.groupBoxSerialConfgDefault1.Controls.Add(this.cbParity1);
             this.groupBoxSerialConfgDefault1.Controls.Add(this.cbStop1);
             this.groupBoxSerialConfgDefault1.Controls.Add(this.cbDataBits1);
             this.groupBoxSerialConfgDefault1.Controls.Add(this.cbBaudRate1);
@@ -799,13 +799,13 @@
             this.cbReceiveFormat1.Size = new System.Drawing.Size(66, 20);
             this.cbReceiveFormat1.TabIndex = 1;
             // 
-            // comboBox6
+            // cbParity1
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(216, 46);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(76, 20);
-            this.comboBox6.TabIndex = 1;
+            this.cbParity1.FormattingEnabled = true;
+            this.cbParity1.Location = new System.Drawing.Point(216, 46);
+            this.cbParity1.Name = "cbParity1";
+            this.cbParity1.Size = new System.Drawing.Size(76, 20);
+            this.cbParity1.TabIndex = 1;
             // 
             // cbStop1
             // 
@@ -1093,7 +1093,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cbWriteFormat1;
         private System.Windows.Forms.ComboBox cbReceiveFormat1;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cbParity1;
         private System.Windows.Forms.ComboBox cbStop1;
         private System.Windows.Forms.ComboBox cbDataBits1;
         private System.Windows.Forms.ComboBox cbBaudRate1;
@@ -1102,7 +1102,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbWriteFormat2;
         private System.Windows.Forms.ComboBox cbReceiveFormat2;
-        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox cbParity2;
         private System.Windows.Forms.ComboBox cbStop2;
         private System.Windows.Forms.ComboBox cbDataBits2;
         private System.Windows.Forms.ComboBox cbBaudRate2;
