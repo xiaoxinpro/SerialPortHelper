@@ -44,6 +44,9 @@ namespace SerialPostTool
 
             //初始化串口消息UI
             InitSerialInfoUI(FormMain.objSerialInfoConfig);
+
+            //初始化串口主配置UI
+            InitSerialMainConfigUI(FormMain.objSerialMainConfig);
         }
 
         /// <summary>
@@ -114,6 +117,51 @@ namespace SerialPostTool
             chkShowTime.Checked = serialInfoConfig.ShowTime;
             chkFrameWrap.Checked = serialInfoConfig.FrameWarp;
             GroupBoxEnable(groupBoxInfoConfigMemaryFunction, !chkMemoryFunction.Checked);
+        }
+
+        /// <summary>
+        /// 初始化串口主配置UI
+        /// </summary>
+        /// <param name="serialMainConfig"></param>
+        private void InitSerialMainConfigUI(SerialMainConfig serialMainConfig)
+        {
+            chkSaveSerial1Config.Checked = serialMainConfig.IsSaveConfig1;
+            chkSaveSerial2Config.Checked = serialMainConfig.IsSaveConfig2;
+            chkAutoLinkSerial1.Checked = serialMainConfig.IsAutoLink1;
+            chkAutoLinkSerial2.Checked = serialMainConfig.IsAutoLink2;
+            comboSerial1Encode.SelectedIndex = serialMainConfig.SerialEncode1;
+            comboSerial2Encode.SelectedIndex = serialMainConfig.SerialEncode2;
+
+            SelectComboText(cbBaudRate1, serialMainConfig.ConfigCom1.BaudRate.ToString());
+            SelectComboText(cbBaudRate2, serialMainConfig.ConfigCom2.BaudRate.ToString());
+            SelectComboText(cbDataBits1, serialMainConfig.ConfigCom1.DataBits.ToString());
+            SelectComboText(cbDataBits2, serialMainConfig.ConfigCom2.DataBits.ToString());
+            SelectComboText(cbStop1, serialMainConfig.ConfigCom1.StopBits.ToString());
+            SelectComboText(cbStop2, serialMainConfig.ConfigCom2.StopBits.ToString());
+            SelectComboText(cbParity1, serialMainConfig.ConfigCom1.Parity.ToString());
+            SelectComboText(cbParity2, serialMainConfig.ConfigCom2.Parity.ToString());
+        }
+
+        /// <summary>
+        /// 选择指定文本的Combo项
+        /// </summary>
+        /// <param name="cb">combo控件</param>
+        /// <param name="text">待选择的文本</param>
+        private void SelectComboText(ComboBox cb, string text)
+        {
+            if (cb.Items.Count <= 0)
+            {
+                return;
+            }
+            for (int i = 0; i < cb.Items.Count; i++)
+            {
+                if (cb.Items[i].ToString() == text) 
+                {
+                    cb.SelectedIndex = i;
+                    return;
+                }
+            }
+            cb.SelectedIndex = 0;
         }
 
         /// <summary>
