@@ -27,6 +27,10 @@ namespace SerialPortHelperLib
                     {
                         try
                         {
+                            if (!hardInfo.Properties[propKey].IsLocal)
+                            {
+                                continue;
+                            }
                             if (hardInfo.Properties[propKey].Value.ToString().Contains("COM"))
                             {
                                 strs.Add(hardInfo.Properties[propKey].Value.ToString());
@@ -35,6 +39,7 @@ namespace SerialPortHelperLib
                         catch
                         {
                             //忽略错误
+                            continue;
                         }
                     }
                     searcher.Dispose();

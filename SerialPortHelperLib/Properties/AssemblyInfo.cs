@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Chishin")]
 [assembly: AssemblyProduct("SerialPortHelperLib")]
-[assembly: AssemblyCopyright("Copyright © Chishin 2019")]
+[assembly: AssemblyCopyright("Copyright © Chishin 2020")]
 [assembly: AssemblyTrademark("SerialPortHelperLib for Chishin")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("19.10.19.0")]
-[assembly: AssemblyFileVersion("19.10.19.0")]
+[assembly: AssemblyVersion("20.7.8.0")]
+[assembly: AssemblyFileVersion("20.7.8.0")]
