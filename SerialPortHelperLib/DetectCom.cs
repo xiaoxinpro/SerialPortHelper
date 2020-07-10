@@ -417,7 +417,7 @@ namespace SerialPortHelperLib
             {
                 foreach (string item in arrInfo)
                 {
-                    MatchCollection matchCollection =  Regex.Matches(item, @"\(COM\d+\)");
+                    MatchCollection matchCollection =  Regex.Matches(item, @"\(COM\d+");
                     if (matchCollection.Count > 0)
                     {
                         string strSerialPortName = matchCollection[matchCollection.Count - 1].Value;
