@@ -446,6 +446,7 @@ namespace SerialPostTool
         #endregion
 
         #region 输出显示
+        private RichTextBox richTextBuffer = new RichTextBox();
         /// <summary>
         /// 输出显示信息
         /// </summary>
@@ -496,8 +497,15 @@ namespace SerialPostTool
             {
                 strHead += "[" + DateTime.Now.ToString(objSerialInfoConfig.TimeFormat) + "]";
             }
-            CloseFocus(richTextInfo);
-            richTextInfo.AppendTextColorFont(strHead + strData, color, font, objSerialInfoConfig.FrameWarp);
+            if (isLockTextUpdata)
+            {
+                richTextBuffer.AppendTextColorFont(strHead + strData, color, font, objSerialInfoConfig.FrameWarp);
+            }
+            else
+            {
+                CloseFocus(richTextInfo);
+                richTextInfo.AppendTextColorFont(strHead + strData, color, font, objSerialInfoConfig.FrameWarp);
+            }
         }
 
         /// <summary>
@@ -561,6 +569,44 @@ namespace SerialPostTool
             if (control.Focused)
             {
                 txtCloseFocus.Focus();
+            }
+        }
+
+        private bool isLockTextUpdata = false;
+        /// <summary>
+        /// 消息文本框鼠标按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void richTextInfo_MouseDown(object sender, MouseEventArgs e)
+        {
+            RichTextBox richText = (RichTextBox)sender;
+            Console.WriteLine("鼠标按下：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
+            isLockTextUpdata = true;
+        }
+
+        /// <summary>
+        /// 消息文本框鼠标释放
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void richTextInfo_MouseUp(object sender, MouseEventArgs e)
+        {
+            RichTextBox richText = (RichTextBox)sender;
+            Console.WriteLine("鼠标释放：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
+            isLockTextUpdata = false;
+            if (richTextBuffer.Text != null)
+            {
+                int bakSelectionStart = richTextInfo.SelectionStart;
+                int bakSelectionLength = richTextInfo.SelectionLength;
+                CloseFocus(richTextInfo);
+                richTextBuffer.SelectAll();
+                richTextBuffer.Copy();
+                richTextInfo.SelectionStart = richTextInfo.TextLength;
+                richTextInfo.Paste();
+                richTextInfo.SelectionStart = bakSelectionStart;
+                richTextInfo.SelectionLength = bakSelectionLength;
+                richTextBuffer.Clear();
             }
         }
 
@@ -707,7 +753,7 @@ namespace SerialPostTool
             return format;
         }
 
-        #endregion
 
+        #endregion
     }
 }
