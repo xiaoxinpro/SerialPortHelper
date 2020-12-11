@@ -63,6 +63,9 @@
             this.richTextInfo = new System.Windows.Forms.RichTextBox();
             this.contextMenuStripInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ScrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInfoConfig = new System.Windows.Forms.Button();
@@ -93,9 +96,6 @@
             this.txtSerialWrite2 = new System.Windows.Forms.TextBox();
             this.timSerialWrite1 = new System.Windows.Forms.Timer(this.components);
             this.timSerialWrite2 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ScrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtCloseFocus = new System.Windows.Forms.TextBox();
             this.groupBoxSerial1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -541,6 +541,8 @@
             this.richTextInfo.VScroll += new System.EventHandler(this.richTextInfo_VScroll);
             this.richTextInfo.SizeChanged += new System.EventHandler(this.richTextInfo_SizeChanged);
             this.richTextInfo.TextChanged += new System.EventHandler(this.richTextInfo_TextChanged);
+            this.richTextInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextInfo_MouseDown);
+            this.richTextInfo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.richTextInfo_MouseUp);
             // 
             // contextMenuStripInfo
             // 
@@ -560,6 +562,23 @@
             this.CopyToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.CopyToolStripMenuItem.Text = "复制";
             this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
+            // 
+            // ScrollToolStripMenuItem
+            // 
+            this.ScrollToolStripMenuItem.CheckOnClick = true;
+            this.ScrollToolStripMenuItem.Name = "ScrollToolStripMenuItem";
+            this.ScrollToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.ScrollToolStripMenuItem.Text = "固定滚动条";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
             // 
             // ClearToolStripMenuItem
             // 
@@ -969,23 +988,6 @@
             // 
             this.timSerialWrite2.Tag = "2";
             this.timSerialWrite2.Tick += new System.EventHandler(this.timSerialWrite_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
-            // 
-            // ScrollToolStripMenuItem
-            // 
-            this.ScrollToolStripMenuItem.CheckOnClick = true;
-            this.ScrollToolStripMenuItem.Name = "ScrollToolStripMenuItem";
-            this.ScrollToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.ScrollToolStripMenuItem.Text = "固定滚动条";
             // 
             // txtCloseFocus
             // 
