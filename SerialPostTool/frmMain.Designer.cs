@@ -60,6 +60,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupSerialReceived = new System.Windows.Forms.GroupBox();
+            this.btnInfoClear = new System.Windows.Forms.Button();
             this.richTextInfo = new System.Windows.Forms.RichTextBox();
             this.contextMenuStripInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,6 @@
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInfoConfig = new System.Windows.Forms.Button();
-            this.btnInfoClear = new System.Windows.Forms.Button();
             this.chkShowTime = new System.Windows.Forms.CheckBox();
             this.chkShowSend = new System.Windows.Forms.CheckBox();
             this.chkShowSerial = new System.Windows.Forms.CheckBox();
@@ -511,9 +511,9 @@
             this.groupSerialReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupSerialReceived.Controls.Add(this.btnInfoClear);
             this.groupSerialReceived.Controls.Add(this.richTextInfo);
             this.groupSerialReceived.Controls.Add(this.btnInfoConfig);
-            this.groupSerialReceived.Controls.Add(this.btnInfoClear);
             this.groupSerialReceived.Controls.Add(this.chkShowTime);
             this.groupSerialReceived.Controls.Add(this.chkShowSend);
             this.groupSerialReceived.Controls.Add(this.chkShowSerial);
@@ -524,6 +524,18 @@
             this.groupSerialReceived.TabIndex = 2;
             this.groupSerialReceived.TabStop = false;
             this.groupSerialReceived.Text = "信息显示";
+            // 
+            // btnInfoClear
+            // 
+            this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInfoClear.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInfoClear.Location = new System.Drawing.Point(255, 259);
+            this.btnInfoClear.Name = "btnInfoClear";
+            this.btnInfoClear.Size = new System.Drawing.Size(48, 23);
+            this.btnInfoClear.TabIndex = 3;
+            this.btnInfoClear.Text = "清空";
+            this.btnInfoClear.UseVisualStyleBackColor = true;
+            this.btnInfoClear.Click += new System.EventHandler(this.btnInfoClear_Click);
             // 
             // richTextInfo
             // 
@@ -606,24 +618,12 @@
             this.btnInfoConfig.UseVisualStyleBackColor = true;
             this.btnInfoConfig.Click += new System.EventHandler(this.btnInfoConfig_Click);
             // 
-            // btnInfoClear
-            // 
-            this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInfoClear.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnInfoClear.Location = new System.Drawing.Point(255, 259);
-            this.btnInfoClear.Name = "btnInfoClear";
-            this.btnInfoClear.Size = new System.Drawing.Size(48, 23);
-            this.btnInfoClear.TabIndex = 3;
-            this.btnInfoClear.Text = "清空";
-            this.btnInfoClear.UseVisualStyleBackColor = true;
-            this.btnInfoClear.Click += new System.EventHandler(this.btnInfoClear_Click);
-            // 
             // chkShowTime
             // 
             this.chkShowTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowTime.AutoSize = true;
             this.chkShowTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowTime.Location = new System.Drawing.Point(168, 261);
+            this.chkShowTime.Location = new System.Drawing.Point(174, 261);
             this.chkShowTime.Name = "chkShowTime";
             this.chkShowTime.Size = new System.Drawing.Size(75, 21);
             this.chkShowTime.TabIndex = 2;
@@ -639,7 +639,7 @@
             this.chkShowSend.Checked = true;
             this.chkShowSend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkShowSend.Location = new System.Drawing.Point(87, 261);
+            this.chkShowSend.Location = new System.Drawing.Point(90, 261);
             this.chkShowSend.Name = "chkShowSend";
             this.chkShowSend.Size = new System.Drawing.Size(75, 21);
             this.chkShowSend.TabIndex = 2;
