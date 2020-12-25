@@ -580,9 +580,9 @@ namespace SerialPostTool
         /// <param name="e"></param>
         private void richTextInfo_MouseDown(object sender, MouseEventArgs e)
         {
-            RichTextBox richText = (RichTextBox)sender;
-            Console.WriteLine("鼠标按下：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
-            isLockTextUpdata = true;
+            //RichTextBox richText = (RichTextBox)sender;
+            //Console.WriteLine("鼠标按下：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
+            //isLockTextUpdata = true;
         }
 
         /// <summary>
@@ -592,22 +592,23 @@ namespace SerialPostTool
         /// <param name="e"></param>
         private void richTextInfo_MouseUp(object sender, MouseEventArgs e)
         {
-            RichTextBox richText = (RichTextBox)sender;
-            Console.WriteLine("鼠标释放：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
-            isLockTextUpdata = false;
-            if (richTextBuffer.Text != null)
-            {
-                int bakSelectionStart = richTextInfo.SelectionStart;
-                int bakSelectionLength = richTextInfo.SelectionLength;
-                CloseFocus(richTextInfo);
-                richTextBuffer.SelectAll();
-                richTextBuffer.Copy();
-                richTextInfo.SelectionStart = richTextInfo.TextLength;
-                richTextInfo.Paste();
-                richTextInfo.SelectionStart = bakSelectionStart;
-                richTextInfo.SelectionLength = bakSelectionLength;
-                richTextBuffer.Clear();
-            }
+            //RichTextBox richText = (RichTextBox)sender;
+            //Console.WriteLine("鼠标释放：" + e.X + "x" + e.Y + "\t" + richText.Width + "x" + richText.Height);
+            //isLockTextUpdata = false;
+            //if (richTextBuffer.Text != null)
+            //{
+            //    int bakSelectionStart = richTextInfo.SelectionStart;
+            //    int bakSelectionLength = richTextInfo.SelectionLength;
+            //    CloseFocus(richTextInfo);
+            //    Clipboard.Clear();
+            //    richTextBuffer.SelectAll();
+            //    richTextBuffer.Copy();
+            //    richTextInfo.SelectionStart = richTextInfo.TextLength;
+            //    richTextInfo.Paste();
+            //    richTextInfo.SelectionStart = bakSelectionStart;
+            //    richTextInfo.SelectionLength = bakSelectionLength;
+            //    richTextBuffer.Clear();
+            //}
         }
 
         /// <summary>

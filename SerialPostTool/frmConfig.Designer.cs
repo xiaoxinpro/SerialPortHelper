@@ -148,9 +148,9 @@
             // groupBoxWriteConfigList
             // 
             this.groupBoxWriteConfigList.Controls.Add(this.listViewWriteConfig);
-            this.groupBoxWriteConfigList.Location = new System.Drawing.Point(6, 129);
+            this.groupBoxWriteConfigList.Location = new System.Drawing.Point(6, 158);
             this.groupBoxWriteConfigList.Name = "groupBoxWriteConfigList";
-            this.groupBoxWriteConfigList.Size = new System.Drawing.Size(300, 256);
+            this.groupBoxWriteConfigList.Size = new System.Drawing.Size(300, 227);
             this.groupBoxWriteConfigList.TabIndex = 0;
             this.groupBoxWriteConfigList.TabStop = false;
             this.groupBoxWriteConfigList.Text = "浏览";
@@ -161,7 +161,7 @@
             this.listViewWriteConfig.Location = new System.Drawing.Point(7, 20);
             this.listViewWriteConfig.MultiSelect = false;
             this.listViewWriteConfig.Name = "listViewWriteConfig";
-            this.listViewWriteConfig.Size = new System.Drawing.Size(287, 230);
+            this.listViewWriteConfig.Size = new System.Drawing.Size(287, 201);
             this.listViewWriteConfig.TabIndex = 0;
             this.listViewWriteConfig.UseCompatibleStateImageBehavior = false;
             this.listViewWriteConfig.SelectedIndexChanged += new System.EventHandler(this.listViewWriteConfig_SelectedIndexChanged);
@@ -181,7 +181,7 @@
             this.groupBoxWriteConfigAddOrEdit.Controls.Add(this.label1);
             this.groupBoxWriteConfigAddOrEdit.Location = new System.Drawing.Point(6, 6);
             this.groupBoxWriteConfigAddOrEdit.Name = "groupBoxWriteConfigAddOrEdit";
-            this.groupBoxWriteConfigAddOrEdit.Size = new System.Drawing.Size(300, 117);
+            this.groupBoxWriteConfigAddOrEdit.Size = new System.Drawing.Size(300, 146);
             this.groupBoxWriteConfigAddOrEdit.TabIndex = 0;
             this.groupBoxWriteConfigAddOrEdit.TabStop = false;
             this.groupBoxWriteConfigAddOrEdit.Text = "添加/编辑";
@@ -204,7 +204,7 @@
             0,
             0,
             0});
-            this.numWriteConfigTimer.Location = new System.Drawing.Point(204, 82);
+            this.numWriteConfigTimer.Location = new System.Drawing.Point(204, 115);
             this.numWriteConfigTimer.Maximum = new decimal(new int[] {
             3600000,
             0,
@@ -229,8 +229,10 @@
             // 
             this.txtWriteConfigData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtWriteConfigData.Location = new System.Drawing.Point(50, 50);
+            this.txtWriteConfigData.Multiline = true;
             this.txtWriteConfigData.Name = "txtWriteConfigData";
-            this.txtWriteConfigData.Size = new System.Drawing.Size(244, 23);
+            this.txtWriteConfigData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtWriteConfigData.Size = new System.Drawing.Size(244, 56);
             this.txtWriteConfigData.TabIndex = 2;
             // 
             // txtWriteConfigName
@@ -251,7 +253,7 @@
             "自动",
             "字符串",
             "十六进制"});
-            this.cbWriteConfigFormat.Location = new System.Drawing.Point(50, 79);
+            this.cbWriteConfigFormat.Location = new System.Drawing.Point(50, 112);
             this.cbWriteConfigFormat.Name = "cbWriteConfigFormat";
             this.cbWriteConfigFormat.Size = new System.Drawing.Size(87, 25);
             this.cbWriteConfigFormat.TabIndex = 3;
@@ -260,7 +262,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(272, 81);
+            this.label4.Location = new System.Drawing.Point(272, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 20);
             this.label4.TabIndex = 4;
@@ -270,7 +272,7 @@
             // 
             this.chkWriteConfigTimer.AutoSize = true;
             this.chkWriteConfigTimer.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkWriteConfigTimer.Location = new System.Drawing.Point(153, 80);
+            this.chkWriteConfigTimer.Location = new System.Drawing.Point(153, 113);
             this.chkWriteConfigTimer.Name = "chkWriteConfigTimer";
             this.chkWriteConfigTimer.Size = new System.Drawing.Size(56, 24);
             this.chkWriteConfigTimer.TabIndex = 4;
@@ -281,7 +283,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(7, 81);
+            this.label3.Location = new System.Drawing.Point(7, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 0;
