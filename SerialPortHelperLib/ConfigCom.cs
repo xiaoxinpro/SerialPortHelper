@@ -15,7 +15,7 @@ namespace SerialPortHelperLib
         private const StopBits STOP_BITS = StopBits.One;
         private const Parity PARITY = Parity.None;
 
-        private static int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 57600, 115200, 128000 };
+        private static int[] ARRAY_BAUD_RATE = { 1200, 2400, 4800, 7200, 9600, 14400, 19200, 38400, 57600, 74880, 115200, 128000 };
         private static int[] ARRAY_DATA_BITS = { 5, 6, 7, 8 };
         #endregion
 
