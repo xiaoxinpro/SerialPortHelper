@@ -187,7 +187,7 @@ namespace SerialPortHelperLib
         {
             if (cb != null)
             {
-                cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                cb.DropDownStyle = ComboBoxStyle.DropDown;
                 cb.Items.Clear();
                 foreach (int item in ARRAY_BAUD_RATE)
                 {
