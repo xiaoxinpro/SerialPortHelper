@@ -212,7 +212,6 @@
             // 
             // cbBaudRate1
             // 
-            this.cbBaudRate1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBaudRate1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbBaudRate1.FormattingEnabled = true;
             this.cbBaudRate1.Items.AddRange(new object[] {
@@ -409,7 +408,6 @@
             // 
             // cbBaudRate2
             // 
-            this.cbBaudRate2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBaudRate2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbBaudRate2.FormattingEnabled = true;
             this.cbBaudRate2.Items.AddRange(new object[] {
