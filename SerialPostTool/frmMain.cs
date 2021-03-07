@@ -278,7 +278,15 @@ namespace SerialPostTool
             GroupBox grp = btn.Parent as GroupBox;
             if (btn.Text == "打开串口")
             {
-                spb.OpenCom(cc.GetConfigComData(), out string strError);
+                string strError;
+                try
+                {
+                    spb.OpenCom(cc.GetConfigComData(), out strError);
+                }
+                catch (Exception err)
+                {
+                    strError = err.Message;
+                }
                 if (strError != "null")
                 {
                     MessageBox.Show(strError);
