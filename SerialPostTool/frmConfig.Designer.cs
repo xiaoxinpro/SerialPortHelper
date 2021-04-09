@@ -169,6 +169,7 @@
             // 
             // listViewWriteConfig
             // 
+            this.listViewWriteConfig.ContextMenuStrip = this.contextMenuStripWrite;
             this.listViewWriteConfig.HideSelection = false;
             this.listViewWriteConfig.Location = new System.Drawing.Point(7, 20);
             this.listViewWriteConfig.MultiSelect = false;
@@ -1021,7 +1022,7 @@
             this.WriteUpToolStripMenuItem,
             this.WriteDownToolStripMenuItem});
             this.contextMenuStripWrite.Name = "contextMenuStripWrite";
-            this.contextMenuStripWrite.Size = new System.Drawing.Size(181, 176);
+            this.contextMenuStripWrite.Size = new System.Drawing.Size(101, 154);
             // 
             // WriteCleanToolStripMenuItem
             // 
