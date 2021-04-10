@@ -318,6 +318,26 @@ namespace SerialPostTool
         }
 
         /// <summary>
+        /// 快捷管理菜单弹出事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextMenuStripWrite_Opening(object sender, CancelEventArgs e)
+        {
+            ContextMenuStrip menuStrip = sender as ContextMenuStrip;
+            if (menuStrip != null)
+            {
+                for (int i = 0; i < menuStrip.Items.Count; i++)
+                {
+                    if (menuStrip.Items[i].Tag.ToString() == "1")
+                    {
+                        menuStrip.Items[i].Visible = listViewWriteConfig.SelectedItems.Count > 0;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 加载快捷发送数据UI
         /// </summary>
         /// <param name="serialWriteConfig"></param>
@@ -506,5 +526,7 @@ namespace SerialPostTool
             chkFrameWrap.Checked = FormMain.objSerialInfoConfig.FrameWarp;
         }
         #endregion
+
+
     }
 }
