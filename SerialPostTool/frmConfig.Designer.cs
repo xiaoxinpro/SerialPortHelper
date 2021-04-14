@@ -33,6 +33,16 @@
             this.tabPageWrite = new System.Windows.Forms.TabPage();
             this.groupBoxWriteConfigList = new System.Windows.Forms.GroupBox();
             this.listViewWriteConfig = new System.Windows.Forms.ListView();
+            this.contextMenuStripWrite = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.WriteCleanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.WriteImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WriteOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.WriteDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.WriteUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WriteDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxWriteConfigAddOrEdit = new System.Windows.Forms.GroupBox();
             this.btnWriteConfigSave = new System.Windows.Forms.Button();
             this.numWriteConfigTimer = new System.Windows.Forms.NumericUpDown();
@@ -107,19 +117,10 @@
             this.chkAutoLinkSerial1 = new System.Windows.Forms.CheckBox();
             this.chkSaveSerial2Config = new System.Windows.Forms.CheckBox();
             this.chkSaveSerial1Config = new System.Windows.Forms.CheckBox();
-            this.contextMenuStripWrite = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.WriteCleanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.WriteImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.WriteOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.WriteUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.WriteDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.WriteDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.tabConfig.SuspendLayout();
             this.tabPageWrite.SuspendLayout();
             this.groupBoxWriteConfigList.SuspendLayout();
+            this.contextMenuStripWrite.SuspendLayout();
             this.groupBoxWriteConfigAddOrEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWriteConfigTimer)).BeginInit();
             this.tabPageInfo.SuspendLayout();
@@ -131,7 +132,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBoxSerialConfgDefault1.SuspendLayout();
             this.groupBoxSerialConfig.SuspendLayout();
-            this.contextMenuStripWrite.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabConfig
@@ -179,6 +179,88 @@
             this.listViewWriteConfig.UseCompatibleStateImageBehavior = false;
             this.listViewWriteConfig.SelectedIndexChanged += new System.EventHandler(this.listViewWriteConfig_SelectedIndexChanged);
             this.listViewWriteConfig.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewWriteConfig_MouseDoubleClick);
+            // 
+            // contextMenuStripWrite
+            // 
+            this.contextMenuStripWrite.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.WriteCleanToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.WriteImportToolStripMenuItem,
+            this.WriteOutputToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.WriteDeleteToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.WriteUpToolStripMenuItem,
+            this.WriteDownToolStripMenuItem});
+            this.contextMenuStripWrite.Name = "contextMenuStripWrite";
+            this.contextMenuStripWrite.Size = new System.Drawing.Size(181, 176);
+            this.contextMenuStripWrite.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripWrite_Opening);
+            this.contextMenuStripWrite.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStripWrite_ItemClicked);
+            // 
+            // WriteCleanToolStripMenuItem
+            // 
+            this.WriteCleanToolStripMenuItem.Name = "WriteCleanToolStripMenuItem";
+            this.WriteCleanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteCleanToolStripMenuItem.Tag = "0";
+            this.WriteCleanToolStripMenuItem.Text = "清空";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Tag = "0";
+            // 
+            // WriteImportToolStripMenuItem
+            // 
+            this.WriteImportToolStripMenuItem.Name = "WriteImportToolStripMenuItem";
+            this.WriteImportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteImportToolStripMenuItem.Tag = "0";
+            this.WriteImportToolStripMenuItem.Text = "导入";
+            // 
+            // WriteOutputToolStripMenuItem
+            // 
+            this.WriteOutputToolStripMenuItem.Name = "WriteOutputToolStripMenuItem";
+            this.WriteOutputToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteOutputToolStripMenuItem.Tag = "0";
+            this.WriteOutputToolStripMenuItem.Text = "导出";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Tag = "1";
+            this.toolStripMenuItem2.Visible = false;
+            // 
+            // WriteDeleteToolStripMenuItem
+            // 
+            this.WriteDeleteToolStripMenuItem.Name = "WriteDeleteToolStripMenuItem";
+            this.WriteDeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteDeleteToolStripMenuItem.Tag = "1";
+            this.WriteDeleteToolStripMenuItem.Text = "删除";
+            this.WriteDeleteToolStripMenuItem.Visible = false;
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Tag = "1";
+            this.toolStripMenuItem3.Visible = false;
+            // 
+            // WriteUpToolStripMenuItem
+            // 
+            this.WriteUpToolStripMenuItem.Name = "WriteUpToolStripMenuItem";
+            this.WriteUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteUpToolStripMenuItem.Tag = "1";
+            this.WriteUpToolStripMenuItem.Text = "上移";
+            this.WriteUpToolStripMenuItem.Visible = false;
+            // 
+            // WriteDownToolStripMenuItem
+            // 
+            this.WriteDownToolStripMenuItem.Name = "WriteDownToolStripMenuItem";
+            this.WriteDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.WriteDownToolStripMenuItem.Tag = "1";
+            this.WriteDownToolStripMenuItem.Text = "下移";
+            this.WriteDownToolStripMenuItem.Visible = false;
             // 
             // groupBoxWriteConfigAddOrEdit
             // 
@@ -1009,87 +1091,6 @@
             this.chkSaveSerial1Config.Text = "记忆串口1默认配置";
             this.chkSaveSerial1Config.UseVisualStyleBackColor = true;
             // 
-            // contextMenuStripWrite
-            // 
-            this.contextMenuStripWrite.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.WriteCleanToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.WriteImportToolStripMenuItem,
-            this.WriteOutputToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.WriteDeleteToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.WriteUpToolStripMenuItem,
-            this.WriteDownToolStripMenuItem});
-            this.contextMenuStripWrite.Name = "contextMenuStripWrite";
-            this.contextMenuStripWrite.Size = new System.Drawing.Size(181, 176);
-            this.contextMenuStripWrite.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripWrite_Opening);
-            // 
-            // WriteCleanToolStripMenuItem
-            // 
-            this.WriteCleanToolStripMenuItem.Name = "WriteCleanToolStripMenuItem";
-            this.WriteCleanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteCleanToolStripMenuItem.Tag = "0";
-            this.WriteCleanToolStripMenuItem.Text = "清空";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            this.toolStripMenuItem1.Tag = "0";
-            // 
-            // WriteImportToolStripMenuItem
-            // 
-            this.WriteImportToolStripMenuItem.Name = "WriteImportToolStripMenuItem";
-            this.WriteImportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteImportToolStripMenuItem.Tag = "0";
-            this.WriteImportToolStripMenuItem.Text = "导入";
-            // 
-            // WriteOutputToolStripMenuItem
-            // 
-            this.WriteOutputToolStripMenuItem.Name = "WriteOutputToolStripMenuItem";
-            this.WriteOutputToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteOutputToolStripMenuItem.Tag = "0";
-            this.WriteOutputToolStripMenuItem.Text = "导出";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            this.toolStripMenuItem2.Tag = "1";
-            this.toolStripMenuItem2.Visible = false;
-            // 
-            // WriteUpToolStripMenuItem
-            // 
-            this.WriteUpToolStripMenuItem.Name = "WriteUpToolStripMenuItem";
-            this.WriteUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteUpToolStripMenuItem.Tag = "1";
-            this.WriteUpToolStripMenuItem.Text = "上移";
-            this.WriteUpToolStripMenuItem.Visible = false;
-            // 
-            // WriteDownToolStripMenuItem
-            // 
-            this.WriteDownToolStripMenuItem.Name = "WriteDownToolStripMenuItem";
-            this.WriteDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteDownToolStripMenuItem.Tag = "1";
-            this.WriteDownToolStripMenuItem.Text = "下移";
-            this.WriteDownToolStripMenuItem.Visible = false;
-            // 
-            // WriteDeleteToolStripMenuItem
-            // 
-            this.WriteDeleteToolStripMenuItem.Name = "WriteDeleteToolStripMenuItem";
-            this.WriteDeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.WriteDeleteToolStripMenuItem.Tag = "1";
-            this.WriteDeleteToolStripMenuItem.Text = "删除";
-            this.WriteDeleteToolStripMenuItem.Visible = false;
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
-            this.toolStripMenuItem3.Tag = "1";
-            this.toolStripMenuItem3.Visible = false;
-            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1105,6 +1106,7 @@
             this.tabConfig.ResumeLayout(false);
             this.tabPageWrite.ResumeLayout(false);
             this.groupBoxWriteConfigList.ResumeLayout(false);
+            this.contextMenuStripWrite.ResumeLayout(false);
             this.groupBoxWriteConfigAddOrEdit.ResumeLayout(false);
             this.groupBoxWriteConfigAddOrEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWriteConfigTimer)).EndInit();
@@ -1124,7 +1126,6 @@
             this.groupBoxSerialConfgDefault1.PerformLayout();
             this.groupBoxSerialConfig.ResumeLayout(false);
             this.groupBoxSerialConfig.PerformLayout();
-            this.contextMenuStripWrite.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
