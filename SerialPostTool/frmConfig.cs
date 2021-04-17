@@ -268,13 +268,22 @@ namespace SerialPostTool
         /// 删除快捷发送数据
         /// </summary>
         /// <param name="index"></param>
-        private void DeleteWriteConfig(int index)
+        private void DeleteWriteConfig(ListView listView)
         {
-            if (index >= 0 && index < FormMain.arrSerialWriteConfig.Length)
+            if (listView.SelectedIndices.Count > 0)
             {
-                List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
-                listSerialWriteConfigs.RemoveAt(index);
-                FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
+                int index = listView.SelectedIndices[0];
+                if (index >= 0 && index < FormMain.arrSerialWriteConfig.Length)
+                {
+                    List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
+                    listSerialWriteConfigs.RemoveAt(index);
+                    FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
+
+                    Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
+                    InitSerialWriteUI();
+                    InitListViewWriteConfig(listView);
+                    FormMain.InitSerialWriteConfig();
+                }
             }
         }
 
@@ -286,14 +295,7 @@ namespace SerialPostTool
         private void listViewWriteConfig_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListView listView = (ListView)sender;
-            if (listView.SelectedIndices.Count > 0)
-            {
-                DeleteWriteConfig(listView.SelectedIndices[0]);
-                Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
-                InitSerialWriteUI();
-                InitListViewWriteConfig(listView);
-                FormMain.InitSerialWriteConfig();
-            }
+            DeleteWriteConfig(listView);
         }
 
         /// <summary>
@@ -314,6 +316,41 @@ namespace SerialPostTool
             {
                 //添加数据
                 InitSerialWriteUI();
+            }
+        }
+
+        /// <summary>
+        /// 快捷菜单点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextMenuStripWrite_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ListView listView = null;
+            ContextMenuStrip menuStrip = sender as ContextMenuStrip;
+            if (menuStrip != null)
+            {
+                listView = menuStrip.SourceControl as ListView;
+                if (listView == null)
+                {
+                    return;
+                }
+            }
+            switch (e.ClickedItem.Name)
+            {
+                case "WriteCleanToolStripMenuItem":
+                    break;
+                case "WriteImportToolStripMenuItem":
+                    break;
+                case "WriteOutputToolStripMenuItem":
+                    break;
+                case "WriteDeleteToolStripMenuItem":
+                    DeleteWriteConfig(listView);
+                    break;
+                case "WriteUpToolStripMenuItem":
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -525,6 +562,7 @@ namespace SerialPostTool
             chkShowTime.Checked = FormMain.objSerialInfoConfig.ShowTime;
             chkFrameWrap.Checked = FormMain.objSerialInfoConfig.FrameWarp;
         }
+
         #endregion
 
 
