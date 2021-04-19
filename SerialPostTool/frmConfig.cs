@@ -287,6 +287,27 @@ namespace SerialPostTool
             }
         }
 
+        private void MoveUpWriteConfig(ListView listView)
+        {
+            if (listView.SelectedIndices.Count == 1)
+            {
+                int index = listView.SelectedIndices[0];
+                if (index >= 0 && index < FormMain.arrSerialWriteConfig.Length)
+                {
+                    List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
+                    SerialWriteConfig tmp = listSerialWriteConfigs[index];
+                    listSerialWriteConfigs[index] = listSerialWriteConfigs[index - 1];
+                    listSerialWriteConfigs[index - 1] = tmp;
+                    FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
+
+                    Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
+                    InitSerialWriteUI();
+                    InitListViewWriteConfig(listView);
+                    FormMain.InitSerialWriteConfig();
+                }
+            }
+        }
+
         /// <summary>
         /// 快捷数据表格双击事件
         /// </summary>
@@ -348,6 +369,7 @@ namespace SerialPostTool
                     DeleteWriteConfig(listView);
                     break;
                 case "WriteUpToolStripMenuItem":
+                    MoveUpWriteConfig(listView);
                     break;
                 default:
                     break;
