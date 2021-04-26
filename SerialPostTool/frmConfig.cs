@@ -287,17 +287,22 @@ namespace SerialPostTool
             }
         }
 
-        private void MoveUpWriteConfig(ListView listView)
+        /// <summary>
+        /// 移动快捷发送数据
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="isUp"></param>
+        private void MoveWriteConfig(ListView listView, Boolean isUp = true)
         {
             if (listView.SelectedIndices.Count == 1)
             {
                 int index = listView.SelectedIndices[0];
-                if (index >= 0 && index < FormMain.arrSerialWriteConfig.Length)
+                if (index >= (isUp ? 1 : 0) && index < (isUp ? FormMain.arrSerialWriteConfig.Length : FormMain.arrSerialWriteConfig.Length - 1))
                 {
                     List<SerialWriteConfig> listSerialWriteConfigs = FormMain.arrSerialWriteConfig.ToList();
                     SerialWriteConfig tmp = listSerialWriteConfigs[index];
-                    listSerialWriteConfigs[index] = listSerialWriteConfigs[index - 1];
-                    listSerialWriteConfigs[index - 1] = tmp;
+                    listSerialWriteConfigs[index] = listSerialWriteConfigs[index - (isUp ? 1 : -1)];
+                    listSerialWriteConfigs[index - (isUp ? 1 : -1)] = tmp;
                     FormMain.arrSerialWriteConfig = listSerialWriteConfigs.ToArray();
 
                     Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
@@ -369,7 +374,10 @@ namespace SerialPostTool
                     DeleteWriteConfig(listView);
                     break;
                 case "WriteUpToolStripMenuItem":
-                    MoveUpWriteConfig(listView);
+                    MoveWriteConfig(listView, true);
+                    break;
+                case "WriteDownToolStripMenuItem":
+                    MoveWriteConfig(listView, false);
                     break;
                 default:
                     break;
