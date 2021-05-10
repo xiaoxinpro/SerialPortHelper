@@ -314,6 +314,39 @@ namespace SerialPostTool
         }
 
         /// <summary>
+        /// 导出快捷发送数据
+        /// </summary>
+        /// <param name="filepath">导出路径（为空则选择导出路径）</param>
+        private void OutputWriteConfig(string filepath = null)
+        {
+            string filename = filepath;
+            SaveFileDialog dialog = new SaveFileDialog();
+            if (filename == null)
+            {
+                dialog.Filter = "快捷配置文件 (*.config)|*.config";
+                dialog.DefaultExt = ".config";
+                dialog.Title = "导出快捷配置文件";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    filename = dialog.FileName;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            try
+            {
+                Json.WriteFile(filename, FormMain.arrSerialWriteConfig);
+                MessageBox.Show("快捷配置文件导出完成。", "导出成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "导出失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
         /// 快捷数据表格双击事件
         /// </summary>
         /// <param name="sender"></param>
@@ -369,6 +402,7 @@ namespace SerialPostTool
                 case "WriteImportToolStripMenuItem":
                     break;
                 case "WriteOutputToolStripMenuItem":
+                    OutputWriteConfig();
                     break;
                 case "WriteDeleteToolStripMenuItem":
                     DeleteWriteConfig(listView);
