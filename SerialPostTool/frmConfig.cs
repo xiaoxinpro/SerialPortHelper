@@ -395,6 +395,8 @@ namespace SerialPostTool
                     return;
                 }
             }
+            menuStrip.Close();
+            menuStrip.Refresh();
             switch (e.ClickedItem.Name)
             {
                 case "WriteCleanToolStripMenuItem":
