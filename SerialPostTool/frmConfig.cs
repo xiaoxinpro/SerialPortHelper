@@ -320,9 +320,9 @@ namespace SerialPostTool
         private void OutputWriteConfig(string filepath = null)
         {
             string filename = filepath;
-            SaveFileDialog dialog = new SaveFileDialog();
             if (filename == null)
             {
+                SaveFileDialog dialog = new SaveFileDialog();
                 dialog.Filter = "快捷配置文件 (*.config)|*.config";
                 dialog.DefaultExt = ".config";
                 dialog.Title = "导出快捷配置文件";
@@ -343,6 +343,26 @@ namespace SerialPostTool
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "导出失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void InputWriteConfig(string filepath = null)
+        {
+            string filename = filepath;
+            if (filename == null)
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "快捷配置文件 (*.config)|*.config";
+                dialog.DefaultExt = ".config";
+                dialog.Title = "导出快捷配置文件";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    filename = dialog.FileName;
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
