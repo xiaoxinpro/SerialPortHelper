@@ -364,6 +364,25 @@ namespace SerialPostTool
                     return;
                 }
             }
+            try
+            {
+                SerialWriteConfig[] config = Json.ReadFile<SerialWriteConfig[]>(filename);
+                if (config == null || config.Length <= 0)
+                {
+                    MessageBox.Show("目标文件格式错误，无法导入配置。", "导入失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                FormMain.arrSerialWriteConfig = config;
+                Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
+                InitSerialWriteUI();
+                InitListViewWriteConfig(listViewWriteConfig);
+                FormMain.InitSerialWriteConfig();
+                MessageBox.Show("快捷配置文件导入完成。", "导入成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "导入失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -422,6 +441,7 @@ namespace SerialPostTool
                 case "WriteCleanToolStripMenuItem":
                     break;
                 case "WriteImportToolStripMenuItem":
+                    InputWriteConfig();
                     break;
                 case "WriteOutputToolStripMenuItem":
                     OutputWriteConfig();
