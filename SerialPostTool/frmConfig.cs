@@ -346,6 +346,10 @@ namespace SerialPostTool
             }
         }
 
+        /// <summary>
+        /// 导入快捷配置
+        /// </summary>
+        /// <param name="filepath">导入文件路径（为空则选择导入路径）</param>
         private void InputWriteConfig(string filepath = null)
         {
             string filename = filepath;
