@@ -389,6 +389,15 @@ namespace SerialPostTool
             }
         }
 
+        private void CleanWriteConfig()
+        {
+            FormMain.arrSerialWriteConfig = new SerialWriteConfig[0];
+            Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
+            InitSerialWriteUI();
+            InitListViewWriteConfig(listViewWriteConfig);
+            FormMain.InitSerialWriteConfig();
+        }
+
         /// <summary>
         /// 快捷数据表格双击事件
         /// </summary>
@@ -443,6 +452,7 @@ namespace SerialPostTool
             switch (e.ClickedItem.Name)
             {
                 case "WriteCleanToolStripMenuItem":
+                    CleanWriteConfig();
                     break;
                 case "WriteImportToolStripMenuItem":
                     InputWriteConfig();
