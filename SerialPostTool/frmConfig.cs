@@ -358,7 +358,7 @@ namespace SerialPostTool
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "快捷配置文件 (*.config)|*.config";
                 dialog.DefaultExt = ".config";
-                dialog.Title = "导出快捷配置文件";
+                dialog.Title = "导入快捷配置文件";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     filename = dialog.FileName;
