@@ -52,13 +52,16 @@ namespace SerialPostTool
         /// <summary>
         /// 初始化快捷管理UI
         /// </summary>
-        private void InitSerialWriteUI()
+        private void InitSerialWriteUI(bool isAll = true)
         {
             txtWriteConfigName.Text = "";
             txtWriteConfigData.Text = "";
-            cbWriteConfigFormat.SelectedIndex = 0;
-            chkWriteConfigTimer.Checked = false;
-            numWriteConfigTimer.Value = 500;
+            if (isAll)
+            {
+                cbWriteConfigFormat.SelectedIndex = 0;
+                chkWriteConfigTimer.Checked = false;
+                numWriteConfigTimer.Value = 500;
+            }
             btnWriteConfigSave.Text = "添加";
         }
 
@@ -235,7 +238,7 @@ namespace SerialPostTool
 
             Json.WriteFile(SerialWriteConfig.Path, FormMain.arrSerialWriteConfig);
             InitListViewWriteConfig(listViewWriteConfig);
-            InitSerialWriteUI();
+            InitSerialWriteUI(false);
             FormMain.InitSerialWriteConfig();
         }
 
@@ -426,7 +429,7 @@ namespace SerialPostTool
             else
             {
                 //添加数据
-                InitSerialWriteUI();
+                InitSerialWriteUI(false);
             }
         }
 
