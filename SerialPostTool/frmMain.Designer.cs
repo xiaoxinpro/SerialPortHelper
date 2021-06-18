@@ -1004,7 +1004,7 @@
             this.Controls.Add(this.groupSerialReceived);
             this.Controls.Add(this.groupBoxSerial2);
             this.Controls.Add(this.groupBoxSerial1);
-            this.MinimumSize = new System.Drawing.Size(770, 491);
+            this.MinimumSize = new System.Drawing.Size(770, 525);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "串口调试工具";
