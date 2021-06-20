@@ -417,14 +417,21 @@ namespace SerialPortHelperLib
             {
                 foreach (string item in arrInfo)
                 {
-                    MatchCollection matchCollection =  Regex.Matches(item, @"\(COM\d+");
-                    if (matchCollection.Count > 0)
+                    try
                     {
-                        string strSerialPortName = matchCollection[matchCollection.Count - 1].Value;
-                        string strSerialPortInfo = Regex.Replace(item, Regex.Escape(strSerialPortName) , "").Trim();
-                        strSerialPortName = Regex.Replace(strSerialPortName, @"[\(\)]", "").Trim();
-                        dicData[strSerialPortName] = strSerialPortInfo;
-                        Console.WriteLine("Name：" + strSerialPortName + "\tInfo：" + strSerialPortInfo);
+                        MatchCollection matchCollection = Regex.Matches(item, @"\(COM\d+");
+                        if (matchCollection.Count > 0)
+                        {
+                            string strSerialPortName = matchCollection[matchCollection.Count - 1].Value;
+                            string strSerialPortInfo = Regex.Replace(item, Regex.Escape(strSerialPortName), "").Trim();
+                            strSerialPortName = Regex.Replace(strSerialPortName, @"[\(\)]", "").Trim();
+                            dicData[strSerialPortName] = strSerialPortInfo;
+                            Console.WriteLine("Name：" + strSerialPortName + "\tInfo：" + strSerialPortInfo);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        Console.WriteLine("串口检测错误：" + err);
                     }
                 }
             }
