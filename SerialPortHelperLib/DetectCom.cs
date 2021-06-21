@@ -389,14 +389,21 @@ namespace SerialPortHelperLib
                 bakSerialPortList.Clear();
                 foreach (string item in nowSerialPortList)
                 {
-                    int index = StrSerialPortDefaultInfo.ToList().IndexOf(DicSerialPortInfo[item]);
-                    if (DicSerialPortInfo.ContainsKey(item) && (index >= 0))
+                    try
                     {
-                        bakSerialPortList.Insert(0, item);
+                        int index = StrSerialPortDefaultInfo.ToList().IndexOf(DicSerialPortInfo[item]);
+                        if (DicSerialPortInfo.ContainsKey(item) && (index >= 0))
+                        {
+                            bakSerialPortList.Insert(0, item);
+                        }
+                        else
+                        {
+                            bakSerialPortList.Add(item);
+                        }
                     }
-                    else
+                    catch (Exception err)
                     {
-                        bakSerialPortList.Add(item);
+                        Console.WriteLine("串口匹配错误：" + err);
                     }
                 }
 
