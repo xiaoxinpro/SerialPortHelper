@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBoxSerial1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbReceiveFormat1 = new System.Windows.Forms.ComboBox();
@@ -1004,6 +1005,7 @@
             this.Controls.Add(this.groupSerialReceived);
             this.Controls.Add(this.groupBoxSerial2);
             this.Controls.Add(this.groupBoxSerial1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(770, 525);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
