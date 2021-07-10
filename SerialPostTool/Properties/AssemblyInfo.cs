@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Chishin")]
 [assembly: AssemblyProduct("SerialPostTool")]
-[assembly: AssemblyCopyright("Copyright © Chishin 2019")]
+[assembly: AssemblyCopyright("Copyright © Chishin 2021")]
 [assembly: AssemblyTrademark("Chishin")]
 [assembly: AssemblyCulture("")]
 
