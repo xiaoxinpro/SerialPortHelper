@@ -194,48 +194,49 @@
             this.WriteUpToolStripMenuItem,
             this.WriteDownToolStripMenuItem});
             this.contextMenuStripWrite.Name = "contextMenuStripWrite";
-            this.contextMenuStripWrite.Size = new System.Drawing.Size(101, 154);
+            this.contextMenuStripWrite.Size = new System.Drawing.Size(181, 176);
             this.contextMenuStripWrite.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripWrite_Opening);
             this.contextMenuStripWrite.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStripWrite_ItemClicked);
             // 
             // WriteCleanToolStripMenuItem
             // 
             this.WriteCleanToolStripMenuItem.Name = "WriteCleanToolStripMenuItem";
-            this.WriteCleanToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteCleanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteCleanToolStripMenuItem.Tag = "0";
             this.WriteCleanToolStripMenuItem.Text = "清空";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(97, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             this.toolStripMenuItem1.Tag = "0";
             // 
             // WriteImportToolStripMenuItem
             // 
             this.WriteImportToolStripMenuItem.Name = "WriteImportToolStripMenuItem";
-            this.WriteImportToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteImportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteImportToolStripMenuItem.Tag = "0";
             this.WriteImportToolStripMenuItem.Text = "导入";
             // 
             // WriteOutputToolStripMenuItem
             // 
             this.WriteOutputToolStripMenuItem.Name = "WriteOutputToolStripMenuItem";
-            this.WriteOutputToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteOutputToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteOutputToolStripMenuItem.Tag = "0";
             this.WriteOutputToolStripMenuItem.Text = "导出";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(97, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             this.toolStripMenuItem2.Tag = "1";
             this.toolStripMenuItem2.Visible = false;
             // 
             // WriteDeleteToolStripMenuItem
             // 
+            this.WriteDeleteToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.WriteDeleteToolStripMenuItem.Name = "WriteDeleteToolStripMenuItem";
-            this.WriteDeleteToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteDeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteDeleteToolStripMenuItem.Tag = "1";
             this.WriteDeleteToolStripMenuItem.Text = "删除";
             this.WriteDeleteToolStripMenuItem.Visible = false;
@@ -243,14 +244,14 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(97, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             this.toolStripMenuItem3.Tag = "1";
             this.toolStripMenuItem3.Visible = false;
             // 
             // WriteUpToolStripMenuItem
             // 
             this.WriteUpToolStripMenuItem.Name = "WriteUpToolStripMenuItem";
-            this.WriteUpToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteUpToolStripMenuItem.Tag = "1";
             this.WriteUpToolStripMenuItem.Text = "上移";
             this.WriteUpToolStripMenuItem.Visible = false;
@@ -258,7 +259,7 @@
             // WriteDownToolStripMenuItem
             // 
             this.WriteDownToolStripMenuItem.Name = "WriteDownToolStripMenuItem";
-            this.WriteDownToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.WriteDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.WriteDownToolStripMenuItem.Tag = "1";
             this.WriteDownToolStripMenuItem.Text = "下移";
             this.WriteDownToolStripMenuItem.Visible = false;
